@@ -1,6 +1,6 @@
 import { View, Text, StatusBar, Image, Pressable,ScrollView } from 'react-native'
 import React from 'react'
-
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const Profile = () => {
     return (
@@ -11,30 +11,34 @@ const Profile = () => {
                     <Image source={require('../assets/images/wave.jpg')} style={{ width: 200, height: 200, borderRadius: 100, borderWidth: 1, }} />
                 </View>
                 <Pressable style={{ marginBottom: 10, flexDirection: 'row', gap: 10, width: 80, height: 40, backgroundColor: 'white', alignSelf: 'center', alignItems: 'center', justifyContent: 'center', borderRadius: 10, borderWidth: 1, borderColor: 'grey' }}>
-                    <Image source={require('../assets/images/camera.png')} style={{ width: 22, height: 22 }} />
+                    <Ionicons name="camera-outline" size={24} color="black" />
                     <Text style={{ fontSize: 15 }}>Edit</Text>
                 </Pressable>
             </View>
-            <View style={{ marginHorizontal: 10, }}>
-                <View style={{ borderBottomWidth: 0.2, borderColor: 'grey',gap:3,marginTop:15}}>
+            <View style={{ marginHorizontal: 15, }}>
+                <View style={{  borderColor: 'grey',gap:3,marginTop:15}}>
                     <Text style={{color:'grey'}}>Username</Text>
-                    <Text style={{ fontWeight: 'bold',marginBottom:15,fontSize:17 }}>Reddy Shiva Reddy</Text>
+                    <Text style={{ fontWeight: 'medium',marginBottom:10,fontSize:18 }}>Reddy Shiva Reddy</Text>
                 </View>
-                <View style={{ borderBottomWidth: 0.2, borderColor: 'grey',gap:3,marginTop:15}}>
+                <View style={{  borderColor: 'grey',gap:3,marginTop:15}}>
                     <Text style={{color:'grey'}}>Email Address</Text>
-                    <Text style={{ fontWeight: 'bold' ,marginBottom:15,fontSize:17}}>reddyshiva.reddy@realpage.com</Text>
+                    <Text style={{ fontWeight: 'medium' ,marginBottom:10,fontSize:18}}>reddyshiva.reddy@realpage.com</Text>
                 </View>
-                <View style={{ borderBottomWidth: 0.2, borderColor: 'grey',gap:3,marginTop:15}}>
+                <View style={{  borderColor: 'grey',gap:3,marginTop:15}}>
                     <Text style={{color:'grey'}}>Designation</Text>
-                    <Text style={{ fontWeight: 'bold',marginBottom:15,fontSize:17 }}>Developer 1</Text>
+                    <Text style={{ fontWeight: 'medium',marginBottom:10,fontSize:18 }}>Developer 1</Text>
                 </View>
-                <View style={{ borderBottomWidth: 0.2, borderColor: 'grey',gap:3,marginTop:15}}>
+                <View style={{  borderColor: 'grey',gap:3,marginTop:15}}>
+                    <Text style={{color:'grey'}}>RPIPLID</Text>
+                    <Text style={{ fontWeight: 'medium',marginBottom:10,fontSize:18 }}>0912545</Text>
+                </View>
+                <View style={{  borderColor: 'grey',gap:3,marginTop:15}}>
                     <Text style={{color:'grey'}}>Date of Birth</Text>
-                    <Text style={{ fontWeight: 'bold' ,marginBottom:15,fontSize:17}}>02-12-2002</Text>
+                    <Text style={{ fontWeight: 'medium' ,marginBottom:10,fontSize:18}}>02-12-2002</Text>
                 </View>
-                <View style={{ borderBottomWidth: 0.2, borderColor: 'grey',gap:3,marginTop:15}}>
+                <View style={{  borderColor: 'grey',gap:3,marginTop:15}}>
                     <Text style={{color:'grey'}}>Gender</Text>
-                    <Text style={{ fontWeight: 'bold',marginBottom:15,fontSize:17 }}>Male</Text>
+                    <Text style={{ fontWeight: 'medium',marginBottom:10,fontSize:18 }}>Male</Text>
                 </View>
                 
             </View>

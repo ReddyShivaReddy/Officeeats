@@ -13,6 +13,8 @@ import {
     ScrollView
 } from "react-native";
 import LottieView from 'lottie-react-native';
+
+
 interface ErrorsType {
     general?: string;
     password?: string;
