@@ -10,6 +10,9 @@ import ReachOut from '@/components/Static_Pages/ReachOut';
 import ManualBook from '@/components/Static_Pages/ManualBook';
 import ViewCounter from '@/components/ViewCounter';
 import MyOrders from '@/components/MyOrders';
+import AddVendor from '@/components/AddVendor';
+import ManageVendors from '@/components/ManageVendors';
+
 
 
 function index(){
@@ -23,7 +26,9 @@ return(
     {/* <ReachOut /> */}
     {/* <ManualBook /> */}
     {/* <ViewCounter /> */}
-    <MyOrders />
+    {/* <MyOrders /> */}
+    {/* <AddVendor /> */}
+    <ManageVendors />
 
   </View>
 )

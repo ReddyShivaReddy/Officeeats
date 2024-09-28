@@ -22,11 +22,13 @@ function AboutUs(){
 const styles= StyleSheet.create({
     container:{
         flex: 1,
-        marginHorizontal:10
+        marginHorizontal:10,
+        
       },
       messageContainer:{
         padding: 20,
-        borderWidth:0,
+        borderWidth:0.1,
+        // borderRadius:10,
         //IOS
         shadowColor: '#000',
         shadowOffset: {width:0,height:2},

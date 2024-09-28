@@ -15,6 +15,7 @@ function FAQ() {
 
     return (
         <>
+        <StatusBar />
             <View style={styles.tcontainer}>
                 <Text style={{ fontSize: 25, marginHorizontal: 10, marginVertical: 15, fontWeight: 'bold' }}>FAQ's</Text>
                 <TouchableOpacity style={styles.container} onPress={togglework}>
