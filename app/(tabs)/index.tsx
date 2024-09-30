@@ -12,6 +12,7 @@ import ViewCounter from '@/components/ViewCounter';
 import MyOrders from '@/components/MyOrders';
 import AddVendor from '@/components/AddVendor';
 import ManageVendors from '@/components/ManageVendors';
+import Orders from '@/components/Vendors/Orders';
 
 
 
@@ -28,7 +29,8 @@ return(
     {/* <ViewCounter /> */}
     {/* <MyOrders /> */}
     {/* <AddVendor /> */}
-    <ManageVendors />
+    {/* <ManageVendors /> */}
+    <Orders />
 
   </View>
 )

@@ -7,12 +7,12 @@ const ManageVendors = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedItem, setSelectedItem] = useState<any>({});
     type Vendors = {
-        'Counter_ID': number
-        'Vendor_Name': string
-        'Vendor_Counter': string
-        'Vendor_Email': string
-        'Vendor_Contact': string
-        'Categories': string
+        'Counter_ID': number,
+        'Vendor_Name': string,
+        'Vendor_Counter': string,
+        'Vendor_Email': string,
+        'Vendor_Contact': string,
+        'Categories': string,
     }
     type VendorsTypes = Vendors[]
     const VedndorDetails: VendorsTypes = [{
@@ -54,20 +54,19 @@ const ManageVendors = () => {
     };
 
     const RenderItem = ({ item }: RenderItemProps) => (
-        <View>
-            <View style={{ flexDirection: 'row' }}>
+        <View style={{ marginVertical: 10 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between',borderWidth:0.7,borderRadius:2,padding:15,
+             }}>
                 <View>
-                    <Text>{item.Vendor_Counter}</Text>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', marginBottom: 5 }}>{item.Vendor_Counter}</Text>
                     <Text>{item.Vendor_Name}</Text>
                 </View>
-                <View>
+                <View style={{ alignSelf: 'center', borderWidth: 0.7, padding: 7, borderRadius: 8 }}>
                     <Pressable onPress={() => {
                         setSelectedItem(item);
                         setModalVisible(true);
                     }}>
-                        <Text>
-                            View
-                        </Text>
+                        <Text>  View  </Text>
                     </Pressable>
                 </View>
             </View>
@@ -77,10 +76,10 @@ const ManageVendors = () => {
     return (
         <View>
             <StatusBar />
-            <View>
-                <Text>ManageVendors</Text>
-                <View>
-                    <Text>
+            <View style={{ marginHorizontal: 20 }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>ManageVendors</Text>
+                <View style={{ marginVertical: 10 }}>
+                    <Text style={{ fontSize: 17, fontWeight: 'medium' }}>
                         List of Vendors
                     </Text>
                 </View>
@@ -97,36 +96,44 @@ const ManageVendors = () => {
                     animationType='fade'
                     onRequestClose={() => setModalVisible(false)}
                 >
-                    <ScrollView>
-                        <Text>
+                    <ScrollView style={{}}>
+                        {/* <Text>
                             Vendor Details
-                        </Text>
+                        </Text> */}
                         {selectedItem &&
-                            <View>
+                            <View style={{ marginHorizontal:15, gap: 20 }}>
                                 <View>
-                                    <Text>Vendor Counter ID</Text>
-                                    <Text>{selectedItem.Counter_ID}</Text>
+                                    <Text style={{ fontSize: 15 }}>Vendor Counter ID</Text>
+                                    <Text style={{ fontSize: 17, fontWeight: 'medium' }}>{selectedItem.Counter_ID}</Text>
                                 </View>
                                 <View>
-                                    <Text>Vendor Name</Text>
-                                    <Text>{selectedItem.Vendor_Name}</Text>
+                                    <Text style={{ fontSize: 15 }}>Vendor Name</Text>
+                                    <Text style={{ fontSize: 17, fontWeight: 'medium' }}>{selectedItem.Vendor_Name}</Text>
                                 </View>
                                 <View>
-                                    <Text>Vendor Counter Name</Text>
-                                    <Text>{selectedItem.Vendor_Counter}</Text>
+                                    <Text style={{ fontSize: 15 }}>Vendor Counter Name</Text>
+                                    <Text style={{ fontSize: 17, fontWeight: 'medium' }}>{selectedItem.Vendor_Counter}</Text>
                                 </View>
                                 <View>
-                                    <Text>Vendor Email</Text>
-                                    <Text>{selectedItem.Vendor_Email}</Text>
+                                    <Text style={{ fontSize: 15 }}>Vendor Email</Text>
+                                    <Text style={{ fontSize: 17, fontWeight: 'medium' }}>{selectedItem.Vendor_Email}</Text>
                                 </View>
                                 <View>
-                                    <Text>Vendor Contact</Text>
-                                    <Text>{selectedItem.Vendor_Contact}</Text>
+                                    <Text style={{ fontSize: 15 }}>Vendor Contact</Text>
+                                    <Text style={{ fontSize: 17, fontWeight: 'medium' }}>{selectedItem.Vendor_Contact}</Text>
                                 </View>
                                 <View>
-                                    <Text>Categories</Text>
-                                    <Text>{selectedItem.Categories}</Text>
+                                    <Text style={{ fontSize: 15 }}>Categories</Text>
+                                    <Text style={{ fontSize: 17, fontWeight: 'medium' }}>{selectedItem.Categories}</Text>
                                 </View>
+                                {/* {selectedItem.Categories && Object.keys(selectedItem.Categories).map((key) => {
+                                    console.log(key)
+                                    return (
+                                        <View>
+
+                                        </View>
+                                    );
+                                })} */}
                             </View>
                         }
                     </ScrollView>

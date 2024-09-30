@@ -1,6 +1,6 @@
-import { View, Text, StatusBar, Pressable, FlatList, Modal, ScrollView,TextInput } from 'react-native'
+import { View, Text, StatusBar, Pressable, FlatList, Modal, ScrollView, TextInput } from 'react-native'
 import React, { useState, } from 'react'
-
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 
 const Orders = () => {
@@ -62,6 +62,8 @@ const Orders = () => {
             'OrderedAt': '10th Sep24 - 7:30PM',
             'Status': 'Delivered',
         },
+
+
     ]
 
     type RenderItemProps = {
@@ -70,20 +72,23 @@ const Orders = () => {
 
     const RenderItem = ({ item }: RenderItemProps) => (
         <View>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{ flexDirection: 'row', marginHorizontal: 20, marginVertical: 5, justifyContent: 'space-between',borderWidth:0.9,borderRadius:8,borderColor:'grey',padding:15, }}>
                 <View>
-                    <Text>{item.OTP}</Text>
-                    <Text>{item.Category}</Text>
-                    <Text>{item.Status}</Text>
+                    <Text style={{ fontSize: 20 }}>OTP : <Text style={{ fontWeight: 'bold', fontSize: 20 }}>{item.OTP}</Text></Text>
+                    <Text style={{ fontSize: 17 }}>{item.Category} x 1</Text>
+                    <Text style={{
+                        color: item.Status === 'Not Picked' ? 'red' :
+                            item.Status === 'Delivered' ? 'green' :
+                                item.Status === 'Pending' ? 'blue' : 'black', fontSize: 19,
+                    }}>{item.Status}</Text>
                 </View>
-                <View>
+
+                <View style={{ alignSelf: 'center', borderWidth:0.9, padding: 7, borderRadius: 8, }}>
                     <Pressable onPress={() => {
                         setSelectedItem(item);
                         setModalVisible(true);
                     }}>
-                        <Text>
-                            View
-                        </Text>
+                        <Text style={{ fontSize: 17 }}> View </Text>
                     </Pressable>
                 </View>
             </View>
@@ -93,19 +98,16 @@ const Orders = () => {
     return (
         <View>
             <StatusBar />
-            <View>
-                {/* <Text>Orders</Text> */}
+            <View style={{ gap: 15 }}>
                 <View>
-                    <Text>
-                        List of Orders
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', marginHorizontal: 15 }}>
+                        Search Orders
                     </Text>
                 </View>
-                {/* <View>
-                <TextInput value={search}
-                        onChangeText={}
-                        placeholder='Search...'
-                    />
-                </View> */}
+                <View style={{ flexDirection: 'row', gap: 10, borderWidth: 0.9, marginHorizontal: 15, padding: 7, borderRadius: 8 }}>
+                    <Ionicons name="search" size={24} color="black" />
+                    <TextInput placeholder='Search...' style={{ height: 30, fontSize: 20 }} />
+                </View>
                 <View>
                     <FlatList
                         data={ordersData}
@@ -119,37 +121,39 @@ const Orders = () => {
                     animationType='fade'
                     onRequestClose={() => setModalVisible(false)}
                 >
-                    <ScrollView>
-                        <Text>
+                    <ScrollView style={{ marginHorizontal: 15, }}>
+                        <Text style={{ fontWeight: 'bold', fontSize: 20, marginBottom: 20 }}>
                             Order Details
                         </Text>
                         {selectedItem &&
-                            <View>
+                            <View style={{ gap: 10 }}>
                                 <View>
 
-                                    <Text>{selectedItem.Vendor_Counter}</Text>
+                                    <Text style={{ fontSize: 17, fontWeight: 'semibold' }}>{selectedItem.Counter}</Text>
                                 </View>
                                 <View>
-                                    <Text><Text>{selectedItem.Category}</Text> x 1</Text>
+                                    <Text style={{ fontSize: 17, fontWeight: 'medium' }}><Text>{selectedItem.Category}</Text> x 1</Text>
                                 </View>
                                 <View>
-                                    <Text>Order ID<Text>{selectedItem.OrderId}</Text></Text>
+                                    <Text style={{ fontSize: 17, fontWeight: 'medium' }}>Order ID: <Text style={{ fontWeight: 'bold' }}>{selectedItem.OrderId}</Text></Text>
                                 </View>
                                 <View>
-                                    <Text>OTP :
-                                        <Text>{selectedItem.OTP}</Text></Text>
+                                    <Text style={{ fontSize: 17, fontWeight: 'medium' }}>OTP :
+                                        <Text style={{ fontWeight: 'bold', fontSize: 20 }}>{selectedItem.OTP}</Text></Text>
                                 </View>
                                 <View>
-                                    <Text>{selectedItem.OrderedAt}</Text>
+                                    <Text style={{ fontSize: 17, fontWeight: 'medium' }}>{selectedItem.OrderedAt}</Text>
                                 </View>
-                                <View>
-                                    <Pressable>
-                                        <Text>Delivered</Text>
+                                <View style={{ borderWidth: 0.7, borderRadius: 8, padding: 7 ,width:100,backgroundColor:'#88D66C'}}>
+                                    <Pressable style={{}} onPress={() => {
+                                        setModalVisible(false);
+                                    }}>
+                                        <Text style={{ fontSize: 15,alignSelf:'center' }}>Delivered</Text>
                                     </Pressable>
                                 </View>
                                 <View>
-                                    <Text>
-                                        * Click delivered button to mark as delivered
+                                    <Text style={{ fontSize: 15 }}>
+                                        <Text style={{ color: 'red' }}>*</Text> Click delivered button to mark as delivered
                                     </Text>
                                 </View>
                             </View>
