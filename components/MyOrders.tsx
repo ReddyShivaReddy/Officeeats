@@ -65,7 +65,7 @@ const MyOrders = () => {
     };
 
     const RenderItem = ({ item }: RenderItemProps) => (
-        <View style={{ flexDirection: 'column', marginVertical: 10,marginHorizontal:10,borderWidth:0.1,elevation:1,borderColor:'white',}}>
+        <View style={{ flexDirection: 'column', marginVertical: 10, marginHorizontal: 10, borderWidth: 0.1, elevation: 1, borderColor: 'white', }}>
             <View style={styles.Card}>
 
                 <View style={{}}>
@@ -78,7 +78,7 @@ const MyOrders = () => {
                     <Text style={{
                         color: item.Status === 'Not Picked' ? 'red' :
                             item.Status === 'Delivered' ? 'green' :
-                                item.Status === 'Pending' ? 'blue' : 'black', fontSize: 19, fontWeight: 'semibold',marginTop:5
+                                item.Status === 'Pending' ? 'blue' : 'black', fontSize: 19, fontWeight: 'semibold', marginTop: 5
                     }}>{item.Status}</Text>
                 </View>
 
@@ -98,27 +98,48 @@ const MyOrders = () => {
                 </View>
 
             </View>
-            <View
-                style={{
-                    borderBottomColor: 'black',
-                    borderBottomWidth: 1,
-                    borderStyle: 'dashed', 
-                    marginHorizontal: 10
-                }} />
+            {item.Status != 'Not Picked' &&
+                <View
+                    style={{
+                        borderBottomColor: 'black',
+                        borderBottomWidth: 1,
+                        borderStyle: 'dashed',
+                        marginHorizontal: 10
+                    }} />
+            }
+            {/* {item.Status === 'Not Picked' &&
+                <View>
+                    <View
+                        style={{
+                            borderBottomColor: 'black',
+                            borderBottomWidth: 1,
+                            borderStyle: 'dashed',
+                            marginHorizontal: 10
+                        }} />
+                        <View style={{justifyContent:'center',alignSelf:'center'}}>
+                    <Text>Order is not picked</Text>
+                    </View>
+                </View>
+            } */}
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 25, marginVertical: 15 }}>
                 <View>
-                    <Pressable style={{ padding: 8, borderRadius: 8,borderColor:'#1E2A5E', borderWidth:1, }}>
-                        <Text style={{fontSize:15,color:'#1E2A5E'}}>Rate order</Text>
-                    </Pressable>
+                    {item.Status != 'Not Picked' &&
+                        <Pressable style={{ padding: 8, borderRadius: 8, borderColor: '#1E2A5E', borderWidth: 1, }}>
+                            <Text style={{ fontSize: 15, color: '#1E2A5E' }}>Rate order</Text>
+                        </Pressable>
+                    }
+
+
                 </View>
                 <View>
                     {item.Status === 'Pending' &&
-                        <Pressable style={{ padding: 7, borderRadius: 8, borderWidth:1,borderColor:'red' }}>
-                            <Text style={{color:'red',fontSize:15}}>Cancel Order</Text>
+                        <Pressable style={{ padding: 7, borderRadius: 8, borderWidth: 1, borderColor: 'red' }}>
+                            <Text style={{ color: 'red', fontSize: 15 }}>Cancel Order</Text>
                         </Pressable>
                     }
 
                 </View>
+
             </View>
         </View>
 
@@ -132,7 +153,7 @@ const MyOrders = () => {
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={RenderItem}
                 />
-                <View style={{marginTop:100}} />
+                <View style={{ marginTop: 100 }} />
             </View>
 
         </View>
@@ -146,7 +167,7 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         borderRadius: 8,
         padding: 15,
-       
+
 
     },
 })

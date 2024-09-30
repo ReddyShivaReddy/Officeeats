@@ -20,7 +20,7 @@ function index(){
 return(
   <View style={{flex:1}}>
     {/* <LoginPage /> */}
-    {/* <Profile /> */}
+    <Profile />
     {/* <FoodCounters /> */}
     {/* <FAQ /> */}
     {/* <AboutUs /> */}
@@ -28,7 +28,7 @@ return(
     {/* <ManualBook /> */}
     {/* <ViewCounter /> */}
     {/* <MyOrders /> */}
-    <AddVendor />
+    {/* <AddVendor /> */}
     {/* <ManageVendors /> */}
     {/* <Orders /> */}
 

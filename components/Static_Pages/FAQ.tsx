@@ -69,9 +69,9 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 10,
         marginVertical: 10,
-        // borderWidth: 1,
-        backgroundColor: "#f0f7f7",
-        elevation: 5,
+        borderWidth: 1,
+        // backgroundColor: "#f0f7f7",
+        // elevation: 1,
     },
     help: {
         fontSize: 20,
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
         margin: 16,
     },
     card: {
-        backgroundColor: "#f0f7f7",
+        // backgroundColor: "#f0f7f7",
         borderRadius: 8,
         marginBottom: 14,
     },
