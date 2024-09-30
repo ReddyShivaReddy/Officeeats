@@ -28,9 +28,9 @@ return(
     {/* <ManualBook /> */}
     {/* <ViewCounter /> */}
     {/* <MyOrders /> */}
-    {/* <AddVendor /> */}
+    <AddVendor />
     {/* <ManageVendors /> */}
-    <Orders />
+    {/* <Orders /> */}
 
   </View>
 )
