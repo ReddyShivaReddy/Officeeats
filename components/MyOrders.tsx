@@ -38,7 +38,7 @@ const MyOrders = () => {
             'OrderId': 'AQS2038',
             'OTP': 29373,
             'OrderedAt': '10th Sep24 - 7:30PM',
-            'Status': 'Not Picked',
+            'Status': 'Canceled',
         },
         {
             'Counter': 'Snacks',
@@ -76,7 +76,7 @@ const MyOrders = () => {
                     <Text>{item.OrderedAt}</Text>
 
                     <Text style={{
-                        color: item.Status === 'Not Picked' ? 'red' :
+                        color: item.Status === 'Canceled' ? 'red' :
                             item.Status === 'Delivered' ? 'green' :
                                 item.Status === 'Pending' ? 'blue' : 'black', fontSize: 19, fontWeight: 'semibold', marginTop: 5
                     }}>{item.Status}</Text>
@@ -98,7 +98,7 @@ const MyOrders = () => {
                 </View>
 
             </View>
-            {item.Status != 'Not Picked' &&
+            {item.Status != 'Canceled' &&
                 <View
                     style={{
                         borderBottomColor: 'black',
@@ -121,26 +121,22 @@ const MyOrders = () => {
                     </View>
                 </View>
             } */}
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 25, marginVertical: 15 }}>
-                <View>
-                    {item.Status != 'Not Picked' &&
+            {item.Status != 'Canceled' &&
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 25, marginVertical: 15 }}>
+                    <View>
                         <Pressable style={{ padding: 8, borderRadius: 8, borderColor: '#1E2A5E', borderWidth: 1, }}>
                             <Text style={{ fontSize: 15, color: '#1E2A5E' }}>Rate order</Text>
                         </Pressable>
-                    }
-
-
+                    </View>
+                    <View>
+                        {item.Status === 'Pending' &&
+                            <Pressable style={{ padding: 7, borderRadius: 8, borderWidth: 1, borderColor: 'red' }}>
+                                <Text style={{ color: 'red', fontSize: 15 }}>Cancel Order</Text>
+                            </Pressable>
+                        }
+                    </View>
                 </View>
-                <View>
-                    {item.Status === 'Pending' &&
-                        <Pressable style={{ padding: 7, borderRadius: 8, borderWidth: 1, borderColor: 'red' }}>
-                            <Text style={{ color: 'red', fontSize: 15 }}>Cancel Order</Text>
-                        </Pressable>
-                    }
-
-                </View>
-
-            </View>
+            }
         </View>
 
     )
@@ -152,6 +148,7 @@ const MyOrders = () => {
                     data={ordersData}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={RenderItem}
+                    contentContainerStyle={{ paddingBottom: 100 }}
                 />
                 <View style={{ marginTop: 100 }} />
             </View>

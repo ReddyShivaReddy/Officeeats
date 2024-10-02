@@ -1,9 +1,12 @@
-import { View, Text, TextInput, Button, StyleSheet, Pressable, ScrollView } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Pressable, ScrollView,Image } from 'react-native';
 import React from 'react';
 
 function AddVendor() {
     return (
         <ScrollView style={styles.container}>
+            <View>
+                <Image source={require('../assets/images/AddVendorillustration.png')} style={{width:250,height:230,alignSelf:'center'}} />
+            </View>
             <Text style={styles.label}>Vendor Name</Text>
             <TextInput style={styles.input} />
 
@@ -14,6 +17,9 @@ function AddVendor() {
             <TextInput style={styles.input} />
 
             <Text style={styles.label}>Vendor Counter Name</Text>
+            <TextInput style={styles.input} />
+
+            <Text style={styles.label}>Counter ID</Text>
             <TextInput style={styles.input} />
 
             <Text style={styles.label}>Categories</Text>
@@ -61,7 +67,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     button: {
-        backgroundColor: '#5dbea3',
+        backgroundColor: 'black',
         padding: 13,
         borderRadius: 10,
         justifyContent: 'center',

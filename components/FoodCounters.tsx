@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, StatusBar, Image, FlatList,Modal,Button,TouchableOpacity,Pressable } from 'react-native';
+import { View, Text, ScrollView, StatusBar, Image, FlatList, Modal, Button, TouchableOpacity, Pressable } from 'react-native';
 import Profile from "./Profile";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 function FoodCounters() {
 
-    const [modalVisible,setModalVisible]=useState(false)
-    const [selectedItem,setSelectedItem]=useState({})
+    const [modalVisible, setModalVisible] = useState(false)
+    const [selectedItem, setSelectedItem] = useState({})
 
     //Static data
     type counter = {
@@ -35,13 +35,14 @@ function FoodCounters() {
         CounterName: 'Snacks',
         Timings: '9:00 AM - 5:00 PM'
     },
+   
     ]
     type RenderItemProps = {
         item: counter;
     };
 
     const RenderItem = ({ item }: RenderItemProps) => (
-        <Pressable style={{flexDirection:'row', gap:20}} onPress={() => {
+        <Pressable style={{ flexDirection: 'row', gap: 20,marginHorizontal:10 }} onPress={() => {
             setSelectedItem(item);
             setModalVisible(true);
         }} >
@@ -56,27 +57,28 @@ function FoodCounters() {
                                     ? require('../assets/images/Lunch.jpg')
                                     : require('../assets/images/Maggie.jpg')
                     }
-                    style={{ width: 110, height: 110,marginBottom:15,borderRadius:10 }}
+                    style={{ width: 110, height: 110, marginBottom: 15, borderRadius: 10 }}
                 />
             </View>
-            <View style={{marginTop:20}}>
-                <Text style={{fontSize:18,fontWeight:'bold'}}>
+            <View style={{ marginTop: 20 }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
                     {item.CounterName}
                 </Text>
-                <Text style={{fontSize:17}}>
+                <Text style={{ fontSize: 17 }}>
                     Timings: {item.Timings}
                 </Text>
             </View>
         </Pressable>
     )
     return (
-        <>
+    
+        <View style={{ flex: 1 }}>
             <StatusBar />
-            <View style={{ flex: 1, marginHorizontal: 10 }}>
-                <View>
+            <View >
+                <View style={{marginHorizontal:10}}>
                     <Text style={{ fontSize: 30, marginTop: 10 }}>Office Eats</Text>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between',marginHorizontal:10 }}>
                     <View style={{ alignSelf: 'center' }}>
                         <Text style={{ fontSize: 20, justifyContent: 'center', }}>Your happiness</Text>
                         <Text style={{ fontSize: 20, justifyContent: 'center', }}>is our</Text>
@@ -86,20 +88,23 @@ function FoodCounters() {
                         <Image source={require('../assets/images/Restaurant.png')} style={{ width: 200, height: 150 }} />
                     </View>
                 </View>
-                <View style={{ marginTop: 10, borderBottomColor: 'black', borderBottomWidth: 1,gap:10,flexDirection:'row', }}>
+                <View style={{ marginTop: 10, borderBottomColor: 'black', borderBottomWidth: 1, gap: 10, flexDirection: 'row',marginHorizontal:10 }}>
                     <Ionicons name="fast-food-outline" size={25} color="black" />
-                    <Text style={{ fontSize: 18, marginVertical: 5,justifyContent:'center' }}>Explore Food Counters</Text>
+                    <Text style={{ fontSize: 18, marginVertical: 5, justifyContent: 'center' }}>Explore Food Counters</Text>
                 </View>
-                <View style={{marginTop:20}}>
+                <View style={{ marginTop: 20 ,}}>
                     <FlatList
                         data={counters}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={RenderItem}
+                        contentContainerStyle={{ paddingBottom: 500 }}
                     />
+                    
                 </View>
+                
             </View>
 
-            
+
 
             <Modal
                 // contentContainerStyle={{}}
@@ -122,10 +127,11 @@ function FoodCounters() {
                             </View>
                         );
                     })}
-                    
+
                 </ScrollView>
             </Modal>
-        </>
+            </View>
+
     );
 }
 export default FoodCounters

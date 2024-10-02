@@ -42,7 +42,7 @@ const Orders = () => {
             'OrderId': 'AQS2038',
             'OTP': 29373,
             'OrderedAt': '10th Sep24 - 7:30PM',
-            'Status': 'Not Picked',
+            'Status': 'Canceled',
         },
         {
             'Counter': 'Tea point',
@@ -72,18 +72,18 @@ const Orders = () => {
 
     const RenderItem = ({ item }: RenderItemProps) => (
         <View>
-            <View style={{ flexDirection: 'row', marginHorizontal: 20, marginVertical: 5, justifyContent: 'space-between',borderWidth:0.9,borderRadius:8,borderColor:'grey',padding:15, }}>
+            <View style={{ flexDirection: 'row', marginHorizontal: 20, marginVertical: 5, justifyContent: 'space-between', borderWidth: 0.9, borderRadius: 8, borderColor: 'grey', padding: 15, }}>
                 <View>
                     <Text style={{ fontSize: 20 }}>OTP : <Text style={{ fontWeight: 'bold', fontSize: 20 }}>{item.OTP}</Text></Text>
                     <Text style={{ fontSize: 17 }}>{item.Category} x 1</Text>
                     <Text style={{
-                        color: item.Status === 'Not Picked' ? 'red' :
+                        color: item.Status === 'Canceled' ? 'red' :
                             item.Status === 'Delivered' ? 'green' :
                                 item.Status === 'Pending' ? 'blue' : 'black', fontSize: 19,
                     }}>{item.Status}</Text>
                 </View>
 
-                <View style={{ alignSelf: 'center', borderWidth:0.9, padding: 7, borderRadius: 8, }}>
+                <View style={{ alignSelf: 'center', borderWidth: 0.9, padding: 7, borderRadius: 8, }}>
                     <Pressable onPress={() => {
                         setSelectedItem(item);
                         setModalVisible(true);
@@ -120,13 +120,15 @@ const Orders = () => {
                     visible={modalVisible}
                     animationType='fade'
                     onRequestClose={() => setModalVisible(false)}
+                    transparent
+
                 >
-                    <ScrollView style={{ marginHorizontal: 15, }}>
-                        <Text style={{ fontWeight: 'bold', fontSize: 20, marginBottom: 20 }}>
-                            Order Details
-                        </Text>
+                    <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.2)', justifyContent: 'center' }}>
                         {selectedItem &&
-                            <View style={{ gap: 10 }}>
+                            <View style={{ marginHorizontal: 15, gap: 15, backgroundColor: '#fff', justifyContent: "center", alignSelf: "center", width: "90%", padding: 15, borderRadius: 10, elevation: 10 }}>
+                                <Text style={{ fontWeight: 'bold', fontSize: 20, }}>
+                                    Order Details
+                                </Text>
                                 <View>
 
                                     <Text style={{ fontSize: 17, fontWeight: 'semibold' }}>{selectedItem.Counter}</Text>
@@ -144,21 +146,54 @@ const Orders = () => {
                                 <View>
                                     <Text style={{ fontSize: 17, fontWeight: 'medium' }}>{selectedItem.OrderedAt}</Text>
                                 </View>
-                                <View style={{ borderWidth: 0.7, borderRadius: 8, padding: 7 ,width:100,backgroundColor:'#88D66C'}}>
-                                    <Pressable style={{}} onPress={() => {
-                                        setModalVisible(false);
-                                    }}>
-                                        <Text style={{ fontSize: 15,alignSelf:'center' }}>Delivered</Text>
-                                    </Pressable>
+                                <View style={{}}>
+                                    {selectedItem.Status != 'Delivered' && selectedItem.Status != 'Canceled' &&
+<View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
+                                        <Pressable style={{ backgroundColor: '#88D66C', borderWidth: 0.7, borderRadius: 8, padding: 7, width: 100 }} onPress={() => {
+                                            setModalVisible(false);
+                                        }}>
+                                            <Text style={{ fontSize: 15, alignSelf: 'center' }}>Delivered</Text>
+                                        </Pressable>
+                                        <Pressable style={{ backgroundColor: 'black', borderWidth: 0.7, borderRadius: 8, padding: 7, width: 100 }} onPress={() => {
+                                                setModalVisible(false);
+                                            }}>
+                                                <Text style={{ fontSize: 15, alignSelf: 'center',color:'white' }}>Back</Text>
+                                            </Pressable>
+                                        
+</View>
+                                    }
+                                    {selectedItem.Status == 'Delivered' &&
+                                        <View>
+                                            <Text style={{fontSize:17,color:'red',marginBottom:5}}>Item is delivered</Text>
+                                            <Pressable style={{ backgroundColor: 'black', borderWidth: 0.7, borderRadius: 8, padding: 7, width: 100 }} onPress={() => {
+                                                setModalVisible(false);
+                                            }}>
+                                                <Text style={{ fontSize: 15, alignSelf: 'center',color:'white' }}>Back</Text>
+                                            </Pressable>
+                                            
+                                        </View>
+                                    }
+                                    {selectedItem.Status == 'Canceled' &&
+                                        <View>
+                                            <Text style={{fontSize:17,color:'red',marginBottom:5}}>Item is Canceled</Text>
+                                            <Pressable style={{ backgroundColor: 'black', borderWidth: 0.7, borderRadius: 8, padding: 7, width: 100 }} onPress={() => {
+                                                setModalVisible(false);
+                                            }}>
+                                                <Text style={{ fontSize: 15, alignSelf: 'center',color:'white' }}>Back</Text>
+                                            </Pressable>
+                                        </View>
+                                    }
                                 </View>
                                 <View>
+                                    {selectedItem.Status=='Pending' && 
                                     <Text style={{ fontSize: 15 }}>
                                         <Text style={{ color: 'red' }}>*</Text> Click delivered button to mark as delivered
                                     </Text>
+                                    }
                                 </View>
                             </View>
                         }
-                    </ScrollView>
+                    </View>
                 </Modal>
             </View>
         </View>

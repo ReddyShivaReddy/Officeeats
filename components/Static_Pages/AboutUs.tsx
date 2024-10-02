@@ -27,15 +27,15 @@ const styles= StyleSheet.create({
       },
       messageContainer:{
         padding: 20,
-        borderWidth:0.1,
-        // borderRadius:10,
+        borderWidth:1,
+        borderRadius:10,
         //IOS
         shadowColor: '#000',
         shadowOffset: {width:0,height:2},
         shadowOpacity:0.2,
         shadowRadius:5,
         //Android
-        elevation:2,
+        // elevation:2,
       },
       title:{
         fontSize: 20,

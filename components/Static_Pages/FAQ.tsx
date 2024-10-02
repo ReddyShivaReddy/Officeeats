@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity, StatusBar } from 'react-native'
 import React, { useState } from 'react'
 import { AntDesign } from '@expo/vector-icons'
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 function FAQ() {
     const [isworksOpen, setworksOpen] = useState(false)
@@ -24,7 +25,8 @@ function FAQ() {
                             <Text style={{ fontSize: 20 }}>How it works</Text>
                         </View>
                         <View style={{ justifyContent: 'center' }}>
-                            <AntDesign name={isworksOpen ? 'up' : 'down'} size={20} color='black' />
+                            {/* <AntDesign name={isworksOpen ? 'up' : 'down'} size={20} color='black' /> */}
+                            <Ionicons name={isworksOpen ? "chevron-up" : "chevron-down"} size={24} color="black" />
                         </View>
                     </View>
                     <View>
@@ -42,7 +44,8 @@ function FAQ() {
                             <Text style={{ fontSize: 20 }}>How it works</Text>
                         </View>
                         <View style={{ justifyContent: 'center' }}>
-                            <AntDesign name={isorderOpen ? 'up' : 'down'} size={20} color='black' />
+                            {/* <AntDesign name={isorderOpen ? 'up' : 'down'} size={20} color='black' /> */}
+                            <Ionicons name={isorderOpen ? "chevron-up" : "chevron-down"} size={24} color="black" />
                         </View>
                     </View>
                     <View>

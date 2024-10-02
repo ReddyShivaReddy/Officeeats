@@ -31,6 +31,7 @@ const styles= StyleSheet.create({
       messageContainer:{
           padding: 20,
           borderWidth:0,
+          // borderRadius:10,
         //IOS
         shadowColor: '#000',
         shadowOffset: {width:0,height:2},

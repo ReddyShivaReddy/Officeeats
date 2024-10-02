@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform,View } from 'react-native';
+import { Image, StyleSheet, Platform, View } from 'react-native';
 
 import LoginPage from '@/components/LoginPage';
 import Profile from '@/components/Profile';
@@ -13,27 +13,35 @@ import MyOrders from '@/components/MyOrders';
 import AddVendor from '@/components/AddVendor';
 import ManageVendors from '@/components/ManageVendors';
 import Orders from '@/components/Vendors/Orders';
+import ManageItemsVendor from '@/components/Vendors/ManageItemsVendor';
 
 
+function index() {
+  return (
+    <View style={{ flex: 1 }}>
+      {/* <LoginPage /> */}
+      {/* <Profile /> */}
+      {/* <FoodCounters /> */}
+      {/* <FAQ /> */}
+      {/* <AboutUs /> */}
+      {/* <ReachOut /> */}
+      {/* <ManualBook /> */}
+      {/* <ViewCounter /> */}
+      {/* <MyOrders /> */}
+      {/* <AddVendor /> */}
+      <ManageVendors />
+      {/* <Orders /> */}
+      {/* <ManageItemsVendor /> */}
+      
+      
+      
+      
+      
+      
+      {/* <Test /> */}
 
-function index(){
-return(
-  <View style={{flex:1}}>
-    {/* <LoginPage /> */}
-    <Profile />
-    {/* <FoodCounters /> */}
-    {/* <FAQ /> */}
-    {/* <AboutUs /> */}
-    {/* <ReachOut /> */}
-    {/* <ManualBook /> */}
-    {/* <ViewCounter /> */}
-    {/* <MyOrders /> */}
-    {/* <AddVendor /> */}
-    {/* <ManageVendors /> */}
-    {/* <Orders /> */}
-
-  </View>
-)
+    </View>
+  )
 }
 
 export default index
