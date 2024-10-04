@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button, Pressable, Text, View } from 'react-native';
 
 const HomeScreen = ({ navigation }: any) => {
 
@@ -9,12 +9,14 @@ const HomeScreen = ({ navigation }: any) => {
         <Text>
           Shiva Reddy
         </Text>
-        <Text>
-          View complete profile
-        </Text>
+        <Pressable onPress={() => navigation.navigate('Profile')}>
+          <Text>View complete profile</Text>
+        </Pressable>
       </View>
-      <Text>Working</Text>
-      <Button title="AboutUs" onPress={() => navigation.navigate('AboutUs')} />
+      <View>
+        <Text>Working</Text>
+        <Button title="AboutUs" onPress={() => navigation.navigate('AboutUs')} />
+      </View>
       <View>
         <Text>AboutScreen</Text>
         <Button title="FAQ" onPress={() => navigation.navigate('FAQ')} />

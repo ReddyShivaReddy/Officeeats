@@ -14,10 +14,6 @@ const TabNavigator = () => {
       screenOptions={{
         tabBarActiveTintColor: 'black',
         tabBarInactiveTintColor: 'gray',
-
-        tabBarLabelStyle: {
-          // fontSize: 17,
-        },
       }}>
       <Tab.Screen name="Home" component={FoodCounters}
         options={{
@@ -61,11 +57,8 @@ const TabNavigator = () => {
             {focused && <View style={{ height: 1, width: 40, backgroundColor: 'blue', borderWidth: 2 }} />}
           </View>
         ),
-
       }} />
-      
     </Tab.Navigator>
   );
 };
-
 export default TabNavigator;
