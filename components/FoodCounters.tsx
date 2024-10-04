@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, ScrollView, StatusBar, Image, FlatList, Modal, Button, TouchableOpacity, Pressable } from 'react-native';
 import Profile from "./Profile";
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { JumpingTransition } from "react-native-reanimated";
 
 function FoodCounters() {
 
@@ -35,14 +36,14 @@ function FoodCounters() {
         CounterName: 'Snacks',
         Timings: '9:00 AM - 5:00 PM'
     },
-   
+
     ]
     type RenderItemProps = {
         item: counter;
     };
 
     const RenderItem = ({ item }: RenderItemProps) => (
-        <Pressable style={{ flexDirection: 'row', gap: 20,marginHorizontal:10 }} onPress={() => {
+        <Pressable style={{ flexDirection: 'row', gap: 20, marginHorizontal: 10 }} onPress={() => {
             setSelectedItem(item);
             setModalVisible(true);
         }} >
@@ -71,14 +72,14 @@ function FoodCounters() {
         </Pressable>
     )
     return (
-    
-        <View style={{ flex: 1,backgroundColor:'white' }}>
+
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
             <StatusBar />
             <View >
-                <View style={{marginHorizontal:10}}>
+                <View style={{ marginHorizontal: 10 }}>
                     <Text style={{ fontSize: 30, marginTop: 10 }}>Office Eats</Text>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between',marginHorizontal:10 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10 }}>
                     <View style={{ alignSelf: 'center' }}>
                         <Text style={{ fontSize: 20, justifyContent: 'center', }}>Your happiness</Text>
                         <Text style={{ fontSize: 20, justifyContent: 'center', }}>is our</Text>
@@ -88,20 +89,20 @@ function FoodCounters() {
                         <Image source={require('../assets/images/Restaurant.png')} style={{ width: 200, height: 150 }} />
                     </View>
                 </View>
-                <View style={{ marginTop: 10, borderBottomColor: 'black', borderBottomWidth: 1, gap: 10, flexDirection: 'row',marginHorizontal:10 }}>
+                <View style={{ marginTop: 10, borderBottomColor: 'black', borderBottomWidth: 1, gap: 10, flexDirection: 'row', marginHorizontal: 10 }}>
                     <Ionicons name="fast-food-outline" size={25} color="black" />
                     <Text style={{ fontSize: 18, marginVertical: 5, justifyContent: 'center' }}>Explore Food Counters</Text>
                 </View>
-                <View style={{ marginTop: 20 ,}}>
+                <View style={{ marginTop: 20, }}>
                     <FlatList
                         data={counters}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={RenderItem}
                         contentContainerStyle={{ paddingBottom: 500 }}
                     />
-                    
+
                 </View>
-                
+
             </View>
 
 
@@ -112,25 +113,20 @@ function FoodCounters() {
                 animationType='fade'
                 onRequestClose={() => setModalVisible(false)}
             >
-                <ScrollView style={{}}>
-                    <View style={{}}>
-                        <TouchableOpacity onPress={() => setModalVisible(false)}>
-                            {/* <Image source={require('../assets/back.png')} style={{ width: 30, height: 30, }} /> */}
-                        </TouchableOpacity>
-                        <Text style={{}}>Checkout Page</Text>
+                <ScrollView style={{flex:1,alignSelf:'center'}}>
+                    <View style={{justifyContent:'center',alignSelf:'center',}}>
+                       
+                        <Text style={{fontSize:30,textAlign:'center'}}>Work in progress</Text>
                     </View>
-                    {selectedItem && Object.keys(selectedItem).map((key) => {
-                        console.log(selectedItem)
-                        return (
-                            <View>
-                                {/* <Profile /> */}
-                            </View>
-                        );
-                    })}
+                    {selectedItem &&
+
+                        <View>
+                        </View>
+                    }
 
                 </ScrollView>
             </Modal>
-            </View>
+        </View>
 
     );
 }

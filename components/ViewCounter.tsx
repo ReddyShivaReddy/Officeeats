@@ -3,10 +3,10 @@ import React from 'react'
 
 const ViewCounter = () => {
     return (
-        <View>
+        <View style={{flex:1}}>
             <StatusBar />
-            <View>
-
+            <View style={{alignSelf:'center',justifyContent:'center'}}>
+<Text>WIP</Text>
             </View>
         </View>
     )

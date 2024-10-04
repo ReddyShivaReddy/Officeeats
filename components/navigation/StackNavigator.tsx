@@ -13,6 +13,7 @@ import More from '../More'
 const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
+
   return (
     <Stack.Navigator>
       <Stack.Screen 
@@ -27,6 +28,7 @@ const StackNavigator = () => {
           header: () => <CustomHeader title="About Us" />
         }} 
       />
+      
       <Stack.Screen 
         name="FAQ" 
         component={FAQ} 
