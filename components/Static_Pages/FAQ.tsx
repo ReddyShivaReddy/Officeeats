@@ -18,7 +18,7 @@ function FAQ() {
         <>
         <StatusBar />
             <View style={styles.tcontainer}>
-                {/* <Text style={{ fontSize: 25, marginHorizontal: 10, marginVertical: 15, fontWeight: 'bold' }}>FAQ's</Text> */}
+                <Text style={{ fontSize: 25, marginHorizontal: 10, marginVertical: 15, fontWeight: 'bold' }}>FAQ's</Text>
                 <TouchableOpacity style={styles.container} onPress={togglework}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View>

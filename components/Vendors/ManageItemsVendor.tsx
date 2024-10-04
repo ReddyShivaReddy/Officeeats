@@ -65,7 +65,7 @@ const ManageItemsVendor = () => {
           data={toggles}
           keyExtractor={(item) => item.category}
           renderItem={renderItem}
-          contentContainerStyle={{ paddingBottom: 50 }}
+          contentContainerStyle={{ paddingBottom: 40 }}
         />
       </View>
       <View style={{ marginHorizontal: 15 }} >

@@ -10,6 +10,7 @@ import AddVendor from '../AddVendor';
 import ManageItemsAdmin from '../ManageItemsAdmin';
 import ManageVendors from '../ManageVendors';
 import Profile from '../Profile';
+import Logout from '../Logout';
 
 
 const Stack = createNativeStackNavigator();
@@ -26,8 +27,8 @@ const StackNavigator = () => {
         name="AboutUs" 
         component={AboutUs} 
         options={{ 
-          header: () => <CustomHeader title="About Us" />
-        }} 
+          header: () => <CustomHeader title="About Us" />,
+        }}
       />
       <Stack.Screen 
         name="FAQ" 
@@ -76,6 +77,13 @@ const StackNavigator = () => {
         component={Profile} 
         options={{
           header: () => <CustomHeader title="Profile" /> 
+        }}
+      />
+      <Stack.Screen 
+        name="Logout" 
+        component={Logout} 
+        options={{
+          header: () => <CustomHeader title="Log out" /> 
         }}
       />
     </Stack.Navigator>

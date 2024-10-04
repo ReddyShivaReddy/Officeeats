@@ -78,10 +78,10 @@ const ManageVendors = () => {
     );
 
     return (
-        <View style={{flex:1}}>
+        <View style={{flex:1,backgroundColor:'white'}}>
             <StatusBar />
             <View style={{ marginHorizontal: 20 }}>
-                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Manage Vendors</Text>
+                {/* <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Manage Vendors</Text> */}
                 <View style={{ marginVertical: 10 }}>
                     <Text style={{ fontSize: 17 }}>List of Vendors</Text>
                 </View>

@@ -22,6 +22,7 @@ const TabNavigator = () => {
           ),
           tabBarLabelStyle: {
             fontSize: 15,
+            display: 'flex'
           },
           tabBarLabel: ({ focused }) => (
             <View style={{ alignItems: 'center' }}>
@@ -36,6 +37,7 @@ const TabNavigator = () => {
         ),
         tabBarLabelStyle: {
           fontSize: 15,
+          display: 'flex'
         },
         tabBarLabel: ({ focused }) => (
           <View style={{ alignItems: 'center' }}>
@@ -46,10 +48,12 @@ const TabNavigator = () => {
       }} />
       <Tab.Screen name="More" component={StackNavigator} options={{
         headerShown: false, tabBarIcon: () => (
-          <Ionicons name="menu" size={25} color="black" />
+          <Ionicons name="ellipsis-horizontal" size={26} color="black" />
+          // <Ionicons name="menu" size={25} color="black" />
         ),
         tabBarLabelStyle: {
           fontSize: 15,
+          display: 'flex'
         },
         tabBarLabel: ({ focused }) => (
           <View style={{ alignItems: 'center' }}>

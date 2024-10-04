@@ -66,7 +66,7 @@ const ManageItemsAdmin = () => {
     );
 
     return (
-        <View style={{ flex : 1 }}>
+        <View style={{ flex : 1,backgroundColor:'white' }}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 15 }}>
     <Text style={{ flex: 1, fontSize: 20, fontWeight: 'bold',  }}>Category</Text>
     <Text style={{ flex: 1, fontSize: 20, fontWeight: 'bold', textAlign:'center' }}>Vendor Status</Text>
@@ -77,7 +77,7 @@ const ManageItemsAdmin = () => {
                     data={toggles}
                     keyExtractor={(item) => item.category}
                     renderItem={renderItem}
-                    contentContainerStyle={{ paddingBottom : 50 }}
+                    contentContainerStyle={{ paddingBottom : 40 }}
                 />
             </View>
             <View style={{ marginHorizontal : 15,flexDirection:'row' }} >
