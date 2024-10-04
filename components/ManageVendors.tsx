@@ -17,7 +17,7 @@ const ManageVendors = () => {
 
     type VendorsTypes = Vendors[];
 
-    const VedndorDetails: VendorsTypes = [
+    const VendorDetails: VendorsTypes = [
         {
             'Counter_ID': 1,
             'Vendor_Name': 'Shiva',
@@ -62,8 +62,8 @@ const ManageVendors = () => {
                 flexDirection: 'row', justifyContent: 'space-between', borderWidth: 0.7, borderRadius: 10, padding: 15,
             }}>
                 <View>
-                    <Text style={{ fontSize: 17, fontWeight: 'bold', marginBottom: 5 }}>{item.Vendor_Counter}</Text>
-                    <Text>{item.Vendor_Name}</Text>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', marginBottom: 5 }}>{item.Vendor_Name}</Text>
+                    <Text>{item.Vendor_Counter}</Text>
                 </View>
                 <View style={{ alignSelf: 'center', borderWidth: 0.7, padding: 7, borderRadius: 8 }}>
                     <Pressable onPress={() => {
@@ -86,8 +86,8 @@ const ManageVendors = () => {
                     <Text style={{ fontSize: 17 }}>List of Vendors</Text>
                 </View>
                 <FlatList
-                    data={VedndorDetails}
-                    keyExtractor={(item) => item.Counter_ID.toString()} // Use Counter_ID for unique key
+                    data={VendorDetails}
+                    keyExtractor={(item) => item.Counter_ID.toString()} 
                     renderItem={RenderItem}
                 />
                 <Modal
@@ -159,7 +159,7 @@ const ManageVendors = () => {
                                         {selectedItem.Categories ? (
                                             selectedItem.Categories.split(', ').map((category: string, index: number) => (
 
-                                                <Text key={index} style={{ fontSize: 17 }}>{` - ${category}`}</Text> // Adding a bullet point for each category
+                                                <Text key={index} style={{ fontSize: 17 }}>{` - ${category}`}</Text> 
                                             ))
                                         ) : (
                                             <Text>No categories available</Text>

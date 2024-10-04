@@ -40,13 +40,8 @@ function AddVendor() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // marginRight:1,
-        // marginLeft: 20,
         marginVertical: 20,
         backgroundColor: '#fff',
-        //borderWidth: 2
-
-
     },
     label: {
         fontSize: 17,
@@ -56,7 +51,6 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderWidth: 1,
         marginBottom: 16,
-        // paddingHorizontal: 8,
         borderRadius: 8,
         padding: 10,
         fontSize: 17,

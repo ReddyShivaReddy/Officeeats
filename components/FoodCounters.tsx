@@ -72,7 +72,7 @@ function FoodCounters() {
     )
     return (
     
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1,backgroundColor:'white' }}>
             <StatusBar />
             <View >
                 <View style={{marginHorizontal:10}}>

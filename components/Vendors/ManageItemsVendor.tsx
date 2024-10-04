@@ -1,87 +1,86 @@
-import React, { useState, useEffect } from 'react';
-import { View, Switch, StyleSheet, FlatList, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, Switch, Text, StyleSheet, Button, FlatList, Alert, Pressable } from 'react-native';
 
+
+type CategoryType = {
+  Counter_Name: string;
+  Counter_ID: number;
+  category: string;
+  Available_Status_from_Vendor: boolean;
+};
+
+type categoriesTypes = CategoryType[]
 const ManageItemsVendor = () => {
-  const categories = [
-    { Counter_Name: 'Tea Point', Counter_ID: 1, Categories: 'Tea', Available_Status_from_Vendor: true },
-    { Counter_Name: 'Tea Point', Counter_ID: 2, Categories: 'Coffee', Available_Status_from_Vendor: true },
-    { Counter_Name: 'Tea Point', Counter_ID: 3, Categories: 'Boost', Available_Status_from_Vendor: true },
-    { Counter_Name: 'Tea Point', Counter_ID: 4, Categories: 'Horlicks', Available_Status_from_Vendor: true },
-    { Counter_Name: 'Tea Point', Counter_ID: 5, Categories: 'Lemon Tea', Available_Status_from_Vendor: true },
-    { Counter_Name: 'Tea Point', Counter_ID: 6, Categories: 'Green Tea', Available_Status_from_Vendor: true },
-    { Counter_Name: 'Tea Point', Counter_ID: 7, Categories: 'Milk', Available_Status_from_Vendor: true },
+  const Categories: categoriesTypes = [
+    { Counter_Name: 'Tea Point', Counter_ID: 1, category: 'Tea', Available_Status_from_Vendor: true },
+    { Counter_Name: 'Tea Point', Counter_ID: 2, category: 'Coffee', Available_Status_from_Vendor: true },
+    { Counter_Name: 'Tea Point', Counter_ID: 3, category: 'Boost', Available_Status_from_Vendor: true },
+    { Counter_Name: 'Tea Point', Counter_ID: 4, category: 'Horlicks', Available_Status_from_Vendor: true },
+    { Counter_Name: 'Tea Point', Counter_ID: 5, category: 'Lemon Tea', Available_Status_from_Vendor: true },
+    { Counter_Name: 'Tea Point', Counter_ID: 6, category: 'Green Tea', Available_Status_from_Vendor: true },
+    { Counter_Name: 'Tea Point', Counter_ID: 7, category: 'Milk', Available_Status_from_Vendor: true },
   ];
 
-  const [switchStates, setSwitchStates] = useState<boolean[]>(() => new Array(categories.length).fill(true));
-
-  const toggleSwitch = (id: number) => {
-    setSwitchStates(previousState => {
-      const newState = [...previousState];
-      newState[id - 1] = !newState[id - 1];
-      return newState;
-    });
+  const [toggles, setToggles] = useState<CategoryType[]>(Categories);
+  const toggleSwitch = (category: string) => {
+    setToggles(prevToggles =>
+      prevToggles.map(toggle =>
+        toggle.category === category ? { ...toggle, Available_Status_from_Vendor: !toggle.Available_Status_from_Vendor } : toggle
+      )
+    );
   };
 
-  type CategoryType = {
-    Counter_Name: string;
-    Counter_ID: number;
-    Categories: string;
-    Available_Status_from_Vendor: boolean;
+  const handleSubmit = () => {
+    Alert.alert('Submitted', JSON.stringify(toggles));
   };
-
   type RenderItemProps = {
     item: CategoryType;
   };
 
-  const RenderItem = ({ item }: RenderItemProps) => {
-
-    
-    console.log(switchStates[item.Counter_ID-1]);
-
-    return (
-      <View style={styles.itemContainer}>
-        <Text>{item.Categories}</Text>
-        <Switch
-          trackColor={{ false: '#767577', true: '#81b0ff' }}
-          thumbColor={switchStates[item.Counter_ID - 1] ? '#f5dd4b' : '#f4f3f4'}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={() => toggleSwitch(item.Counter_ID)}
-          value={switchStates[item.Counter_ID - 1]} 
-        />
+  
+  const renderItem = ({ item }: RenderItemProps) => (
+    <View style={{ flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 0.7, borderColor: 'grey' }}>
+      <View style={{ justifyContent: 'center' }}>
+        <Text style={{ fontSize: 17, fontWeight: 'semibold', justifyContent: 'center' }}>{item.category}</Text>
       </View>
-    );
-  };
+      <Switch 
+      style={{ transform:[{scaleX :1.0},{scaleY :1.0}],}}
+      trackColor={{ false: 'grey', true: '#bada55' }}
+      thumbColor={item.Available_Status_from_Vendor ? 'white' : 'white'}
+      ios_backgroundColor="#3e3e3e"
+        onValueChange={() => toggleSwitch(item.category)}
+        value={item.Available_Status_from_Vendor}
+      />
+    </View>
+  )
 
   return (
-    <View style={styles.container}>
-      <View style={{ flexDirection:'row', justifyContent:'space-between' }}>
-        <Text style={{ fontSize:17, fontWeight:'bold' }}>Category</Text>
-        <Text style={{ fontSize:17, fontWeight:'bold' }}>Available</Text>
+    <View style={{ flex: 1 }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 15 }}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Category</Text>
+        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Available</Text>
       </View>
-      <FlatList
-        data={categories}
-        keyExtractor={(item) => item.Counter_ID.toString()}
-        renderItem={RenderItem}
-      />
+      <View style={{ marginVertical: 10, marginHorizontal: 15 }}>
+        <FlatList
+          data={toggles}
+          keyExtractor={(item) => item.category}
+          renderItem={renderItem}
+          contentContainerStyle={{ paddingBottom: 50 }}
+        />
+      </View>
+      <View style={{ marginHorizontal: 15 }} >
+        <Text style={{color:'red',fontSize:15}}>Note: </Text>
+        <Text>Turn off the items which are not available</Text>
+      </View>
+      <View style={{ marginTop:10, alignSelf: 'center',borderWidth:1,backgroundColor:'black',borderRadius:8
+       }}>
+        <Pressable onPress={handleSubmit} >
+          <Text style={{color:'white',fontSize:17,padding:7}}>Submit</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 20,
-    marginHorizontal:10
-  },
-  itemContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  },
-});
 
 export default ManageItemsVendor;

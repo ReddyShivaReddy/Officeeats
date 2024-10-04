@@ -1,11 +1,13 @@
-import { View, Text, StatusBar, Image, Pressable, ScrollView } from 'react-native'
+import { View, Text, StatusBar, Image, Pressable, ScrollView,SafeAreaView } from 'react-native'
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 const Profile = () => {
     return (
         <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
-            <StatusBar />
+           <SafeAreaView />
+            <StatusBar hidden={true}
+            />
             <View style={{ borderBottomWidth: 0.2, borderColor: 'grey', }}>
                 <View style={{ alignItems: 'center', marginBottom: 7 }}>
                     <Image source={require('../assets/images/wave.jpg')} style={{ width: 200, height: 200, borderRadius: 100, borderWidth: 1, }} />

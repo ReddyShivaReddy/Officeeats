@@ -118,6 +118,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#DCDEE6'
     },
     form: {
+        marginHorizontal:10,
+        marginVertical:10,
         backgroundColor: "#ffffff",
         padding: 20,
         borderRadius: 10,

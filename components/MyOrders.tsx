@@ -141,7 +141,7 @@ const MyOrders = () => {
 
     )
     return (
-        <View style={{ flex: 1, }}>
+        <View style={{ flex: 1,backgroundColor:'white' }}>
             <Text style={{ fontSize: 30, fontWeight: 'medium', marginHorizontal: 10 }}>My Orders</Text>
             <View style={{ marginTop: 10, }}>
                 <FlatList

@@ -14,7 +14,9 @@ import AddVendor from '@/components/AddVendor';
 import ManageVendors from '@/components/ManageVendors';
 import Orders from '@/components/Vendors/Orders';
 import ManageItemsVendor from '@/components/Vendors/ManageItemsVendor';
-
+import ManageItemsAdmin from '@/components/ManageItemsAdmin';
+import { NavigationContainer } from '@react-navigation/native';
+import TabNavigator from '../../components/navigation/TabNavigator';
 
 function index() {
   return (
@@ -29,17 +31,15 @@ function index() {
       {/* <ViewCounter /> */}
       {/* <MyOrders /> */}
       {/* <AddVendor /> */}
-      <ManageVendors />
+      {/* <ManageVendors /> */}
       {/* <Orders /> */}
       {/* <ManageItemsVendor /> */}
-      
-      
-      
-      
-      
-      
+      {/* <ManageItemsAdmin /> */}
       {/* <Test /> */}
-
+      
+      <NavigationContainer independent={true}>
+      <TabNavigator  />
+    </NavigationContainer>
     </View>
   )
 }
