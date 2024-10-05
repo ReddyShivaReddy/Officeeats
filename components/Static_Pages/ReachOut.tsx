@@ -5,7 +5,7 @@ function ReachOut(){
   return (
     <View style={styles.container}> 
      <StatusBar />
-      <Text style={styles.title}>Raise a complaint</Text>
+      {/* <Text style={styles.title}>Raise a complaint</Text> */}
         <View style={styles.messageContainer}>
             <Text style={styles.header}>Reach out to us</Text>
             <Text style={styles.body}>We are truly sorry that you've encountered an issue. Please email us to 
@@ -19,26 +19,30 @@ function ReachOut(){
 const styles= StyleSheet.create({
     container:{
         flex: 1,
-        marginHorizontal:10,
-        marginVertical:10
+       backgroundColor:'#EEF5FF'
       },
    
       title:{
         fontSize: 22,
         marginBottom: 10,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginHorizontal:10,
+        marginVertical:10
       },
       messageContainer:{
           padding: 20,
           borderWidth:0,
-          // borderRadius:10,
+          marginHorizontal:10,
+          marginVertical:10,
+          borderRadius:10,
+          backgroundColor:'white',
         //IOS
         shadowColor: '#000',
         shadowOffset: {width:0,height:2},
         shadowOpacity:0.2,
         shadowRadius:5,
         //Android
-        elevation:2,
+        elevation:5,
       },
       header:{
         fontSize: 20,

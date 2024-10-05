@@ -7,7 +7,7 @@ function AboutUs(){
     <View style={styles.container}>
         <StatusBar /> 
         <View style={styles.messageContainer}>
-            <Text style={styles.title}>About Us</Text>
+            <Text style={styles.title}>Who are we</Text>
             <Text style={styles.MainText}>Our mission is to make ordering free, delicious meals from your office
             cafeteria as easy as tapping a few buttons on your smartphone.</Text>
             <Text style={styles.MainText}>Our mission is to make ordering free, delicious meals from your office
@@ -22,25 +22,27 @@ function AboutUs(){
 const styles= StyleSheet.create({
     container:{
         flex: 1,
-        marginHorizontal:10,
+        backgroundColor:'#EEF5FF',
         
       },
       messageContainer:{
+        marginVertical:10,
+        marginHorizontal:10,
         padding: 20,
-        borderWidth:1,
+        borderWidth:0,
         borderRadius:10,
+        backgroundColor:'white',
         //IOS
         shadowColor: '#000',
         shadowOffset: {width:0,height:2},
         shadowOpacity:0.2,
         shadowRadius:5,
         //Android
-        // elevation:2,
+        elevation:5,
       },
       title:{
         fontSize: 20,
-        marginVertical: 10,
-        fontWeight: 'bold'
+        fontWeight: '500'
       },
       MainText:{
         fontSize: 17,

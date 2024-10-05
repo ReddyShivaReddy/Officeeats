@@ -5,7 +5,7 @@ function ManualBook() {
     return (
         <View style={styles.container}>
             <StatusBar />
-            <Text style={styles.complaintText}>How Office Eats works?</Text>
+            {/* <Text style={styles.complaintText}>How Office Eats works?</Text> */}
             <View style={styles.messageContainer}>
                 <Text style={styles.BoldText}>1. Open the Counter</Text>
                 <Text style={styles.MainText}>
@@ -31,34 +31,40 @@ function ManualBook() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginHorizontal:10,
-        marginVertical:10
+        backgroundColor:'#EEF5FF',
+        
     },
 
     complaintText: {
         fontSize: 20,
-        marginVertical: 10,
-        fontWeight: 'bold'
+        marginVertical: 7,
+        fontWeight: '500',
+        marginHorizontal:10,
     },
     messageContainer: {
+        marginHorizontal:10,
+        marginVertical:10,
         //backgroundColor: '#f5f5f5',
         padding: 20,
         borderWidth:0,
+        borderRadius:10,
+        backgroundColor:'white',
         //IOS
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
         shadowRadius: 5,
         //Android
-        elevation: 2,
+        elevation: 5,
     },
     MainText: {
         fontSize: 17,
         fontWeight:'thin'
     },
     BoldText: {
-        fontWeight: 'semibold',
-        fontSize: 19,
+        fontWeight: '400',
+        fontSize: 20,
+        marginTop:8
     }
 
 });

@@ -22,7 +22,7 @@ const TabNavigator = () => {
           ),
           tabBarLabelStyle: {
             fontSize: 15,
-            display: 'flex'
+            // display: 'flex'
           },
           tabBarLabel: ({ focused }) => (
             <View style={{ alignItems: 'center' }}>
@@ -37,7 +37,7 @@ const TabNavigator = () => {
         ),
         tabBarLabelStyle: {
           fontSize: 15,
-          display: 'flex'
+          // display: 'flex'
         },
         tabBarLabel: ({ focused }) => (
           <View style={{ alignItems: 'center' }}>
@@ -53,7 +53,7 @@ const TabNavigator = () => {
         ),
         tabBarLabelStyle: {
           fontSize: 15,
-          display: 'flex'
+          // display: 'flex'
         },
         tabBarLabel: ({ focused }) => (
           <View style={{ alignItems: 'center' }}>

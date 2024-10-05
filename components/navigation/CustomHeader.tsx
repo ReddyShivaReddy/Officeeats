@@ -12,7 +12,7 @@ const CustomHeader = ({title}: CustomHeaderProps) => {
   const navigation = useNavigation();
 
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', padding: 10, backgroundColor: '#f8f8f8' }}>
+    <View style={{ flexDirection: 'row', alignItems: 'center', padding: 10, backgroundColor: 'white' }}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
       <Ionicons name="arrow-back" size={24} color="black" />
       </TouchableOpacity>

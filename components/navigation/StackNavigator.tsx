@@ -19,9 +19,9 @@ const StackNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen 
-        name="More" 
+        name="MoreDetails" 
         component={More} 
-        options={{ headerShown: false }} 
+        options={{ headerShown: false , }} 
       />
       <Stack.Screen 
         name="AboutUs" 
@@ -34,42 +34,44 @@ const StackNavigator = () => {
         name="FAQ" 
         component={FAQ} 
         options={{ 
-          header: () => <CustomHeader title="FAQ" /> 
+          header: () => <CustomHeader title="FAQ's" /> 
         }} 
       />
       <Stack.Screen 
         name="ManualBook" 
         component={ManualBook} 
         options={{ 
-          header: () => <CustomHeader title="Manual Book" /> 
+          header: () => <CustomHeader title="How Office Eats works?" />,
+           
+
         }} 
       />
       <Stack.Screen 
         name="ReachOut" 
         component={ReachOut} 
         options={{
-          header: () => <CustomHeader title="ReachOut" /> 
+          header: () => <CustomHeader title="Raise a complaint" /> 
         }}
       />
       <Stack.Screen 
         name="AddVendor" 
         component={AddVendor} 
         options={{
-          header: () => <CustomHeader title="AddVendor" /> 
+          header: () => <CustomHeader title="Add Vendor" /> 
         }}
       />
       <Stack.Screen 
         name="ManageItemsAdmin" 
         component={ManageItemsAdmin} 
         options={{
-          header: () => <CustomHeader title="ManageItemsAdmin" /> 
+          header: () => <CustomHeader title="Manage Items" /> 
         }}
       />
       <Stack.Screen 
         name="ManageVendors" 
         component={ManageVendors} 
         options={{
-          header: () => <CustomHeader title="ManageVendors" /> 
+          header: () => <CustomHeader title="Manage Vendors" /> 
         }}
       />
       <Stack.Screen 

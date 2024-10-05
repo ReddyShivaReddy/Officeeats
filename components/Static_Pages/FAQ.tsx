@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, TouchableOpacity, StatusBar } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, StatusBar,ScrollView } from 'react-native'
 import React, { useState } from 'react'
-import { AntDesign } from '@expo/vector-icons'
 import Ionicons from '@expo/vector-icons/Ionicons';
+
 
 function FAQ() {
     const [isworksOpen, setworksOpen] = useState(false)
@@ -9,23 +9,20 @@ function FAQ() {
     const togglework = () => {
         setworksOpen(!isworksOpen)
     }
-
     const toggleorder = () => {
         setorderOpen(!isorderOpen)
     }
-
     return (
-        <>
+        <ScrollView style={{flex:1,backgroundColor:'#EEF5FF'}}>
         <StatusBar />
             <View style={styles.tcontainer}>
-                <Text style={{ fontSize: 25, marginHorizontal: 10, marginVertical: 15, fontWeight: 'bold' }}>FAQ's</Text>
+                {/* <Text style={{ fontSize: 25, marginHorizontal: 10, marginVertical: 15, fontWeight: 'bold' }}>FAQ's</Text> */}
                 <TouchableOpacity style={styles.container} onPress={togglework}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View>
                             <Text style={{ fontSize: 20 }}>How it works</Text>
                         </View>
                         <View style={{ justifyContent: 'center' }}>
-                            {/* <AntDesign name={isworksOpen ? 'up' : 'down'} size={20} color='black' /> */}
                             <Ionicons name={isworksOpen ? "chevron-up" : "chevron-down"} size={24} color="black" />
                         </View>
                     </View>
@@ -44,7 +41,6 @@ function FAQ() {
                             <Text style={{ fontSize: 20 }}>How it works</Text>
                         </View>
                         <View style={{ justifyContent: 'center' }}>
-                            {/* <AntDesign name={isorderOpen ? 'up' : 'down'} size={20} color='black' /> */}
                             <Ionicons name={isorderOpen ? "chevron-up" : "chevron-down"} size={24} color="black" />
                         </View>
                     </View>
@@ -57,44 +53,24 @@ function FAQ() {
                         )}
                     </View>
                 </TouchableOpacity>
-
             </View>
-        </>
+        </ScrollView>
     )
 }
-
-
-
-
 
 const styles = StyleSheet.create({
     container: {
         padding: 20,
         borderRadius: 10,
-        marginVertical: 10,
-        borderWidth: 1,
-        // backgroundColor: "#f0f7f7",
-        // elevation: 1,
-    },
-    help: {
-        fontSize: 20,
-        paddingLeft: 5,
-        fontWeight: 'bold',
-        paddingBottom: 10,
-    },
-    component: {
-        padding: 30,
+        marginVertical: 8,
+        backgroundColor: "white",
+        elevation: 5,
     },
     tcontainer: {
-        margin: 16,
-    },
-    card: {
-        // backgroundColor: "#f0f7f7",
-        borderRadius: 8,
-        marginBottom: 14,
+        marginHorizontal: 15,
     },
     cardcontent: {
-        padding: 14,
+        padding: 10,
     },
 })
 
