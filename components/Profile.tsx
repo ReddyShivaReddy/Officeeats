@@ -10,7 +10,7 @@ const Profile = () => {
             />
             <View style={{ borderBottomWidth: 0.2, borderColor: 'grey', }}>
                 <View style={{ alignItems: 'center', marginBottom: 7 }}>
-                    <Image source={require('../assets/images/wave.jpg')} style={{ width: 200, height: 200, borderRadius: 100, borderWidth: 1, }} />
+                    <Image source={require('../assets/images/profile.png')} style={{ width: 170, height: 170, borderRadius: 100, borderWidth: 1, }} />
                 </View>
                 <Pressable style={{ marginBottom: 10, flexDirection: 'row', gap: 10, width: 80, height: 40, backgroundColor: 'white', alignSelf: 'center', alignItems: 'center', justifyContent: 'center', borderRadius: 10, borderWidth: 1, borderColor: 'grey' }}>
                     <Ionicons name="camera-outline" size={24} color="black" />

@@ -17,6 +17,7 @@ import ManageItemsVendor from '@/components/Vendors/ManageItemsVendor';
 import ManageItemsAdmin from '@/components/ManageItemsAdmin';
 import { NavigationContainer } from '@react-navigation/native';
 import TabNavigator from '../../components/navigation/TabNavigator';
+import TabNavigatorVendor from '@/components/navigation/TabNavigatorVendor';
 
 function index() {
   return (
@@ -39,7 +40,10 @@ function index() {
       
       <NavigationContainer independent={true}>
       <TabNavigator  />
+      {/* <TabNavigatorVendor /> */}
     </NavigationContainer>
+
+
     </View>
   )
 }

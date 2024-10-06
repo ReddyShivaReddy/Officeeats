@@ -21,15 +21,15 @@ const ManageItemsAdmin = () => {
         { Counter_Name: 'Tea Point', Counter_ID: 4, category: 'Horlicks', Available_Status_from_Vendor: true, Available_Status_from_Admin: true },
         { Counter_Name: 'Tea Point', Counter_ID: 5, category: 'Lemon Tea', Available_Status_from_Vendor: true, Available_Status_from_Admin: true },
         { Counter_Name: 'Tea Point', Counter_ID: 6, category: 'Green Tea', Available_Status_from_Vendor: true, Available_Status_from_Admin: true },
-        { Counter_Name: 'Tea Point', Counter_ID: 7, category: 'Milk', Available_Status_from_Vendor: true, Available_Status_from_Admin:true },
+        { Counter_Name: 'Tea Point', Counter_ID: 7, category: 'Milk', Available_Status_from_Vendor: true, Available_Status_from_Admin: true },
     ];
 
     const [toggles, setToggles] = useState<CategoryType[]>(Categories);
-    
-    const toggleSwitch = (category:string) => {
+
+    const toggleSwitch = (category: string) => {
         setToggles(prevToggles =>
             prevToggles.map(toggle =>
-                toggle.category === category ? { ...toggle, Available_Status_from_Admin : !toggle.Available_Status_from_Admin } : toggle
+                toggle.category === category ? { ...toggle, Available_Status_from_Admin: !toggle.Available_Status_from_Admin } : toggle
             )
         );
     };
@@ -39,7 +39,7 @@ const ManageItemsAdmin = () => {
     };
 
     type RenderItemProps = {
-        item : CategoryType;
+        item: CategoryType;
     };
 
     const renderItem = ({ item }: RenderItemProps) => (
@@ -47,16 +47,14 @@ const ManageItemsAdmin = () => {
             <Text style={styles.categoryText}>{item.category}</Text>
             <View style={styles.switchContainer}>
                 <Switch
-                    style={styles.switch}
-                    trackColor={{ false:'grey', true:'#bada55' }}
-                    thumbColor={item.Available_Status_from_Vendor ?'white':'white'}
+                    trackColor={{ false: 'grey', true: '#bada55' }}
+                    thumbColor={item.Available_Status_from_Vendor ? 'white' : 'white'}
                     ios_backgroundColor="#3e3e3e"
                     value={item.Available_Status_from_Vendor}
                 />
                 <Switch
-                    style={styles.switch}
-                    trackColor={{ false:'grey', true:'#bada55' }}
-                    thumbColor={item.Available_Status_from_Admin ?'white':'white'}
+                    trackColor={{ false: 'grey', true: '#bada55' }}
+                    thumbColor={item.Available_Status_from_Admin ? 'white' : 'white'}
                     ios_backgroundColor="#3e3e3e"
                     onValueChange={() => toggleSwitch(item.category)}
                     value={item.Available_Status_from_Admin}
@@ -66,33 +64,40 @@ const ManageItemsAdmin = () => {
     );
 
     return (
-        <View style={{ flex : 1,backgroundColor:'white' }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 15 }}>
-    <Text style={{ flex: 1, fontSize: 20, fontWeight: 'bold',  }}>Category</Text>
-    <Text style={{ flex: 1, fontSize: 20, fontWeight: 'bold', textAlign:'center' }}>Vendor Status</Text>
-    <Text style={{ flex: 1, fontSize: 20, fontWeight: 'bold', textAlign:'center' }}>Admin Status</Text>
-</View>
-            <View style={{ marginVertical : 10, marginHorizontal : 15 }}>
+        <View style={{ flex: 1, backgroundColor: 'white', marginTop: 10 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 15, }}>
+                <View style={{ width: '30%' }}>
+                    <Text style={{ fontSize: 20, fontWeight: '600', }}>Category</Text>
+                </View>
+                <View style={{}}>
+                    <Text style={{ fontSize: 20, fontWeight: '600', textAlign: 'center', }}>Vendor</Text>
+                </View>
+                <View style={{}}>
+                    <Text style={{ fontSize: 20, fontWeight: '600', textAlign: 'center', }}>Admin</Text>
+                </View>
+            </View>
+            <View style={{ marginVertical: 10, marginHorizontal: 15 }}>
                 <FlatList
                     data={toggles}
                     keyExtractor={(item) => item.category}
                     renderItem={renderItem}
-                    contentContainerStyle={{ paddingBottom : 40 }}
+                    contentContainerStyle={{ paddingBottom: 40 }}
                 />
             </View>
-            <View style={{ marginHorizontal : 15,flexDirection:'row' }} >
-                <Text style={{ color:'red', fontSize : 15 }}>Note:</Text>
+            <View style={{ marginHorizontal: 15, flexDirection: 'row' }} >
+                <Text style={{ color: 'red', fontSize: 15 }}>Note:</Text>
                 <Text>Turn off the items which are not available</Text>
             </View>
             <View style={{
-                marginTop : 10,
-                alignSelf :'center',
-                borderWidth : 1,
-                backgroundColor :'black',
-                borderRadius : 8
+                marginTop: 10,
+                alignSelf: 'center',
+                borderWidth: 1,
+                backgroundColor: 'black',
+                borderRadius: 8,
+                width: '40%'
             }}>
                 <Pressable onPress={handleSubmit} >
-                    <Text style={{ color :'white', fontSize : 17,padding : 7 }}>Submit</Text>
+                    <Text style={{ color: 'white', fontSize: 17, padding: 7, textAlign: 'center' }}>Submit</Text>
                 </Pressable>
             </View>
         </View>
@@ -100,32 +105,30 @@ const ManageItemsAdmin = () => {
 };
 
 const styles = StyleSheet.create({
-    itemContainer:{
-      flexDirection:'row',
-      justifyContent:'space-between',
-      alignItems:'center',
-      borderBottomWidth:.7,
-      borderColor:'grey',
-      paddingVertical :10,
-   },
-   categoryText:{
-      flex : 1,
-      fontSize :17,
-      fontWeight:'600',
-   },
-   switchContainer:{
-      flexDirection:'row',
-      justifyContent:'space-between',
-      alignItems:'center',
-      alignSelf:'center',
+    itemContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderBottomWidth: .7,
+        borderColor: 'grey',
+        paddingVertical: 10,
+    },
+    categoryText: {
+        flex: 1,
+        fontSize: 17,
+        fontWeight: '500',
+    },
+    switchContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        alignSelf: 'center',
 
-      flex :1,
-   },
-   switch:{
-    //   marginHorizontal :5,
-   
-    
-   }
+        flex: 1,
+    },
 });
 
 export default ManageItemsAdmin;
+
+
+

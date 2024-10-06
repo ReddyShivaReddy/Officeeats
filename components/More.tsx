@@ -22,63 +22,66 @@ const HomeScreen = ({ navigation }: any) => {
           </Pressable>
         </View>
       </View>
-      <View style={{ marginHorizontal: 15, padding: 7 }}>
-        <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('ManualBook')}>
-          <View style={{ justifyContent: 'center' }}>
-            <Text style={{fontSize:15}}>How Office Eats works?</Text>
-          </View>
-          <Ionicons name="chevron-forward" size={20} color="black" />
-        </Pressable>
+      <View style={{gap:15}}>
+
+        <View style={{ marginHorizontal: 15, padding: 7 ,borderBottomWidth:0.7,borderColor:'#EEF5FF'}}>
+          <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('ManualBook')}>
+            <View style={{ justifyContent: 'center' }}>
+              <Text style={{ fontSize: 15 }}>How Office Eats works?</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color="black" />
+          </Pressable>
+        </View>
+        <View style={{ marginHorizontal: 15, padding: 7,borderBottomWidth:0.7,borderColor:'#EEF5FF' }}>
+          <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('ReachOut')}>
+            <View style={{ justifyContent: 'center' }}>
+              <Text style={{ fontSize: 15 }}>Raise a complaint</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color="black" />
+          </Pressable>
+        </View>
+        <View style={{ marginHorizontal: 15, padding: 7,borderBottomWidth:0.7,borderColor:'#EEF5FF' }}>
+          <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('FAQ')}>
+            <View style={{ justifyContent: 'center' }}>
+              <Text style={{ fontSize: 15 }}>FAQ's</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color="black" />
+          </Pressable>
+        </View>
+        <View style={{ marginHorizontal: 15, padding: 7,borderBottomWidth:0.7,borderColor:'#EEF5FF' }}>
+          <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('AboutUs')}>
+            <View style={{ justifyContent: 'center' }}>
+              <Text style={{ fontSize: 15 }}>About Us</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color="black" />
+          </Pressable>
+        </View>
+        <View style={{ marginHorizontal: 15, padding: 7,borderBottomWidth:0.7,borderColor:'#EEF5FF' }}>
+          <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('AddVendor')}>
+            <View style={{ justifyContent: 'center' }}>
+              <Text style={{ fontSize: 15 }}>Add Vendor</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color="black" />
+          </Pressable>
+        </View>
+        <View style={{ marginHorizontal: 15, padding: 7,borderBottomWidth:0.7,borderColor:'#EEF5FF' }}>
+          <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('ManageVendors')}>
+            <View style={{ justifyContent: 'center' }}>
+              <Text style={{ fontSize: 15 }}>Manage Vendors</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color="black" />
+          </Pressable>
+        </View>
+        <View style={{ marginHorizontal: 15, padding: 7,borderBottomWidth:0.7,borderColor:'#EEF5FF' }}>
+          <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('ManageItemsAdmin')}>
+            <View style={{ justifyContent: 'center' }}>
+              <Text style={{ fontSize: 15 }}>Manage Items</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color="black" />
+          </Pressable>
+        </View>
       </View>
-      <View style={{ marginHorizontal: 15, padding: 7 }}>
-        <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('ReachOut')}>
-        <View style={{ justifyContent: 'center' }}>
-          <Text style={{fontSize:15}}>Raise a complaint</Text>
-          </View>
-          <Ionicons name="chevron-forward" size={20} color="black" />
-        </Pressable>
-      </View>
-      <View style={{ marginHorizontal: 15, padding: 7 }}>
-        <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('FAQ')}>
-        <View style={{ justifyContent: 'center' }}>
-          <Text style={{fontSize:15}}>FAQ's</Text>
-          </View>
-          <Ionicons name="chevron-forward" size={20} color="black" />
-        </Pressable>
-      </View>
-      <View style={{ marginHorizontal: 15, padding: 7 }}>
-        <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('AboutUs')}>
-        <View style={{ justifyContent: 'center' }}>
-          <Text style={{fontSize:15}}>About Us</Text>
-          </View>
-          <Ionicons name="chevron-forward" size={20} color="black" />
-        </Pressable>
-      </View>
-      <View style={{ marginHorizontal: 15, padding: 7 }}>
-        <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('AddVendor')}>
-        <View style={{ justifyContent: 'center' }}>
-          <Text style={{fontSize:15}}>Add Vendor</Text>
-          </View>
-          <Ionicons name="chevron-forward" size={20} color="black" />
-        </Pressable>
-      </View>
-      <View style={{ marginHorizontal: 15, padding: 7 }}>
-        <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('ManageVendors')}>
-        <View style={{ justifyContent: 'center' }}>
-          <Text style={{fontSize:15}}>Manage Vendors</Text>
-          </View>
-          <Ionicons name="chevron-forward" size={20} color="black" />
-        </Pressable>
-      </View>
-      <View style={{ marginHorizontal: 15, padding: 7 }}>
-        <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }}  onPress={() => navigation.navigate('ManageItemsAdmin')}>
-        <View style={{ justifyContent: 'center' }}>
-          <Text style={{fontSize:15}}>Manage Items</Text>
-          </View>
-          <Ionicons name="chevron-forward" size={20} color="black" />
-        </Pressable>
-      </View>
-      <View style={{ marginHorizontal: 15, padding: 7 }}>
+      <View style={{ marginHorizontal: 15, padding: 7,marginTop:10 }}>
         <Pressable style={{ borderWidth: 1, width: '80%', borderRadius: 7, borderColor: 'red', alignSelf: 'center' }} onPress={() => <Logout />}>
           <Text style={{ color: 'red', textAlign: 'center', padding: 10, fontSize: 15 }}>Log Out</Text>
         </Pressable>

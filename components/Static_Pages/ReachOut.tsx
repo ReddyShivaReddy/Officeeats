@@ -8,8 +8,8 @@ function ReachOut(){
       {/* <Text style={styles.title}>Raise a complaint</Text> */}
         <View style={styles.messageContainer}>
             <Text style={styles.header}>Reach out to us</Text>
-            <Text style={styles.body}>We are truly sorry that you've encountered an issue. Please email us to 
-                <Text style={styles.Mail}> abc@bdc.com.</Text>
+            <Text style={styles.body}>    We are truly sorry that you've encountered an issue. Please email us to 
+                <Text style={styles.Mail}> rews.india@realpage.com.</Text>
              We are here to help you.</Text>
         </View>
     </View>
@@ -30,7 +30,7 @@ const styles= StyleSheet.create({
         marginVertical:10
       },
       messageContainer:{
-          padding: 20,
+          padding: 15,
           borderWidth:0,
           marginHorizontal:10,
           marginVertical:10,
@@ -53,7 +53,7 @@ const styles= StyleSheet.create({
         fontSize: 17,
       },
       Mail:{
-        fontWeight: 'bold',
+        fontWeight: '500',
       }
 });
 export default ReachOut

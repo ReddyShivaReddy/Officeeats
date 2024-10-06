@@ -55,7 +55,7 @@ const ManageItemsVendor = () => {
   )
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1,backgroundColor:'white' }}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 15 }}>
         <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Category</Text>
         <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Available</Text>
@@ -72,10 +72,10 @@ const ManageItemsVendor = () => {
         <Text style={{color:'red',fontSize:15}}>Note: </Text>
         <Text>Turn off the items which are not available</Text>
       </View>
-      <View style={{ marginTop:10, alignSelf: 'center',borderWidth:1,backgroundColor:'black',borderRadius:8
+      <View style={{ marginTop:10, alignSelf: 'center',borderWidth:1,backgroundColor:'black',borderRadius:8,width:'40%'
        }}>
         <Pressable onPress={handleSubmit} >
-          <Text style={{color:'white',fontSize:17,padding:7}}>Submit</Text>
+          <Text style={{color:'white',fontSize:17,padding:7,textAlign:'center'}}>Submit</Text>
         </Pressable>
       </View>
     </View>

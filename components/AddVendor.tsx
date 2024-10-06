@@ -22,7 +22,7 @@ function AddVendor() {
             <Text style={styles.label}>Counter ID</Text>
             <TextInput style={styles.input} />
 
-            <Text style={styles.label}>Categories</Text>
+            <Text style={styles.label}>Categories (<Text style={{color:'red'}}>* </Text>comma-seperated)</Text>
             <TextInput
                 style={styles.multiInput}
                 multiline={true}
@@ -48,10 +48,10 @@ const styles = StyleSheet.create({
         marginHorizontal: 15
     },
     input: {
-        borderColor: 'black',
+        borderColor: 'grey',
         borderWidth: 1,
         marginBottom: 16,
-        borderRadius: 8,
+        borderRadius: 10,
         padding: 10,
         fontSize: 17,
         marginHorizontal: 15
@@ -63,18 +63,22 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: 'black',
         padding: 13,
-        borderRadius: 10,
+        borderRadius: 12,
         justifyContent: 'center',
         alignSelf: 'center',
+        width:'90%',
+  
     },
     buttonText: {
         color: 'white',
         fontSize: 16,
+        textAlign:'center'
 
     },
     multiInput: {
         height: 150,
-        borderRadius: 8,
+        borderRadius: 12,
+        borderColor:'grey',
         borderWidth: 1,
         paddingLeft: 10,
         textAlignVertical: 'top',

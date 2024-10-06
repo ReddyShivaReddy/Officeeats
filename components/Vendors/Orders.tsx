@@ -96,7 +96,7 @@ const Orders = () => {
 
     )
     return (
-        <View>
+        <View style={{flex:1,backgroundColor:'white'}}>
             <StatusBar />
             <View style={{ gap: 15 }}>
                 <View>
@@ -113,6 +113,7 @@ const Orders = () => {
                         data={ordersData}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={RenderItem}
+                        contentContainerStyle={{}}
                     />
                 </View>
                 <Modal
