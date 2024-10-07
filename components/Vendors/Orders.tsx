@@ -127,7 +127,7 @@ const Orders = () => {
                         setSelectedItem(item);
                         setModalVisible(true);
                     }}>
-                        <Text style={{ fontSize: 17 }}> View </Text>
+                        <Text style={{ fontSize: 15 }}>View</Text>
                     </Pressable>
                 </View>
             </View>
@@ -139,7 +139,7 @@ const Orders = () => {
             <StatusBar />
             <View style={{ gap: 15 }}>
                 <View>
-                    <Text style={{ fontSize: 20, fontWeight: 'bold', marginHorizontal: 15 }}>
+                    <Text style={{ fontSize: 20, fontWeight: '500', marginHorizontal: 15 }}>
                         Search Orders
                     </Text>
                 </View>

@@ -42,12 +42,13 @@ function Overview() {
   return (
     <ScrollView style={styles.container}>
       <StatusBar />
-      <Text style={{ fontSize: 20, marginVertical: 15 }}>Monthly Overview</Text>
-      <View style={{ flexDirection: 'row', gap: 10, marginVertical: 10 }}>
+
+    <Text style={{ fontSize: 22, marginVertical: 15,marginHorizontal: 15, }}>Monthly Overview</Text>
+      <View style={{ flexDirection: 'row', gap: 10, marginVertical: 10,marginHorizontal: 15, }}>
         <Ionicons name="filter" size={24} color="black" />
         <Text style={{ fontSize: 19, fontWeight: '500' }}>Filter</Text>
       </View>
-      <View style={{ width: '60%', borderWidth: 1, borderRadius: 10, marginBottom: 10 }}>
+      <View style={{ width: '60%', borderWidth: 1, borderRadius: 10, marginBottom: 10,marginHorizontal: 15, }}>
         <Picker
           selectedValue={selectedMonth}
           onValueChange={(itemValue) => setSelectedMonth(itemValue)}
@@ -77,11 +78,12 @@ function Overview() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 15,
+    // marginHorizontal: 15,
     backgroundColor: '#fff',
   },
   statusContainer: {
     marginBottom: 20,
+    marginHorizontal: 15,
   },
   statusTitle: {
     fontSize: 20,

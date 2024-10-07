@@ -45,12 +45,12 @@ const styles= StyleSheet.create({
         elevation:5,
       },
       header:{
-        fontSize: 20,
+        fontSize: 18,
         marginBottom: 5,
         fontWeight: 'semibold'
       },
       body:{
-        fontSize: 17,
+        fontSize: 15,
       },
       Mail:{
         fontWeight: '500',

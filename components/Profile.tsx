@@ -6,8 +6,7 @@ const Profile = () => {
     return (
         <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
            <SafeAreaView />
-            <StatusBar hidden={true}
-            />
+            <StatusBar />
             <View style={{ borderBottomWidth: 0.2, borderColor: 'grey', }}>
                 <View style={{ alignItems: 'center', marginBottom: 7 }}>
                     <Image source={require('../assets/images/profile.png')} style={{ width: 170, height: 170, borderRadius: 100, borderWidth: 1, }} />
@@ -24,7 +23,7 @@ const Profile = () => {
                     </View>
                     <View>
                         <Text style={{ color: 'grey' }}>Username</Text>
-                        <Text style={{ fontWeight: 'medium', marginBottom: 10, fontSize: 18 }}>Reddy Shiva Reddy</Text>
+                        <Text style={{ fontWeight: 'medium', marginBottom: 10, fontSize: 17 }}>Reddy Shiva Reddy</Text>
                     </View>
                 </View>
                 <View style={{ borderColor: 'grey', gap: 10, marginTop: 15, flexDirection: 'row' }}>
@@ -33,7 +32,7 @@ const Profile = () => {
                     </View>
                     <View>
                         <Text style={{ color: 'grey' }}>Email Address</Text>
-                        <Text style={{ fontWeight: 'medium', marginBottom: 10, fontSize: 18 }}>reddyshiva.reddy@realpage.com</Text>
+                        <Text style={{ fontWeight: 'medium', marginBottom: 10, fontSize: 17 }}>reddyshiva.reddy@realpage.com</Text>
 
                     </View>
                 </View>
@@ -43,7 +42,7 @@ const Profile = () => {
                     </View>
                     <View>
                         <Text style={{ color: 'grey' }}>Designation</Text>
-                        <Text style={{ fontWeight: 'medium', marginBottom: 10, fontSize: 18 }}>Developer 1</Text>
+                        <Text style={{ fontWeight: 'medium', marginBottom: 10, fontSize: 17 }}>Developer 1</Text>
                     </View>
                 </View>
                 <View style={{
@@ -54,7 +53,7 @@ const Profile = () => {
                     </View>
                     <View>
                         <Text style={{ color: 'grey' }}>RPIPLID</Text>
-                        <Text style={{ fontWeight: 'medium', marginBottom: 10, fontSize: 18 }}>0912545</Text>
+                        <Text style={{ fontWeight: 'medium', marginBottom: 10, fontSize: 17 }}>0912545</Text>
                     </View>
                 </View>
                 <View style={{ borderColor: 'grey', gap: 10, marginTop: 15, flexDirection: 'row' }}>
@@ -63,7 +62,7 @@ const Profile = () => {
                     </View>
                     <View>
                         <Text style={{ color: 'grey' }}>Date of Birth</Text>
-                        <Text style={{ fontWeight: 'medium', marginBottom: 10, fontSize: 18 }}>02-12-2002</Text>
+                        <Text style={{ fontWeight: 'medium', marginBottom: 10, fontSize: 17 }}>02-12-2002</Text>
                     </View>
                 </View>
                 <View style={{ borderColor: 'grey', gap: 10, marginTop: 15, flexDirection: 'row' }}>
@@ -72,7 +71,7 @@ const Profile = () => {
                     </View>
                     <View>
                         <Text style={{ color: 'grey' }}>Gender</Text>
-                        <Text style={{ fontWeight: 'medium', marginBottom: 10, fontSize: 18 }}>Male</Text>
+                        <Text style={{ fontWeight: 'medium', marginBottom: 10, fontSize: 17 }}>Male</Text>
                     </View>
                 </View>
 

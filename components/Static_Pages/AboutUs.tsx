@@ -41,11 +41,11 @@ const styles= StyleSheet.create({
         elevation:5,
       },
       title:{
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: '500'
       },
       MainText:{
-        fontSize: 17,
+        fontSize: 15,
       },
 });
 export default AboutUs

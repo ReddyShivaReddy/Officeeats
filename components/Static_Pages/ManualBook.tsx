@@ -58,12 +58,12 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     MainText: {
-        fontSize: 17,
+        fontSize: 15,
         fontWeight:'thin'
     },
     BoldText: {
         fontWeight: '400',
-        fontSize: 20,
+        fontSize: 17,
         marginTop:8
     }
 

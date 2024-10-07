@@ -20,7 +20,7 @@ function FAQ() {
                 <TouchableOpacity style={styles.container} onPress={togglework}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View>
-                            <Text style={{ fontSize: 20 }}>How it works</Text>
+                            <Text style={{ fontSize: 18 }}>How it works</Text>
                         </View>
                         <View style={{ justifyContent: 'center' }}>
                             <Ionicons name={isworksOpen ? "chevron-up" : "chevron-down"} size={24} color="black" />
@@ -38,7 +38,7 @@ function FAQ() {
                 <TouchableOpacity style={styles.container} onPress={toggleorder}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View>
-                            <Text style={{ fontSize: 20 }}>How it works</Text>
+                            <Text style={{ fontSize: 18 }}>How it works</Text>
                         </View>
                         <View style={{ justifyContent: 'center' }}>
                             <Ionicons name={isorderOpen ? "chevron-up" : "chevron-down"} size={24} color="black" />

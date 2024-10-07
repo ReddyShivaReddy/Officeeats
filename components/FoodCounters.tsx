@@ -274,7 +274,7 @@ function FoodCounters() {
         )
     }
     const RenderItem = ({ item }: RenderItemProps) => (
-        <Pressable style={{ flexDirection: 'row', gap: 20, marginHorizontal: 10 }} onPress={() => {
+        <Pressable style={{ flexDirection: 'row', gap: 15, marginHorizontal: 10 }} onPress={() => {
 
             setSelectedItem(item);
 
@@ -293,14 +293,14 @@ function FoodCounters() {
                                         require('../assets/images/Maggie.jpg')
                                         : require('../assets/images/counter.jpg')
                     }
-                    style={{ width: 110, height: 110, marginBottom: 15, borderRadius: 10 }}
+                    style={{ width: 100, height: 100, marginBottom: 15, borderRadius: 10 }}
                 />
             </View>
             <View style={{ marginTop: 20 }}>
-                <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
+                <Text style={{ fontSize: 17, fontWeight: '500' }}>
                     {item.CounterName}
                 </Text>
-                <Text style={{ fontSize: 17 }}>
+                <Text style={{ fontSize: 16 }}>
                     Timings: {item.Timings}
                 </Text>
             </View>
@@ -312,13 +312,13 @@ function FoodCounters() {
             <StatusBar />
             <View >
                 <View style={{ marginHorizontal: 10 }}>
-                    <Text style={{ fontSize: 30, marginTop: 10 }}>Office Eats</Text>
+                    <Text style={{ fontSize: 30, marginTop: 10,fontStyle:'italic' }}>Office Eats</Text>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10 }}>
                     <View style={{ alignSelf: 'center' }}>
-                        <Text style={{ fontSize: 20, justifyContent: 'center', }}>Your happiness</Text>
-                        <Text style={{ fontSize: 20, justifyContent: 'center', }}>is our</Text>
-                        <Text style={{ fontSize: 20, justifyContent: 'center', alignSelf: 'center' }}>secret ingredient</Text>
+                        <Text style={{ fontSize: 17, justifyContent: 'center', }}>Your happiness</Text>
+                        <Text style={{ fontSize: 17, justifyContent: 'center', }}>is our</Text>
+                        <Text style={{ fontSize: 17, justifyContent: 'center', alignSelf: 'center' }}>secret ingredient</Text>
                     </View>
                     <View>
                         <Image source={require('../assets/images/Restaurant.png')} style={{ width: 200, height: 150 }} />

@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform, View } from 'react-native';
+import { Image, StyleSheet, Platform, View,StatusBar } from 'react-native';
 
 import LoginPage from '@/components/LoginPage';
 import Profile from '@/components/Profile';
@@ -37,10 +37,10 @@ function index() {
       {/* <ManageItemsVendor /> */}
       {/* <ManageItemsAdmin /> */}
       {/* <Test /> */}
-
+<StatusBar />
       <NavigationContainer independent={true}>
-        {/* <TabNavigator /> */}
-         <TabNavigatorVendor /> 
+        <TabNavigator />
+         {/* <TabNavigatorVendor />  */}
       </NavigationContainer>
 
 
