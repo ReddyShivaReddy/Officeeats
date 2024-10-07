@@ -12,12 +12,12 @@ const Profile = () => {
                 <View style={{ alignItems: 'center', marginBottom: 7 }}>
                     <Image source={require('../assets/images/profile.png')} style={{ width: 170, height: 170, borderRadius: 100, borderWidth: 1, }} />
                 </View>
-                <Pressable style={{ marginBottom: 10, flexDirection: 'row', gap: 10, width: 80, height: 40, backgroundColor: 'white', alignSelf: 'center', alignItems: 'center', justifyContent: 'center', borderRadius: 10, borderWidth: 1, borderColor: 'grey' }}>
+                {/* <Pressable style={{ marginBottom: 10, flexDirection: 'row', gap: 10, width: 80, height: 40, backgroundColor: 'white', alignSelf: 'center', alignItems: 'center', justifyContent: 'center', borderRadius: 10, borderWidth: 1, borderColor: 'grey' }}>
                     <Ionicons name="camera-outline" size={24} color="black" />
                     <Text style={{ fontSize: 15 }}>Edit</Text>
-                </Pressable>
+                </Pressable> */}
             </View>
-            <View style={{ marginHorizontal: 15, }}>
+            <View style={{ marginHorizontal: 15,marginTop:10 }}>
                 <View style={{ borderColor: 'grey', gap: 10, marginTop: 15, flexDirection: 'row' }}>
                     <View style={{ justifyContent: 'center' }}>
                         <Ionicons name="person-outline" size={24} color="black" />

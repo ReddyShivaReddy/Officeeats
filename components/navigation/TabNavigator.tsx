@@ -49,14 +49,15 @@ const TabNavigator = () => {
         tabBarLabel: ({ focused }) => (
           <View style={{ alignItems: 'center' }}>
             <Text style={{ color: focused ? 'black' : 'gray' }}>My Orders</Text>
-            {focused && <View style={{ height: 1, width: 60, backgroundColor: 'blue',borderWidth:1.5,borderRadius:20,marginBottom:1  }} />}
+            {focused && <View style={{ height: 1, width: 60, backgroundColor: 'blue',borderWidth:1.5,borderRadius:30,marginBottom:1  }} />}
           </View>
         ),
       }} />
       <Tab.Screen name="More" component={StackNavigator} options={{
         headerShown: false, tabBarIcon: () => (
-          <Ionicons name="ellipsis-horizontal" size={26} color="black" />
+          // <Ionicons name="ellipsis-horizontal" size={26} color="black" />
           // <Ionicons name="menu" size={25} color="black" />
+          <Ionicons name="grid-outline" size={24} color="black" />
         ),
         tabBarLabelStyle: {
           fontSize: 15,

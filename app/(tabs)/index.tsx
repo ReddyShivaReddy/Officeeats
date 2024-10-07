@@ -37,11 +37,11 @@ function index() {
       {/* <ManageItemsVendor /> */}
       {/* <ManageItemsAdmin /> */}
       {/* <Test /> */}
-      
+
       <NavigationContainer independent={true}>
-      <TabNavigator  />
-      {/* <TabNavigatorVendor /> */}
-    </NavigationContainer>
+        {/* <TabNavigator /> */}
+         <TabNavigatorVendor /> 
+      </NavigationContainer>
 
 
     </View>

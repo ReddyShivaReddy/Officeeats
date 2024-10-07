@@ -48,7 +48,7 @@ const HomeScreen = ({ navigation }: any) => {
             <Ionicons name="chevron-forward" size={20} color="black" />
           </Pressable>
         </View>
-        <View style={{ marginHorizontal: 15, padding: 7,borderBottomWidth:0.7,borderColor:'#EEF5FF' }}>
+        <View style={{ marginHorizontal: 15, padding: 7 }}>
           <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('AboutUs')}>
             <View style={{ justifyContent: 'center' }}>
               <Text style={{ fontSize: 15 }}>About Us</Text>
@@ -56,6 +56,7 @@ const HomeScreen = ({ navigation }: any) => {
             <Ionicons name="chevron-forward" size={20} color="black" />
           </Pressable>
         </View>
+        <View style={{borderWidth:2,borderColor:'#EEF5FF', backgroundColor:'#EEF5FF'}} />
         <View style={{ marginHorizontal: 15, padding: 7,borderBottomWidth:0.7,borderColor:'#EEF5FF' }}>
           <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('AddVendor')}>
             <View style={{ justifyContent: 'center' }}>

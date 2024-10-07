@@ -22,7 +22,13 @@ function AddVendor() {
             <Text style={styles.label}>Counter ID</Text>
             <TextInput style={styles.input} />
 
-            <Text style={styles.label}>Categories (<Text style={{color:'red'}}>* </Text>comma-seperated)</Text>
+            <Text style={styles.label}>Veg Categories (<Text style={{color:'red'}}>* </Text>comma-seperated)</Text>
+            <TextInput
+                style={styles.multiInput}
+                multiline={true}
+                numberOfLines={10}
+            />
+            <Text style={styles.label}>Non-Veg Categories (<Text style={{color:'red'}}>* </Text>comma-seperated)</Text>
             <TextInput
                 style={styles.multiInput}
                 multiline={true}

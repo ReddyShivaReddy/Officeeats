@@ -118,7 +118,10 @@ const ManageVendors = () => {
                 >
                     <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.2)', justifyContent: 'center' }}>
                         {selectedItem && (
-                            <View style={{ marginHorizontal: 15, gap: 15, backgroundColor: '#fff', justifyContent: "center", alignSelf: "center", width: "90%", padding: 15, borderRadius: 10, elevation: 10 }}>
+                            <View style={{ marginHorizontal: 15, gap: 15, backgroundColor: '#fff', justifyContent: "center", alignSelf: "center", width: "90%", padding: 15, borderRadius: 10, elevation: 10, shadowColor: '#000',
+                                shadowOffset: {width:0,height:2},
+                                shadowOpacity:0.2,
+                                shadowRadius:5, }}>
                                 {/* Vendor Details */}
                                 <Text style={{ textAlign: 'center', fontSize: 17, fontWeight: 'bold' }}>Vendor Details</Text>
                                 <View style={{ flexDirection: 'row', gap: 10 }}>
@@ -223,11 +226,11 @@ const ManageVendors = () => {
                 >
                     <ScrollView style={{ flex: 1, backgroundColor: '#EEF5FF' }}>
                         <View style={{ backgroundColor: 'white' }}>
-                            <View style={{ flexDirection: 'row', gap: 15, marginBottom: 10 }}>
+                            <View style={{ flexDirection: 'row', gap: 15, marginBottom: 10,marginHorizontal:13 }}>
                                 <Pressable style={{ justifyContent: 'center' }} onPress={() => {
                                     setModalVisibleForEdit(false)
                                 }}>
-                                    <Ionicons name="arrow-back" size={24} color="black" />
+                                    <Ionicons name="arrow-back" size={25} color="black" />
                                 </Pressable>
                                 <Text style={{ fontSize: 20, fontWeight: 'bold', }}>Edit Vendor Details</Text>
                             </View>

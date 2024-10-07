@@ -60,6 +60,42 @@ const Orders = () => {
             'OrderId': 'AQS2838',
             'OTP': 19333,
             'OrderedAt': '10th Sep24 - 7:30PM',
+            'Status': 'Pending',
+        },
+        {
+            'Counter': 'Tea point',
+            'CounterID': 1,
+            'Category': 'Tea',
+            'OrderId': 'AQS2838',
+            'OTP': 19333,
+            'OrderedAt': '10th Sep24 - 7:30PM',
+            'Status': 'Delivered',
+        },
+        {
+            'Counter': 'Tea Point',
+            'CounterID': 1,
+            'Category': 'Boost',
+            'OrderId': 'AQS2838',
+            'OTP': 19370,
+            'OrderedAt': '10th Sep24 - 7:30PM',
+            'Status': 'Pending',
+        },
+        {
+            'Counter': 'Tea point',
+            'CounterID': 1,
+            'Category': 'Tea',
+            'OrderId': 'AQS2838',
+            'OTP': 19338,
+            'OrderedAt': '10th Sep24 - 7:30PM',
+            'Status': 'Delivered',
+        },
+        {
+            'Counter': 'Tea Point',
+            'CounterID': 1,
+            'Category': 'Boost',
+            'OrderId': 'AQS2838',
+            'OTP': 19333,
+            'OrderedAt': '10th Sep24 - 7:30PM',
             'Status': 'Delivered',
         },
 
@@ -72,7 +108,10 @@ const Orders = () => {
 
     const RenderItem = ({ item }: RenderItemProps) => (
         <View>
-            <View style={{ flexDirection: 'row', marginHorizontal: 20, marginVertical: 5, justifyContent: 'space-between', borderWidth: 0.9, borderRadius: 8, borderColor: 'grey', padding: 15, }}>
+            <View style={{ flexDirection: 'row',shadowColor: '#000',
+        shadowOffset: {width:0,height:2},
+        shadowOpacity:0.2,
+        shadowRadius:5, marginHorizontal: 20, marginVertical: 5, justifyContent: 'space-between', borderWidth: 0, borderRadius: 8, borderColor: 'grey', padding: 15,elevation:5,backgroundColor:'white', }}>
                 <View>
                     <Text style={{ fontSize: 20 }}>OTP : <Text style={{ fontWeight: 'bold', fontSize: 20 }}>{item.OTP}</Text></Text>
                     <Text style={{ fontSize: 17 }}>{item.Category} x 1</Text>
@@ -108,12 +147,13 @@ const Orders = () => {
                     <Ionicons name="search" size={24} color="black" />
                     <TextInput placeholder='Search...' style={{ height: 30, fontSize: 20 }} />
                 </View>
-                <View>
+                <View style={{paddingBottom:100}}>
                     <FlatList
                         data={ordersData}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={RenderItem}
-                        contentContainerStyle={{}}
+                        contentContainerStyle={{paddingBottom:200}}
+                        
                     />
                 </View>
                 <Modal
