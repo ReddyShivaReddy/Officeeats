@@ -227,7 +227,7 @@ function FoodCounters() {
         ordered = true
         {
             ordered &&
-            setOrderConfirmed(true)
+                setOrderConfirmed(true)
             setTimeout(() => {
                 setOrderConfirmed(false);
                 setOrderConfirmationPopup(false)
@@ -245,8 +245,8 @@ function FoodCounters() {
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 10 }}>
                         <View >
                             {item.type == 'Veg' ?
-                                <MaterialCommunityIcons name="square-circle" size={20} color="green" /> :
-                                <FontAwesome6 name="caret-square-up" size={20} color="red" />
+                                <MaterialCommunityIcons name="square-circle" size={17} color="green" /> :
+                                <FontAwesome6 name="caret-square-up" size={17} color="red" />
                             }
                             <Text style={{ fontSize: 18, fontWeight: '400' }}>
                                 {item.Category}
@@ -312,7 +312,7 @@ function FoodCounters() {
             <StatusBar />
             <View >
                 <View style={{ marginHorizontal: 10 }}>
-                    <Text style={{ fontSize: 30, marginTop: 10,fontStyle:'italic' }}>Office Eats</Text>
+                    <Text style={{ fontSize: 30, marginTop: 10, fontStyle: 'italic' }}>Office Eats</Text>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10 }}>
                     <View style={{ alignSelf: 'center' }}>
@@ -351,7 +351,7 @@ function FoodCounters() {
                         </Pressable>
                         <Text style={{ fontSize: 20, fontWeight: '500', }}>{selectedItem.CounterName}</Text>
                     </View>
-                    <View style={{ flex: 1,paddingBottom:100 }}>
+                    <View style={{ flex: 1, paddingBottom: 100 }}>
                         <View style={{ alignSelf: 'center', marginTop: 5 }}>
                             <Image
                                 source={
@@ -386,16 +386,17 @@ function FoodCounters() {
                                 </View>
                             }
                         </View>
-                        <View style={{ paddingBottom: 100 }} >
+                        <View style={{ paddingBottom: 200, marginTop: 20, }} >
                             <FlatList
                                 data={CounterItems}
                                 keyExtractor={(item, index: number) => index.toString()}
                                 renderItem={RenderItemView}
-                                contentContainerStyle={{ paddingBottom: 100 }}
-                                style={{ marginTop: 20, }}
-                            />
+                                contentContainerStyle={{ paddingBottom: 200 }}
 
+                            />
                         </View>
+                        
+
 
                         <Modal
                             visible={orderConfirmationPopup}
@@ -436,12 +437,12 @@ function FoodCounters() {
                             </View>
                         </Modal>
                         <Modal
-                            
+
                             visible={orderConfirmed}
                             animationType='fade'
                             onRequestClose={() => setOrderConfirmed(false)}
                         >
-                            <View style={{flex:1, justifyContent: 'center', alignSelf: 'center' }}>
+                            <View style={{ flex: 1, justifyContent: 'center', alignSelf: 'center' }}>
 
                                 <Text style={{ fontSize: 25, fontWeight: '400', textAlign: 'center' }}>
                                     Order Submitted Successfully
@@ -452,7 +453,7 @@ function FoodCounters() {
                                 <View>
 
                                     <Text style={{ fontSize: 20, fontWeight: '400', textAlign: 'center' }}>
-                                        Check order details in<Text style={{fontWeight:'600'}}> My Orders</Text> Screen
+                                        Check order details in<Text style={{ fontWeight: '600' }}> My Orders</Text> Screen
                                     </Text>
                                 </View>
                             </View>

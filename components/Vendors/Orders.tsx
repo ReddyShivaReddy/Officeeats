@@ -139,7 +139,7 @@ const Orders = () => {
             <StatusBar />
             <View style={{ gap: 15 }}>
                 <View>
-                    <Text style={{ fontSize: 20, fontWeight: '500', marginHorizontal: 15 }}>
+                    <Text style={{ fontSize: 23, fontWeight: '500', marginHorizontal: 15 }}>
                         Search Orders
                     </Text>
                 </View>

@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform, View,StatusBar } from 'react-native';
+import { Image, StyleSheet, Platform, View, StatusBar } from 'react-native';
 
 import LoginPage from '@/components/LoginPage';
 import Profile from '@/components/Profile';
@@ -37,12 +37,32 @@ function index() {
       {/* <ManageItemsVendor /> */}
       {/* <ManageItemsAdmin /> */}
       {/* <Test /> */}
-<StatusBar />
+      <StatusBar />
       <NavigationContainer independent={true}>
         <TabNavigator />
-         {/* <TabNavigatorVendor />  */}
+        {/* <TabNavigatorVendor />  */}
       </NavigationContainer>
 
+
+
+      {/* const [isLoggedIn, setIsLoggedIn] = useState(false);
+      const [isVendor, setIsVendor] = useState(false); // Assuming you have a way to determine if the user is a vendor
+      const handleLogin = (userType) => {
+            setIsLoggedIn(true);
+          setIsVendor(userType === 'vendor'); 
+      };
+      return (
+      <View style={{ flex: 1 }}>
+        {!isLoggedIn ? (
+          <LoginPage onLogin={handleLogin} /> 
+        ) : (
+          <NavigationContainer independent={true}>
+            {isVendor ? <TabNavigatorVendor /> : <TabNavigator />}
+          </NavigationContainer>
+        )}
+        <StatusBar />
+      </View>
+      ); */}
 
     </View>
   )

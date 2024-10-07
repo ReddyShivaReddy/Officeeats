@@ -1,44 +1,51 @@
-import { View, Text, TextInput, Button, StyleSheet, Pressable, ScrollView,Image } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Pressable, ScrollView, Image, KeyboardAvoidingView, Platform } from 'react-native';
 import React from 'react';
 
 function AddVendor() {
     return (
         <ScrollView style={styles.container}>
-            <View>
-                <Image source={require('../assets/images/AddVendorillustration.png')} style={{width:250,height:230,alignSelf:'center'}} />
-            </View>
-            <Text style={styles.label}>Vendor Name</Text>
-            <TextInput style={styles.input} />
+            <KeyboardAvoidingView
+                style={{ flex: 1 }}
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0}
+            >
 
-            <Text style={styles.label}>Vendor Contact</Text>
-            <TextInput style={styles.input} />
+                <View>
+                    <Image source={require('../assets/images/AddVendorillustration.png')} style={{ width: 250, height: 230, alignSelf: 'center' }} />
+                </View>
+                <Text style={styles.label}>Vendor Name</Text>
+                <TextInput style={styles.input} />
 
-            <Text style={styles.label}>Vendor Email</Text>
-            <TextInput style={styles.input} />
+                <Text style={styles.label}>Vendor Contact</Text>
+                <TextInput style={styles.input} />
 
-            <Text style={styles.label}>Vendor Counter Name</Text>
-            <TextInput style={styles.input} />
+                <Text style={styles.label}>Vendor Email</Text>
+                <TextInput style={styles.input} />
 
-            <Text style={styles.label}>Counter ID</Text>
-            <TextInput style={styles.input} />
+                <Text style={styles.label}>Vendor Counter Name</Text>
+                <TextInput style={styles.input} />
 
-            <Text style={styles.label}>Veg Categories (<Text style={{color:'red'}}>* </Text>comma-seperated)</Text>
-            <TextInput
-                style={styles.multiInput}
-                multiline={true}
-                numberOfLines={10}
-            />
-            <Text style={styles.label}>Non-Veg Categories (<Text style={{color:'red'}}>* </Text>comma-seperated)</Text>
-            <TextInput
-                style={styles.multiInput}
-                multiline={true}
-                numberOfLines={10}
-            />
+                <Text style={styles.label}>Counter ID</Text>
+                <TextInput style={styles.input} />
 
-            <Pressable style={styles.button}>
-                <Text style={styles.buttonText}>Add Vendor</Text>
-            </Pressable>
+                <Text style={styles.label}>Veg Categories (<Text style={{ color: 'red' }}>* </Text>comma-seperated)</Text>
+                <TextInput
+                    style={styles.multiInput}
+                    multiline={true}
+                    numberOfLines={10}
+                />
+                <Text style={styles.label}>Non-Veg Categories (<Text style={{ color: 'red' }}>* </Text>comma-seperated)</Text>
+                <TextInput
+                    style={styles.multiInput}
+                    multiline={true}
+                    numberOfLines={10}
+                />
 
+                <Pressable style={styles.button}>
+                    <Text style={styles.buttonText}>Add Vendor</Text>
+                </Pressable>
+
+            </KeyboardAvoidingView>
         </ScrollView>
     );
 };
@@ -72,19 +79,19 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         justifyContent: 'center',
         alignSelf: 'center',
-        width:'90%',
-  
+        width: '90%',
+
     },
     buttonText: {
         color: 'white',
         fontSize: 16,
-        textAlign:'center'
+        textAlign: 'center'
 
     },
     multiInput: {
         height: 150,
         borderRadius: 12,
-        borderColor:'grey',
+        borderColor: 'grey',
         borderWidth: 1,
         paddingLeft: 10,
         textAlignVertical: 'top',

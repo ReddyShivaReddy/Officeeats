@@ -33,7 +33,7 @@ const LoginPage = () => {
         return Object.keys(errors).length === 0;
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async() => {
 
         if (validateForm()) {
 
@@ -42,17 +42,39 @@ const LoginPage = () => {
             } else {
                 setErrors({ general: "Invalid username or password" });
             }
+
+
+
+            // try {
+            //     const response = await fetch('https://your-api-url/login', {
+            //         method: 'POST',
+            //         headers: {
+            //             'Content-Type': 'application/json',
+            //         },
+            //         body: JSON.stringify({
+            //             username,
+            //             password,
+            //         }),
+            //     });
+        
+            //     const data = await response.json();
+            //     if (response.ok) {
+            //         const userType = data.userType;
+                    
+                   
+            //         onLogin(userType); 
+            //     } else {
+            //         setErrors({ general: data.message || 'Login failed' }); 
+            //     }
+            // } catch (error) {
+            //     setErrors({ general: 'An error occurred. Please try again.' });
+            // }
         }
     };
 
     return (
         <>
             <StatusBar />
-            {/* <KeyboardAvoidingView
-                behavior="padding"
-                keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
-                style={styles.container}
-            > */}
             <ScrollView>
                 
                 <Image
@@ -95,9 +117,7 @@ const LoginPage = () => {
                     <View style={styles.loginButton}>
                         <Button title="Login" color='#ff4f00' onPress={handleSubmit} />
                     </View>
-                </View>
-            {/* </KeyboardAvoidingView> */}
-            
+                </View>           
             </ScrollView>
         </>
     );

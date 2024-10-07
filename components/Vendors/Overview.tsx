@@ -43,7 +43,7 @@ function Overview() {
     <ScrollView style={styles.container}>
       <StatusBar />
 
-    <Text style={{ fontSize: 22, marginVertical: 15,marginHorizontal: 15, }}>Monthly Overview</Text>
+    <Text style={{ fontSize: 23, marginVertical: 15,marginHorizontal: 15, }}>Monthly Overview</Text>
       <View style={{ flexDirection: 'row', gap: 10, marginVertical: 10,marginHorizontal: 15, }}>
         <Ionicons name="filter" size={24} color="black" />
         <Text style={{ fontSize: 19, fontWeight: '500' }}>Filter</Text>

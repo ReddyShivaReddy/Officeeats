@@ -7,7 +7,7 @@ const HomeScreen = ({ navigation }: any) => {
   return (
     <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
       <View style={{ marginHorizontal: 20, }}>
-        <Text style={{ fontWeight: '500', fontSize: 20 }}>
+        <Text style={{ fontWeight: '500', fontSize: 23 }}>
           My Account
         </Text>
       </View>
