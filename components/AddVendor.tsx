@@ -3,12 +3,12 @@ import React from 'react';
 
 function AddVendor() {
     return (
-        <ScrollView style={styles.container}>
             <KeyboardAvoidingView
-                style={{ flex: 1 }}
+                style={{ flex: 1 ,}}
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                 keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0}
             >
+        <ScrollView style={styles.container}>
 
                 <View>
                     <Image source={require('../assets/images/AddVendorillustration.png')} style={{ width: 250, height: 230, alignSelf: 'center' }} />
@@ -45,8 +45,8 @@ function AddVendor() {
                     <Text style={styles.buttonText}>Add Vendor</Text>
                 </Pressable>
 
-            </KeyboardAvoidingView>
         </ScrollView>
+            </KeyboardAvoidingView>
     );
 };
 
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
         flex: 1,
         // marginVertical: 20,
         backgroundColor: '#fff',
+        // paddingBottom:100
     },
     label: {
         fontSize: 17,
@@ -69,10 +70,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
         marginHorizontal: 20
     },
-    buttonContainer: {
 
-        justifyContent: 'center',
-    },
     button: {
         backgroundColor: 'black',
         padding: 13,
@@ -80,6 +78,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignSelf: 'center',
         width: '90%',
+        marginBottom:100
 
     },
     buttonText: {
