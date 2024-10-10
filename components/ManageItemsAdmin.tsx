@@ -67,7 +67,7 @@ const ManageItemsAdmin = () => {
         <View style={{ flex: 1, backgroundColor: 'white', marginTop: 10 }}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 15, }}>
                 <View style={{ width: '30%' }}>
-                    <Text style={{ fontSize: 20, fontWeight: '600', }}>Category</Text>
+                 <Text style={{ fontSize: 20, fontWeight: '600', }}>Category</Text>
                 </View>
                 <View style={{}}>
                     <Text style={{ fontSize: 20, fontWeight: '600', textAlign: 'center', }}>Vendor</Text>
@@ -76,7 +76,7 @@ const ManageItemsAdmin = () => {
                     <Text style={{ fontSize: 20, fontWeight: '600', textAlign: 'center', }}>Admin</Text>
                 </View>
             </View>
-            <View style={{ marginVertical: 10, marginHorizontal: 15 }}>
+            <View style={{ marginVertical: 10, marginHorizontal: 20 }}>
                 <FlatList
                     data={toggles}
                     keyExtractor={(item) => item.category}
@@ -84,7 +84,7 @@ const ManageItemsAdmin = () => {
                     contentContainerStyle={{ paddingBottom: 40 }}
                 />
             </View>
-            <View style={{ marginHorizontal: 15, flexDirection: 'row' }} >
+            <View style={{ marginHorizontal: 20, flexDirection: 'row' }} >
                 <Text style={{ color: 'red', fontSize: 15 }}>Note:</Text>
                 <Text>Turn off the items which are not available</Text>
             </View>

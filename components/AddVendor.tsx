@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: 17,
-        marginHorizontal: 15
+        marginHorizontal: 20
     },
     input: {
         borderColor: 'grey',
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 10,
         fontSize: 17,
-        marginHorizontal: 15
+        marginHorizontal: 20
     },
     buttonContainer: {
 
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         padding: 10,
         marginBottom: 20,
         fontSize: 17,
-        marginHorizontal: 15
+        marginHorizontal: 20
     }
 });
 

@@ -230,7 +230,8 @@ function FoodCounters() {
                 setOrderConfirmed(true)
             setTimeout(() => {
                 setOrderConfirmed(false);
-                setOrderConfirmationPopup(false)
+                setOrderConfirmationPopup(false);
+                setModalVisible(false)
             }, 3000);
         }
     }
@@ -242,7 +243,7 @@ function FoodCounters() {
             <View style={{ marginHorizontal: 15 }}>
                 {
                     item.Counter_ID == selectedItem.CounterID && item.Available_Status_from_Admin == true &&
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 10 }}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 7 }}>
                         <View >
                             {item.type == 'Veg' ?
                                 <MaterialCommunityIcons name="square-circle" size={17} color="green" /> :
@@ -274,13 +275,13 @@ function FoodCounters() {
         )
     }
     const RenderItem = ({ item }: RenderItemProps) => (
-        <Pressable style={{ flexDirection: 'row', gap: 15, marginHorizontal: 10 }} onPress={() => {
+        <Pressable style={{ flexDirection: 'row', gap: 15, marginHorizontal: 17,elevation:5,borderWidth:0,backgroundColor:'white',marginVertical:10,borderRadius:15 }} onPress={() => {
 
             setSelectedItem(item);
 
             setModalVisible(true);
         }} >
-            <View>
+            <View style={{justifyContent:'center',alignSelf:'center',padding:7}}>
                 <Image
                     source={
                         item.CounterID === 1
@@ -293,7 +294,7 @@ function FoodCounters() {
                                         require('../assets/images/Maggie.jpg')
                                         : require('../assets/images/counter.jpg')
                     }
-                    style={{ width: 100, height: 100, marginBottom: 15, borderRadius: 10 }}
+                    style={{ width: 100, height: 100,  borderRadius: 20 }}
                 />
             </View>
             <View style={{ marginTop: 20 }}>
@@ -311,10 +312,10 @@ function FoodCounters() {
         <View style={{ flex: 1, backgroundColor: 'white' }}>
             <StatusBar />
             <View >
-                <View style={{ marginHorizontal: 10 }}>
+                <View style={{ marginHorizontal: 17 }}>
                     <Text style={{ fontSize: 30, marginTop: 10, fontStyle: 'italic' }}>Office Eats</Text>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 17 }}>
                     <View style={{ alignSelf: 'center' }}>
                         <Text style={{ fontSize: 17, justifyContent: 'center', }}>Your happiness</Text>
                         <Text style={{ fontSize: 17, justifyContent: 'center', }}>is our</Text>
@@ -324,7 +325,7 @@ function FoodCounters() {
                         <Image source={require('../assets/images/Restaurant.png')} style={{ width: 200, height: 150 }} />
                     </View>
                 </View>
-                <View style={{ marginTop: 10, borderBottomColor: 'black', borderBottomWidth: 1, gap: 10, flexDirection: 'row', marginHorizontal: 10 }}>
+                <View style={{ marginTop: 10, borderBottomColor: 'black', borderBottomWidth: 1, gap: 10, flexDirection: 'row', marginHorizontal: 17 }}>
                     <Ionicons name="fast-food-outline" size={25} color="black" />
                     <Text style={{ fontSize: 18, marginVertical: 5, justifyContent: 'center' }}>Explore Food Counters</Text>
                 </View>
@@ -343,7 +344,7 @@ function FoodCounters() {
                 onRequestClose={() => setModalVisible(false)}
             >
                 <View style={{ flex: 1, }}>
-                    <View style={{ flexDirection: 'row', gap: 15, marginBottom: 10, marginHorizontal: 13 }}>
+                    <View style={{ flexDirection: 'row', gap: 15, marginBottom: 10, marginHorizontal: 17 }}>
                         <Pressable style={{ justifyContent: 'center' }} onPress={() => {
                             setModalVisible(false)
                         }}>
@@ -406,9 +407,9 @@ function FoodCounters() {
                         >
                             <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.6)', justifyContent: 'center' }}>
                                 <View style={{
-                                    marginHorizontal: 15, gap: 15, backgroundColor: '#fff',
+                                    marginHorizontal: 15, gap: 15, backgroundColor: '#FFF8E8',
                                     justifyContent: "center", alignSelf: "center",
-                                    width: "90%", padding: 15, borderRadius: 20,
+                                    width: "80%", padding: 15, borderRadius: 20,
                                     elevation: 10, shadowColor: '#000',
                                     shadowOffset: { width: 0, height: 2 },
                                     shadowOpacity: 0.2,
@@ -440,7 +441,7 @@ function FoodCounters() {
 
                             visible={orderConfirmed}
                             animationType='fade'
-                            onRequestClose={() => setOrderConfirmed(false)}
+                            onRequestClose={() => {setOrderConfirmed(false); setModalVisible(false)}}
                         >
                             <View style={{ flex: 1, justifyContent: 'center', alignSelf: 'center' }}>
 
