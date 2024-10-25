@@ -1,9 +1,9 @@
+
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import Ionicons from '@expo/vector-icons/Ionicons';
-
-
+ 
 function Overview() {
   const [selectedMonth, setSelectedMonth] = useState<string>('');
   const [months, setMonths] = useState<string[]>([]);
@@ -29,26 +29,30 @@ function Overview() {
     { Counter: 'a', Category: 'Boost', Status: 'Canceled', Date: '2024-01', Count: 26 },
     { Counter: 'a', Category: 'Boost', Status: 'Pending', Date: '2024-01', Count: 39 },
   ];
-
+ 
   useEffect(() => {
     const uniqueMonths = Array.from(new Set(orderData.map(order => order.Date)));
     const latestMonth = uniqueMonths.sort((a, b) => new Date(b) > new Date(a) ? 1 : -1)[0];
     setMonths(uniqueMonths);
     setSelectedMonth(latestMonth);
   }, []);
-
+ 
   const filteredData = orderData.filter(order => order.Date === selectedMonth);
-
+  const calculateTotal = (status: string) => {
+    return filteredData
+      .filter(order => order.Status === status)
+      .reduce((total, order) => total + order.Count, 0);
+  };
+ 
   return (
     <ScrollView style={styles.container}>
       <StatusBar />
-
-    <Text style={{ fontSize: 23, marginVertical: 15,marginHorizontal: 15, }}>Monthly Overview</Text>
-      <View style={{ flexDirection: 'row', gap: 10, marginVertical: 10,marginHorizontal: 15, }}>
+      <Text style={{ fontSize: 23, marginVertical: 15, marginHorizontal: 15 }}>Monthly Overview</Text>
+      <View style={{ flexDirection: 'row', gap: 10, marginVertical: 10, marginHorizontal: 15 }}>
         <Ionicons name="filter" size={24} color="black" />
         <Text style={{ fontSize: 19, fontWeight: '500' }}>Filter</Text>
       </View>
-      <View style={{ width: '60%', borderWidth: 1, borderRadius: 10, marginBottom: 10,marginHorizontal: 15, }}>
+      <View style={{ width: '60%', borderWidth: 1, borderRadius: 10, marginBottom: 10, marginHorizontal: 15 }}>
         <Picker
           selectedValue={selectedMonth}
           onValueChange={(itemValue) => setSelectedMonth(itemValue)}
@@ -58,7 +62,7 @@ function Overview() {
           ))}
         </Picker>
       </View>
-
+ 
       {['Delivered', 'Pending', 'Canceled'].map(status => (
         <View key={status} style={styles.statusContainer}>
           <Text style={styles.statusTitle}>{status}</Text>
@@ -69,16 +73,20 @@ function Overview() {
               <Text style={styles.count}>{order.Count}</Text>
             </View>
           ))}
+          <View style={styles.itemContainer}>
+              <Text style={[styles.category,{ fontWeight: 'bold' }]}>Total</Text>
+              <Text style={styles.separator}> - </Text>
+              <Text style={[styles.count,{ fontWeight: 'bold' }]}>{calculateTotal(status)}</Text>
+          </View>
         </View>
       ))}
     </ScrollView>
   );
 };
-
+ 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // marginHorizontal: 15,
     backgroundColor: '#fff',
   },
   statusContainer: {
@@ -107,10 +115,19 @@ const styles = StyleSheet.create({
   },
   count: {
     fontSize: 17,
-    fontWeight: 'bold',
     textAlign: 'left',
     width: 40,
   },
+  totalContainer: {
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderColor: '#ccc',
+  },
+  total: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#666',
+  },
 });
-
+ 
 export default Overview;

@@ -12,6 +12,8 @@ import ManageVendors from '../ManageVendors';
 import Profile from '../Profile';
 import Logout from '../Logout';
 
+import OrdersSummary from '../OrdersSummary';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -86,6 +88,13 @@ const StackNavigator = () => {
         component={Logout} 
         options={{
           header: () => <CustomHeader title="Log out" /> 
+        }}
+      />
+      <Stack.Screen 
+        name="Summary" 
+        component={OrdersSummary} 
+        options={{
+          header: () => <CustomHeader title="Orders Summary" /> 
         }}
       />
     </Stack.Navigator>

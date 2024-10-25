@@ -60,7 +60,7 @@ const HomeScreen = ({ navigation }: any) => {
         <View style={{ marginHorizontal: 15, padding: 7,borderBottomWidth:0.7,borderColor:'#EEF5FF' }}>
           <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('AddVendor')}>
             <View style={{ justifyContent: 'center' }}>
-              <Text style={{ fontSize: 15 }}>Add Vendor</Text>
+              <Text style={{ fontSize: 15 }}>Add Counter</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color="black" />
           </Pressable>
@@ -68,7 +68,7 @@ const HomeScreen = ({ navigation }: any) => {
         <View style={{ marginHorizontal: 15, padding: 7,borderBottomWidth:0.7,borderColor:'#EEF5FF' }}>
           <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('ManageVendors')}>
             <View style={{ justifyContent: 'center' }}>
-              <Text style={{ fontSize: 15 }}>Manage Vendors</Text>
+              <Text style={{ fontSize: 15 }}>Manage Counters</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color="black" />
           </Pressable>
@@ -76,7 +76,15 @@ const HomeScreen = ({ navigation }: any) => {
         <View style={{ marginHorizontal: 15, padding: 7,borderBottomWidth:0.7,borderColor:'#EEF5FF' }}>
           <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('ManageItemsAdmin')}>
             <View style={{ justifyContent: 'center' }}>
-              <Text style={{ fontSize: 15 }}>Manage Items</Text>
+              <Text style={{ fontSize: 15 }}>Manage Counter Items</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color="black" />
+          </Pressable>
+        </View>
+        <View style={{ marginHorizontal: 15, padding: 7,borderBottomWidth:0.7,borderColor:'#EEF5FF' }}>
+          <Pressable style={{ flexDirection: 'row', justifyContent: 'space-between' }} onPress={() => navigation.navigate('Summary')}>
+            <View style={{ justifyContent: 'center' }}>
+              <Text style={{ fontSize: 15 }}>Orders Summary</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color="black" />
           </Pressable>

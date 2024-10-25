@@ -46,12 +46,12 @@ const ManageItemsAdmin = () => {
         <View style={styles.itemContainer}>
             <Text style={styles.categoryText}>{item.category}</Text>
             <View style={styles.switchContainer}>
-                <Switch
+                {/* <Switch
                     trackColor={{ false: 'grey', true: '#bada55' }}
                     thumbColor={item.Available_Status_from_Vendor ? 'white' : 'white'}
                     ios_backgroundColor="#3e3e3e"
                     value={item.Available_Status_from_Vendor}
-                />
+                /> */}
                 <Switch
                     trackColor={{ false: 'grey', true: '#bada55' }}
                     thumbColor={item.Available_Status_from_Admin ? 'white' : 'white'}
@@ -65,16 +65,20 @@ const ManageItemsAdmin = () => {
 
     return (
         <View style={{ flex: 1, backgroundColor: 'white', marginTop: 10 }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 15, }}>
-                <View style={{ width: '30%' }}>
+                <View style={{ marginHorizontal: 20, flexDirection: 'row' }} >
+                    <Text style={{ color: 'red', fontSize: 15 }}>Note:</Text>
+                    <Text>Turn off the items which are not available</Text>
+                </View>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 20, }}>
+                {/* <View style={{ width: '30%' }}>
                  <Text style={{ fontSize: 20, fontWeight: '600', }}>Category</Text>
-                </View>
-                <View style={{}}>
+                </View> */}
+                {/* <View style={{}}>
                     <Text style={{ fontSize: 20, fontWeight: '600', textAlign: 'center', }}>Vendor</Text>
-                </View>
-                <View style={{}}>
+                </View> */}
+                {/* <View style={{}}>
                     <Text style={{ fontSize: 20, fontWeight: '600', textAlign: 'center', }}>Admin</Text>
-                </View>
+                </View> */}
             </View>
             <View style={{ marginVertical: 10, marginHorizontal: 20 }}>
                 <FlatList
@@ -83,10 +87,6 @@ const ManageItemsAdmin = () => {
                     renderItem={renderItem}
                     contentContainerStyle={{ paddingBottom: 40 }}
                 />
-            </View>
-            <View style={{ marginHorizontal: 20, flexDirection: 'row' }} >
-                <Text style={{ color: 'red', fontSize: 15 }}>Note:</Text>
-                <Text>Turn off the items which are not available</Text>
             </View>
             <View style={{
                 marginTop: 10,

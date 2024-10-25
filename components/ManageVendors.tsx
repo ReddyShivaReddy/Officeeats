@@ -80,8 +80,8 @@ const ManageVendors = () => {
                             <Text style={{ fontSize: 20, fontWeight: '300', marginBottom: 5,textAlign:'center',color:'white' }}>{Initials}</Text>
                         </View>
                         <View>
-                            <Text style={{ fontSize: 19, fontWeight: '600', marginBottom: 5 }}>{item.Vendor_Name}</Text>
-                            <Text>Counter: <Text style={{ fontWeight: '500' }}>{item.Vendor_Counter}</Text></Text>
+                            <Text><Text style={{ fontSize: 19, fontWeight: '600', marginBottom: 5 , }}>{item.Vendor_Counter}</Text></Text>
+                            <Text style={{fontWeight: '500' }}>Vendor: {item.Vendor_Name}</Text>
                         </View>
                     </View>
                     <View style={{ alignSelf: 'center', borderWidth: 0, padding: 7, borderRadius: 8, backgroundColor: 'white' }}>

@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, ScrollView, StatusBar, Image, FlatList, Modal, Button, TouchableOpacity, Pressable, TextInput } from 'react-native';
-import Profile from "./Profile";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { JumpingTransition } from "react-native-reanimated";
-import ViewCounter from "./ViewCounter";
-// import { View, Text, StatusBar, Image, FlatList, Pressable, TextInput, ScrollView, Animated, Modal } from 'react-native'
-// import React, { useState } from 'react'
-// import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import LottieView from 'lottie-react-native';
+import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
+const starImgCorner = require('../assets/images/star.png');
 type propType = {
     'CounterID': number,
     'CounterName': string,
@@ -22,7 +19,12 @@ type ItemProps = {
 function FoodCounters() {
     const [modalVisible, setModalVisible] = useState(false)
     const [selectedItem, setSelectedItem] = useState<any>({})
-    console.log(selectedItem)
+    const [orderItem, setOrderItem] = useState<any>({})
+    const [orderConfirmationPopup, setOrderConfirmationPopup] = useState<boolean>(false)
+    const [orderConfirmed, setOrderConfirmed] = useState<boolean>(false)
+    const [orderDetails, setOrderDetails] = useState<any>({})
+    const [searchQuery, setSearchQuery] = useState<string>('');
+    const [filteredCategories, setFilteredCategories] = useState<any>([]);
     type counter = {
         'CounterID': number,
         'CounterName': string,
@@ -54,16 +56,14 @@ function FoodCounters() {
         item: counter;
     };
 
-    const [orderItem, setOrderItem] = useState<any>({})
-    const [orderConfirmationPopup, setOrderConfirmationPopup] = useState<boolean>(false)
-    const [orderConfirmed, setOrderConfirmed] = useState<boolean>(false)
     type counterItemTypes = {
         'Counter_Name': string,
         'Counter_ID': number,
         'Category': string,
         'Available_Status_from_Vendor': boolean,
         'Available_Status_from_Admin': boolean,
-        'type': string
+        'type': string,
+        'Rating': number
     }
     type counterItemsTypes = counterItemTypes[]
     const CounterItems: counterItemsTypes = [
@@ -73,7 +73,8 @@ function FoodCounters() {
             'Category': 'Tea',
             'Available_Status_from_Vendor': true,
             'Available_Status_from_Admin': true,
-            'type': 'Veg'
+            'type': 'Veg',
+            'Rating': 5
 
 
         },
@@ -83,7 +84,8 @@ function FoodCounters() {
             'Category': 'Coffee',
             'Available_Status_from_Vendor': true,
             'Available_Status_from_Admin': true,
-            'type': 'Veg'
+            'type': 'Veg',
+            'Rating': 4.6
 
         },
         {
@@ -92,7 +94,8 @@ function FoodCounters() {
             'Category': 'Boost',
             'Available_Status_from_Vendor': true,
             'Available_Status_from_Admin': true,
-            'type': 'Veg'
+            'type': 'Veg',
+            'Rating': 4
 
         },
         {
@@ -101,7 +104,9 @@ function FoodCounters() {
             'Category': 'Horlicks',
             'Available_Status_from_Vendor': true,
             'Available_Status_from_Admin': true,
-            'type': 'Veg'
+            'type': 'Veg',
+            'Rating': 3.9
+
 
         },
         {
@@ -110,7 +115,9 @@ function FoodCounters() {
             'Category': 'Lemon Tea',
             'Available_Status_from_Vendor': true,
             'Available_Status_from_Admin': true,
-            'type': 'Veg'
+            'type': 'Veg',
+            'Rating': 4.3
+
 
         },
         {
@@ -119,43 +126,20 @@ function FoodCounters() {
             'Category': 'Green Tea',
             'Available_Status_from_Vendor': true,
             'Available_Status_from_Admin': true,
-            'type': 'Veg'
+            'type': 'Veg',
+            'Rating': 5
+
 
         },
-        {
-            'Counter_Name': 'Tea Point',
-            'Counter_ID': 1,
-            'Category': 'Horlicks',
-            'Available_Status_from_Vendor': true,
-            'Available_Status_from_Admin': true,
-            'type': 'Veg'
 
-        },
-        {
-            'Counter_Name': 'Tea Point',
-            'Counter_ID': 1,
-            'Category': 'Lemon Tea',
-            'Available_Status_from_Vendor': true,
-            'Available_Status_from_Admin': true,
-            'type': 'Veg'
-
-        },
-        {
-            'Counter_Name': 'Tea Point',
-            'Counter_ID': 1,
-            'Category': 'Green Tea',
-            'Available_Status_from_Vendor': true,
-            'Available_Status_from_Admin': true,
-            'type': 'Veg'
-
-        },
         {
             'Counter_Name': 'Juice Point',
             'Counter_ID': 2,
             'Category': 'Orange',
             'Available_Status_from_Vendor': true,
             'Available_Status_from_Admin': true,
-            'type': 'Veg'
+            'type': 'Veg',
+            'Rating': 4.8
 
         },
         {
@@ -164,7 +148,8 @@ function FoodCounters() {
             'Category': 'Grapes',
             'Available_Status_from_Vendor': true,
             'Available_Status_from_Admin': true,
-            'type': 'Veg'
+            'type': 'Veg',
+            'Rating': 4.9
 
         },
         {
@@ -173,7 +158,8 @@ function FoodCounters() {
             'Category': 'Butter Milk',
             'Available_Status_from_Vendor': true,
             'Available_Status_from_Admin': true,
-            'type': 'Veg'
+            'type': 'Veg',
+            'Rating': 4.1
 
         },
         {
@@ -182,7 +168,8 @@ function FoodCounters() {
             'Category': 'Veg Meal',
             'Available_Status_from_Vendor': true,
             'Available_Status_from_Admin': true,
-            'type': 'Veg'
+            'type': 'Veg',
+            'Rating': 5
 
         },
         {
@@ -191,7 +178,8 @@ function FoodCounters() {
             'Category': 'Non-Veg Meal',
             'Available_Status_from_Vendor': true,
             'Available_Status_from_Admin': true,
-            'type': 'Non-Veg'
+            'type': 'Non-Veg',
+            'Rating': 4.7
 
         },
         {
@@ -200,7 +188,8 @@ function FoodCounters() {
             'Category': 'Dosa',
             'Available_Status_from_Vendor': true,
             'Available_Status_from_Admin': true,
-            'type': 'Veg'
+            'type': 'Veg',
+            'Rating': 3.8
 
         },
         {
@@ -209,7 +198,8 @@ function FoodCounters() {
             'Category': 'Sandwich',
             'Available_Status_from_Vendor': true,
             'Available_Status_from_Admin': true,
-            'type': 'Veg'
+            'type': 'Veg',
+            'Rating': 4.5
 
         },
         {
@@ -218,22 +208,41 @@ function FoodCounters() {
             'Category': 'Maggie',
             'Available_Status_from_Vendor': true,
             'Available_Status_from_Admin': true,
-            'type': 'Veg'
+            'type': 'Veg',
+            'Rating': 5
 
         },
     ]
+
+
+
+    function shuffleArray(CounterItems: counterItemsTypes) {
+        for (let i = CounterItems.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [CounterItems[i], CounterItems[j]] = [CounterItems[j], CounterItems[i]];
+        }
+        return CounterItems;
+    }
+
+    const shuffledItems = shuffleArray([...CounterItems]);
+
+    const uniqueCategories = shuffledItems.slice(0, 7).map((item) => item.Category);
+
     var ordered: boolean = false
     const submitOrder = () => {
         ordered = true
+        setOrderDetails({
+            'orderTime': new Date().toLocaleString()
+        })
         {
             ordered &&
                 setOrderConfirmed(true)
-            setTimeout(() => {
-                setOrderConfirmed(false);
-                setOrderConfirmationPopup(false);
-                setModalVisible(false)
-            }, 3000);
         }
+    }
+    const GoBackHome = () => {
+        setOrderConfirmed(false);
+        setOrderConfirmationPopup(false);
+        setModalVisible(false)
     }
     type RenderItemPropsView = {
         item: counterItemTypes;
@@ -252,6 +261,13 @@ function FoodCounters() {
                             <Text style={{ fontSize: 18, fontWeight: '400' }}>
                                 {item.Category}
                             </Text>
+                            <View style={{ flexDirection: 'row', gap: 5 }}>
+                                <Image
+                                    style={{ width: 15, height: 15, resizeMode: 'cover' }}
+                                    source={starImgCorner}
+                                />
+                                <Text style={{ textAlign: 'center' }}>{item.Rating}/5</Text>
+                            </View>
                         </View>
                         <Pressable
                             onPress={() => {
@@ -266,22 +282,19 @@ function FoodCounters() {
                                 shadowOpacity: 0.2,
                                 shadowRadius: 5,
                             }}>
-                            <Text style={{ fontSize: 15, padding: 5, textAlign: 'center', color: 'white' }}>ADD</Text>
+                            <Text style={{ fontSize: 15, padding: 5, textAlign: 'center', color: 'white' }}>Order</Text>
                         </Pressable>
                     </View>
                 }
-
             </View>
         )
     }
     const RenderItem = ({ item }: RenderItemProps) => (
-        <Pressable style={{ flexDirection: 'row', gap: 15, marginHorizontal: 17,elevation:5,borderWidth:0,backgroundColor:'white',marginVertical:10,borderRadius:15 }} onPress={() => {
-
+        <Pressable style={{ flexDirection: 'row', gap: 15, marginHorizontal: 17, elevation: 5, borderWidth: 0, backgroundColor: 'white', marginVertical: 10, borderRadius: 15 }} onPress={() => {
             setSelectedItem(item);
-
             setModalVisible(true);
         }} >
-            <View style={{justifyContent:'center',alignSelf:'center',padding:7}}>
+            <View style={{ justifyContent: 'center', alignSelf: 'center', padding: 7 }}>
                 <Image
                     source={
                         item.CounterID === 1
@@ -294,7 +307,7 @@ function FoodCounters() {
                                         require('../assets/images/Maggie.jpg')
                                         : require('../assets/images/counter.jpg')
                     }
-                    style={{ width: 100, height: 100,  borderRadius: 20 }}
+                    style={{ width: 100, height: 100, borderRadius: 20 }}
                 />
             </View>
             <View style={{ marginTop: 20 }}>
@@ -307,7 +320,20 @@ function FoodCounters() {
             </View>
         </Pressable>
     )
-
+    
+    
+    useEffect(() => {
+        if (searchQuery.trim() === '') {
+            setFilteredCategories(selectedItem);
+            console.log(selectedItem);
+        } else {
+            const filtered = selectedItem.filter((category: string) => 
+                category.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+            setFilteredCategories(filtered);
+            console.log(filtered);
+        }
+    }, [searchQuery, selectedItem]);
     return (
         <View style={{ flex: 1, backgroundColor: 'white' }}>
             <StatusBar />
@@ -315,21 +341,41 @@ function FoodCounters() {
                 <View style={{ marginHorizontal: 17 }}>
                     <Text style={{ fontSize: 30, marginTop: 10, fontStyle: 'italic' }}>Office Eats</Text>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 17 }}>
-                    <View style={{ alignSelf: 'center' }}>
-                        <Text style={{ fontSize: 17, justifyContent: 'center', }}>Your happiness</Text>
-                        <Text style={{ fontSize: 17, justifyContent: 'center', }}>is our</Text>
-                        <Text style={{ fontSize: 17, justifyContent: 'center', alignSelf: 'center' }}>secret ingredient</Text>
-                    </View>
+                <View style={{ marginHorizontal: 10, alignSelf: 'center', }}>
                     <View>
-                        <Image source={require('../assets/images/Restaurant.png')} style={{ width: 200, height: 150 }} />
+                        <Image source={require('../assets/images/Headline.png')} style={{ height: 200, aspectRatio: 2 }} resizeMode="contain" />
+                    </View>
+                    <View style={{ marginHorizontal: 10, }}>
+                        <View style={{ flexDirection: 'row', gap: 7 }}>
+                            <SimpleLineIcons style={{ alignSelf: 'center' }} name="fire" size={20} color="black" />
+                            <Text style={{ fontSize: 18, marginVertical: 7, textAlign: 'center' }}>
+                                Recommended for you
+                            </Text>
+                        </View>
+                        <View style={{ flexDirection: 'row', gap: 7 }}>
+                            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ gap: 10 }}>
+                                <Pressable style={{
+                                    flexDirection: 'row', gap: 10
+                                }}
+                                >
+                                    {uniqueCategories.map((category, index) => (
+                                        <View style={{ borderWidth: 1, padding: 5, borderRadius: 8, gap: 2, flexDirection: 'row' }}>
+                                            <Text key={index} style={{ padding: 2, textAlign: 'left', fontSize: 13 }}>{category}</Text>
+                                            <View style={{ alignSelf: 'center' }}>
+                                                <Ionicons name="add-outline" size={18} color="black" />
+                                            </View>
+                                        </View>
+                                    ))}
+                                </Pressable>
+                            </ScrollView>
+                        </View>
                     </View>
                 </View>
                 <View style={{ marginTop: 10, borderBottomColor: 'black', borderBottomWidth: 1, gap: 10, flexDirection: 'row', marginHorizontal: 17 }}>
                     <Ionicons name="fast-food-outline" size={25} color="black" />
                     <Text style={{ fontSize: 18, marginVertical: 5, justifyContent: 'center' }}>Explore Food Counters</Text>
                 </View>
-                <View style={{ marginTop: 20, }}>
+                <View style={{ marginTop: 10, paddingBottom: 400 }}>
                     <FlatList
                         data={counters}
                         keyExtractor={(item, index) => index.toString()}
@@ -372,7 +418,9 @@ function FoodCounters() {
                         </View>
                         <View style={{ flexDirection: 'row', gap: 10, borderWidth: 0.9, marginHorizontal: 15, padding: 7, borderRadius: 8, marginTop: 10 }}>
                             <Ionicons name="search" size={24} color="black" />
-                            <TextInput placeholder='Search Item...' style={{ height: 30, fontSize: 20 }} />
+                            <TextInput placeholder='Search Item...' style={{ height: 30, fontSize: 20 }}
+                                value={searchQuery}
+                                onChangeText={setSearchQuery} />
                         </View>
                         <View>
                             {selectedItem &&
@@ -393,12 +441,8 @@ function FoodCounters() {
                                 keyExtractor={(item, index: number) => index.toString()}
                                 renderItem={RenderItemView}
                                 contentContainerStyle={{ paddingBottom: 200 }}
-
                             />
                         </View>
-                        
-
-
                         <Modal
                             visible={orderConfirmationPopup}
                             animationType='fade'
@@ -425,7 +469,6 @@ function FoodCounters() {
                                             Item: <Text style={{ fontSize: 18, fontWeight: '500' }}>{orderItem.Category}</Text> x 1
                                         </Text>
                                     </View>
-
                                     <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
                                         <Pressable style={{ borderWidth: 1, borderColor: '#3EC70B', backgroundColor: '#3EC70B', width: '30%', borderRadius: 8 }} onPress={submitOrder}>
                                             <Text style={{ color: 'white', textAlign: 'center', padding: 7 }}>Order</Text>
@@ -438,30 +481,63 @@ function FoodCounters() {
                             </View>
                         </Modal>
                         <Modal
-
                             visible={orderConfirmed}
                             animationType='fade'
-                            onRequestClose={() => {setOrderConfirmed(false); setModalVisible(false)}}
+                            onRequestClose={() => { setOrderConfirmed(false); setModalVisible(false) }}
                         >
-                            <View style={{ flex: 1, justifyContent: 'center', alignSelf: 'center' }}>
-
-                                <Text style={{ fontSize: 25, fontWeight: '400', textAlign: 'center' }}>
-                                    Order Submitted Successfully
-                                </Text>
-                                <View style={{ height: 300, width: 300, alignSelf: 'center' }}>
-                                    <LottieView style={{ flex: 1 }} source={require('../assets/Animation - 1728289183998.json')} autoPlay loop />
-                                </View>
-                                <View>
-
-                                    <Text style={{ fontSize: 20, fontWeight: '400', textAlign: 'center' }}>
-                                        Check order details in<Text style={{ fontWeight: '600' }}> My Orders</Text> Screen
+                            <View style={{ flex: 1 }}>
+                                <ScrollView contentContainerStyle={{ flexGrow: 1, }} style={{ marginTop: 40 }}>
+                                    <View style={{ height: 200, width: 200, alignSelf: 'center' }}>
+                                        <LottieView style={{ flex: 1 }} source={require('../assets/Animation - 1728289183998.json')} autoPlay loop />
+                                    </View>
+                                    <Text style={{ fontSize: 25, fontWeight: '600', textAlign: 'center' }}>
+                                        Your order is made!
                                     </Text>
+                                    <View style={{ marginHorizontal: 20, marginVertical: 10 }}>
+                                        <Text style={{ textAlign: 'center', fontSize: 15 }}>
+                                            Congratulations! Your order has been successfully processed, pick your order as soon as possible!
+                                        </Text>
+                                    </View>
+                                    <View style={{ marginHorizontal: 30 }}>
+                                        <Text style={{ fontSize: 20, fontWeight: '500', marginTop: 10 }}>
+                                            Order Details:
+                                        </Text>
+                                        <View style={{
+                                            flexDirection: 'column',
+                                            gap: 15,
+                                            marginVertical: 10,
+                                            borderWidth: 0,
+                                            borderRadius: 15,
+                                            elevation: 10,
+                                            backgroundColor: 'white',
+                                            padding: 10
+                                        }}>
+                                            <Text style={{ color: 'grey', fontSize: 15 }}>Order ID: <Text style={{ color: 'black', fontSize: 16 }}>#ORD12345</Text></Text>
+                                            <Text style={{ color: 'grey', fontSize: 15 }}>Item: <Text style={{ color: 'black', fontSize: 16 }}>{orderItem.Category}</Text></Text>
+                                            <Text style={{ color: 'grey', fontSize: 15 }}>Counter: <Text style={{ color: 'black', fontSize: 16 }}>{orderItem.Counter_Name}</Text></Text>
+                                            <Text style={{ color: 'grey', fontSize: 15 }}>OTP: <Text style={{ color: 'black', fontSize: 18, fontWeight: '600' }}>12345</Text></Text>
+                                            <Text style={{ color: 'grey', fontSize: 15 }}>Ordered Time: <Text style={{ color: 'black', fontSize: 16 }}>{orderDetails.orderTime}</Text></Text>
+                                        </View>
+                                    </View>
+                                </ScrollView>
+                                <View style={{
+                                    marginHorizontal: 30,
+                                    backgroundColor: 'black',
+                                    borderRadius: 7,
+                                    paddingVertical: 10,
+                                    position: 'absolute',
+                                    bottom: 20,
+                                    left: 0,
+                                    right: 0,
+                                    alignItems: 'center',
+                                }}>
+                                    <Pressable onPress={GoBackHome}>
+                                        <Text style={{ fontSize: 15, textAlign: 'center', color: 'white' }}>Back to home</Text>
+                                    </Pressable>
                                 </View>
                             </View>
                         </Modal>
                     </View >
-
-
                 </View>
             </Modal>
         </View>
