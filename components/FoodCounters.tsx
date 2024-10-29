@@ -6,7 +6,8 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import LottieView from 'lottie-react-native';
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
-const starImgCorner = require('../assets/images/star.png');
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+const starImgCorner = require('../assets/images/star_filled.png');
 type propType = {
     'CounterID': number,
     'CounterName': string,
@@ -55,7 +56,6 @@ function FoodCounters() {
     type RenderItemProps = {
         item: counter;
     };
-
     type counterItemTypes = {
         'Counter_Name': string,
         'Counter_ID': number,
@@ -75,8 +75,6 @@ function FoodCounters() {
             'Available_Status_from_Admin': true,
             'type': 'Veg',
             'Rating': 5
-
-
         },
         {
             'Counter_Name': 'Tea Point',
@@ -86,7 +84,6 @@ function FoodCounters() {
             'Available_Status_from_Admin': true,
             'type': 'Veg',
             'Rating': 4.6
-
         },
         {
             'Counter_Name': 'Tea Point',
@@ -96,7 +93,6 @@ function FoodCounters() {
             'Available_Status_from_Admin': true,
             'type': 'Veg',
             'Rating': 4
-
         },
         {
             'Counter_Name': 'Tea Point',
@@ -106,8 +102,6 @@ function FoodCounters() {
             'Available_Status_from_Admin': true,
             'type': 'Veg',
             'Rating': 3.9
-
-
         },
         {
             'Counter_Name': 'Tea Point',
@@ -117,8 +111,6 @@ function FoodCounters() {
             'Available_Status_from_Admin': true,
             'type': 'Veg',
             'Rating': 4.3
-
-
         },
         {
             'Counter_Name': 'Tea Point',
@@ -128,10 +120,7 @@ function FoodCounters() {
             'Available_Status_from_Admin': true,
             'type': 'Veg',
             'Rating': 5
-
-
         },
-
         {
             'Counter_Name': 'Juice Point',
             'Counter_ID': 2,
@@ -140,7 +129,6 @@ function FoodCounters() {
             'Available_Status_from_Admin': true,
             'type': 'Veg',
             'Rating': 4.8
-
         },
         {
             'Counter_Name': 'Juice Point',
@@ -214,7 +202,9 @@ function FoodCounters() {
         },
     ]
 
-
+    const filteredOrders = CounterItems.filter(item =>
+        item.Category.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     function shuffleArray(CounterItems: counterItemsTypes) {
         for (let i = CounterItems.length - 1; i > 0; i--) {
@@ -253,17 +243,19 @@ function FoodCounters() {
                 {
                     item.Counter_ID == selectedItem.CounterID && item.Available_Status_from_Admin == true &&
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 7 }}>
-                        <View >
+                        <View>
+                            <View style={{flexDirection:'row',gap:10}}>
                             {item.type == 'Veg' ?
-                                <MaterialCommunityIcons name="square-circle" size={17} color="green" /> :
-                                <FontAwesome6 name="caret-square-up" size={17} color="red" />
+                                <MaterialCommunityIcons style={{alignSelf:'center'}} name="square-circle" size={17} color="green" /> :
+                                <FontAwesome6 style={{alignSelf:'center'}} name="caret-square-up" size={17} color="red" />
                             }
                             <Text style={{ fontSize: 18, fontWeight: '400' }}>
                                 {item.Category}
                             </Text>
-                            <View style={{ flexDirection: 'row', gap: 5 }}>
+                            </View>
+                            <View style={{ flexDirection: 'row', gap: 5, }}>
                                 <Image
-                                    style={{ width: 15, height: 15, resizeMode: 'cover' }}
+                                    style={{ width: 15, height: 15,alignSelf:'center' }}
                                     source={starImgCorner}
                                 />
                                 <Text style={{ textAlign: 'center' }}>{item.Rating}/5</Text>
@@ -314,30 +306,21 @@ function FoodCounters() {
                 <Text style={{ fontSize: 17, fontWeight: '500' }}>
                     {item.CounterName}
                 </Text>
+                <Text>
+                    ~ 2-5 Mins
+                </Text>
                 <Text style={{ fontSize: 16 }}>
                     Timings: {item.Timings}
                 </Text>
             </View>
         </Pressable>
     )
-    
-    
-    useEffect(() => {
-        if (searchQuery.trim() === '') {
-            setFilteredCategories(selectedItem);
-            console.log(selectedItem);
-        } else {
-            const filtered = selectedItem.filter((category: string) => 
-                category.toLowerCase().includes(searchQuery.toLowerCase())
-            );
-            setFilteredCategories(filtered);
-            console.log(filtered);
-        }
-    }, [searchQuery, selectedItem]);
+
+
     return (
-        <View style={{ flex: 1, backgroundColor: 'white' }}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1, backgroundColor: 'white' }}>
             <StatusBar />
-            <View >
+            <View>
                 <View style={{ marginHorizontal: 17 }}>
                     <Text style={{ fontSize: 30, marginTop: 10, fontStyle: 'italic' }}>Office Eats</Text>
                 </View>
@@ -345,9 +328,10 @@ function FoodCounters() {
                     <View>
                         <Image source={require('../assets/images/Headline.png')} style={{ height: 200, aspectRatio: 2 }} resizeMode="contain" />
                     </View>
-                    <View style={{ marginHorizontal: 10, }}>
-                        <View style={{ flexDirection: 'row', gap: 7 }}>
-                            <SimpleLineIcons style={{ alignSelf: 'center' }} name="fire" size={20} color="black" />
+                    <View style={{ marginHorizontal: 20, gap: 10, marginVertical: 5, marginBottom: 10 }}>
+                        <View style={{ flexDirection: 'row', gap: 10 }}>
+                            <MaterialIcons style={{ alignSelf: 'center' }} name="local-fire-department" size={24} color="red" />
+                            {/* <SimpleLineIcons style={{ alignSelf: 'center' }} name="fire" size={24} color="red" /> */}
                             <Text style={{ fontSize: 18, marginVertical: 7, textAlign: 'center' }}>
                                 Recommended for you
                             </Text>
@@ -371,17 +355,29 @@ function FoodCounters() {
                         </View>
                     </View>
                 </View>
-                <View style={{ marginTop: 10, borderBottomColor: 'black', borderBottomWidth: 1, gap: 10, flexDirection: 'row', marginHorizontal: 17 }}>
-                    <Ionicons name="fast-food-outline" size={25} color="black" />
+                <View style={{ marginTop: 10, gap: 10, flexDirection: 'row', marginHorizontal: 17 }}>
+                    <Ionicons style={{alignSelf:'center'}} name="fast-food-outline" size={25} color="black" />
                     <Text style={{ fontSize: 18, marginVertical: 5, justifyContent: 'center' }}>Explore Food Counters</Text>
                 </View>
-                <View style={{ marginTop: 10, paddingBottom: 400 }}>
+                <View style={{ marginTop: 10, paddingBottom: 50 }}>
                     <FlatList
                         data={counters}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={RenderItem}
-                        contentContainerStyle={{ paddingBottom: 500 }}
+                        contentContainerStyle={{ paddingBottom: 10 }}
+                        scrollEnabled={false}
                     />
+                </View>
+                <View>
+                    <View  style={{ justifyContent: 'center', alignItems: 'center' }}>
+
+                    <Image source={require('../assets/images/Offline.png')} style={{ width: '70%', height: 250 }} />
+                    </View>
+                    <View style={{ marginVertical: 20,marginHorizontal:100 }}>
+                    <Text style={{fontSize:30, color:'grey'}}>Taste, Smile,</Text>
+                    {/* <Text style={{fontSize:30, color:'grey'}}>Smile</Text> */}
+                    <Text style={{fontSize:30, color:'grey',textAlign:'center'}}>Repeat 💙</Text>
+                    </View>
                 </View>
             </View>
             <Modal
@@ -389,7 +385,7 @@ function FoodCounters() {
                 animationType='fade'
                 onRequestClose={() => setModalVisible(false)}
             >
-                <View style={{ flex: 1, }}>
+                <ScrollView style={{ flex: 1, }}>
                     <View style={{ flexDirection: 'row', gap: 15, marginBottom: 10, marginHorizontal: 17 }}>
                         <Pressable style={{ justifyContent: 'center' }} onPress={() => {
                             setModalVisible(false)
@@ -417,7 +413,7 @@ function FoodCounters() {
                             />
                         </View>
                         <View style={{ flexDirection: 'row', gap: 10, borderWidth: 0.9, marginHorizontal: 15, padding: 7, borderRadius: 8, marginTop: 10 }}>
-                            <Ionicons name="search" size={24} color="black" />
+                            <Ionicons style={{alignSelf:'center'}} name="search" size={24} color="black" />
                             <TextInput placeholder='Search Item...' style={{ height: 30, fontSize: 20 }}
                                 value={searchQuery}
                                 onChangeText={setSearchQuery} />
@@ -435,12 +431,13 @@ function FoodCounters() {
                                 </View>
                             }
                         </View>
-                        <View style={{ paddingBottom: 200, marginTop: 20, }} >
+                        <View style={{ paddingBottom: 50, marginTop: 20, }} >
                             <FlatList
-                                data={CounterItems}
+                                data={filteredOrders}
                                 keyExtractor={(item, index: number) => index.toString()}
                                 renderItem={RenderItemView}
-                                contentContainerStyle={{ paddingBottom: 200 }}
+                                contentContainerStyle={{ paddingBottom: 10 }}
+                                scrollEnabled={false}
                             />
                         </View>
                         <Modal
@@ -451,7 +448,7 @@ function FoodCounters() {
                         >
                             <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.6)', justifyContent: 'center' }}>
                                 <View style={{
-                                    marginHorizontal: 15, gap: 15, backgroundColor: '#FFF8E8',
+                                    marginHorizontal: 15, gap: 15, backgroundColor: 'white',
                                     justifyContent: "center", alignSelf: "center",
                                     width: "80%", padding: 15, borderRadius: 20,
                                     elevation: 10, shadowColor: '#000',
@@ -477,9 +474,6 @@ function FoodCounters() {
                                             <Text style={{ color: 'white', textAlign: 'center', padding: 7 }}>Back</Text>
                                         </Pressable>
                                     </View>
-                                </View>
-                            </View>
-                        </Modal>
                         <Modal
                             visible={orderConfirmed}
                             animationType='fade'
@@ -537,10 +531,13 @@ function FoodCounters() {
                                 </View>
                             </View>
                         </Modal>
-                    </View >
-                </View>
-            </Modal>
-        </View>
+                                </View>
+                            </View>
+                        </Modal>
+                        </View>
+                    </ScrollView>
+                </Modal>
+        </ScrollView>
     );
 }
 export default FoodCounters

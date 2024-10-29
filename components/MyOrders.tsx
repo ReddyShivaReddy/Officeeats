@@ -1,5 +1,5 @@
-import { View, Text, FlatList, Image, StyleSheet,TouchableOpacity, Pressable } from 'react-native'
-import React,{ useState } from 'react'
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, Pressable } from 'react-native'
+import React, { useState } from 'react'
 const starImgFilled = require('../assets/images/star_filled.png');
 const starImgCorner = require('../assets/images/star.png');
 const MyOrders = () => {
@@ -23,7 +23,7 @@ const MyOrders = () => {
             'OTP': 19373,
             'OrderedAt': '10th Sep24 - 7:30PM',
             'Status': 'Pending',
-            'Rating':0
+            'Rating': 0
         },
         {
             'Counter': 'Lunch/Dinner',
@@ -33,7 +33,7 @@ const MyOrders = () => {
             'OTP': 39373,
             'OrderedAt': '10th Sep24 - 7:30PM',
             'Status': 'Delivered',
-            'Rating':4
+            'Rating': 4
         },
         {
             'Counter': 'Juice point',
@@ -43,7 +43,7 @@ const MyOrders = () => {
             'OTP': 29373,
             'OrderedAt': '10th Sep24 - 7:30PM',
             'Status': 'Canceled',
-            'Rating':0
+            'Rating': 0
         },
         {
             'Counter': 'Snacks',
@@ -53,7 +53,7 @@ const MyOrders = () => {
             'OTP': 19333,
             'OrderedAt': '10th Sep24 - 7:30PM',
             'Status': 'Delivered',
-            'Rating':1
+            'Rating': 1
         },
         {
             'Counter': 'Snacks',
@@ -63,13 +63,13 @@ const MyOrders = () => {
             'OTP': 19333,
             'OrderedAt': '10th Sep24 - 7:30PM',
             'Status': 'Delivered',
-            'Rating':5
+            'Rating': 5
         },
     ]
 
-    const [orders, setOrders] = useState(ordersData); 
+    const [orders, setOrders] = useState(ordersData);
 
-    const CustomRatingBar = ({ orderId , currentRating }: any) => {
+    const CustomRatingBar = ({ orderId, currentRating }: any) => {
         const handleRatingPress = (rating: number) => {
             setOrders(prevOrders =>
                 prevOrders.map(order =>
@@ -144,8 +144,12 @@ const MyOrders = () => {
             {item.Status !== "Pending" && item.Status !== "Canceled" &&
                 <View style={{ flexDirection: "row", justifyContent: "space-between", marginHorizontal: 25, marginVertical: 15 }}>
                     <View>
-                        <Text style={{ fontSize:15, marginBottom:5 }}>Rate your order!</Text>
+                        <Text style={{ fontSize: 15, marginBottom: 5 }}>Rate your order!</Text>
                         <CustomRatingBar orderId={item.OrderId} currentRating={item.rating} />
+                    </View>
+                    <View style={{alignSelf:'center'}}>
+                        <Text style={{textAlign:'center',color:'#3468C0',fontSize:15
+                        }}>Submit</Text>
                     </View>
                 </View>
             }
@@ -153,16 +157,16 @@ const MyOrders = () => {
     );
 
     return (
-        <View style={{ flex: 1, backgroundColor:'white' }}>
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
             <Text style={{ fontSize: 30, fontWeight: "medium", marginHorizontal: 10 }}>My Orders</Text>
             <View style={{ marginTop: 10 }}>
                 <FlatList
                     data={orders}
-                    keyExtractor={(item, index) => index.toString()} 
+                    keyExtractor={(item, index) => index.toString()}
                     renderItem={RenderItem}
                     contentContainerStyle={{ paddingBottom: 100 }}
                 />
-                <View style={{ marginTop:100 }} />
+                <View style={{ marginTop: 100 }} />
             </View>
         </View>
     );
@@ -170,12 +174,12 @@ const MyOrders = () => {
 
 const styles = StyleSheet.create({
     Card: {
-        flexDirection:'row',
-        justifyContent:'space-between',
-        marginVertical:5,
-        borderWidth:0,
-        borderRadius:8,
-        padding:15,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginVertical: 5,
+        borderWidth: 0,
+        borderRadius: 8,
+        padding: 15,
     },
 });
 

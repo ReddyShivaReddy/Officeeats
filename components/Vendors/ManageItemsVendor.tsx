@@ -58,8 +58,8 @@ const ManageItemsVendor = () => {
     <View style={{ flex: 1,backgroundColor:'white' }}>
       <Text style={{marginHorizontal:15,fontSize:23,fontWeight:'500',marginBottom:10}}>Manage Items</Text>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 15,marginTop:10 }}>
-        <Text style={{ fontSize: 19, fontWeight: '400' }}>Category</Text>
-        <Text style={{ fontSize: 19, fontWeight: '400' }}>Available</Text>
+        {/* <Text style={{ fontSize: 19, fontWeight: '400' }}>Category</Text>
+        <Text style={{ fontSize: 19, fontWeight: '400' }}>Available</Text> */}
       </View>
       <View style={{ marginVertical: 10, marginHorizontal: 15 }}>
         <FlatList

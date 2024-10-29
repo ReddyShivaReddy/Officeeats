@@ -6,6 +6,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 const Orders = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedItem, setSelectedItem] = useState<any>({});
+    const [searchQuery, setSearchQuery] = useState('');
     type orders = {
         'Counter': string,
         'CounterID': number,
@@ -101,7 +102,9 @@ const Orders = () => {
 
 
     ]
-
+    const filteredOrders = ordersData.filter(order =>
+        order.OTP.toString().includes(searchQuery)
+    );
     type RenderItemProps = {
         item: orders;
     };
@@ -145,11 +148,13 @@ const Orders = () => {
                 </View>
                 <View style={{ flexDirection: 'row', gap: 10, borderWidth: 0.9, marginHorizontal: 15, padding: 7, borderRadius: 8 }}>
                     <Ionicons name="search" size={24} color="black" />
-                    <TextInput placeholder='Search...' style={{ height: 30, fontSize: 20 }} />
+                    <TextInput placeholder='Search OTP...' style={{ height: 30, fontSize: 20 }}  value={searchQuery}
+                        onChangeText={setSearchQuery} keyboardType="numeric" />
                 </View>
                 <View style={{paddingBottom:100}}>
                     <FlatList
-                        data={ordersData}
+                    data={filteredOrders}
+                        // data={ordersData}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={RenderItem}
                         contentContainerStyle={{paddingBottom:200}}
@@ -194,6 +199,11 @@ const Orders = () => {
                                                 setModalVisible(false);
                                             }}>
                                                 <Text style={{ fontSize: 15, alignSelf: 'center' }}>Delivered</Text>
+                                            </Pressable>
+                                            <Pressable style={{ backgroundColor: 'red', borderWidth: 0, borderRadius: 8, padding: 7, width: 100 }} onPress={() => {
+                                                setModalVisible(false);
+                                            }}>
+                                                <Text style={{ fontSize: 15, alignSelf: 'center',color:'white' }}>Cancel</Text>
                                             </Pressable>
                                             <Pressable style={{ backgroundColor: 'black', borderWidth: 0.7, borderRadius: 8, padding: 7, width: 100 }} onPress={() => {
                                                 setModalVisible(false);

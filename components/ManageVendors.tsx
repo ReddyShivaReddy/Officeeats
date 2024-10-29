@@ -75,13 +75,13 @@ const ManageVendors = () => {
                 <View style={{
                     flexDirection: 'row', justifyContent: 'space-between', borderWidth: 0, borderRadius: 10, padding: 15, elevation: 3, backgroundColor: 'white'
                 }}>
-                    <View style={{flexDirection:'row',gap:10}}>
-                        <View style={{justifyContent:'center',borderWidth:1,width:55,borderRadius:25,height:55,alignSelf:'center',backgroundColor:'#31363F'}}>
-                            <Text style={{ fontSize: 20, fontWeight: '300', marginBottom: 5,textAlign:'center',color:'white' }}>{Initials}</Text>
+                    <View style={{ flexDirection: 'row', gap: 10 }}>
+                        <View style={{ justifyContent: 'center', borderWidth: 1, width: 55, borderRadius: 25, height: 55, alignSelf: 'center', backgroundColor: '#31363F' }}>
+                            <Text style={{ fontSize: 20, fontWeight: '300', marginBottom: 5, textAlign: 'center', color: 'white' }}>{Initials}</Text>
                         </View>
                         <View>
-                            <Text><Text style={{ fontSize: 19, fontWeight: '600', marginBottom: 5 , }}>{item.Vendor_Counter}</Text></Text>
-                            <Text style={{fontWeight: '500' }}>Vendor: {item.Vendor_Name}</Text>
+                            <Text><Text style={{ fontSize: 19, fontWeight: '600', marginBottom: 5, }}>{item.Vendor_Counter}</Text></Text>
+                            <Text style={{ fontWeight: '500' }}>Vendor: {item.Vendor_Name}</Text>
                         </View>
                     </View>
                     <View style={{ alignSelf: 'center', borderWidth: 0, padding: 7, borderRadius: 8, backgroundColor: 'white' }}>
@@ -89,7 +89,7 @@ const ManageVendors = () => {
                             setSelectedItem(item);
                             setModalVisible(true);
                         }}>
-                            <Text style={{ fontSize: 15, color: '#3468C0',fontWeight:'400' }}>View</Text>
+                            <Text style={{ fontSize: 15, color: '#3468C0', fontWeight: '400' }}>View</Text>
                         </Pressable>
                     </View>
                 </View>
@@ -102,7 +102,7 @@ const ManageVendors = () => {
             <StatusBar />
             <View style={{ marginHorizontal: 20 }}>
                 <View style={{ marginVertical: 10 }}>
-                    <Text style={{ fontSize: 17 }}>List of Vendors</Text>
+                    <Text style={{ fontSize: 17 }}>List of Counters</Text>
                 </View>
                 <FlatList
                     data={VendorDetails}
@@ -118,10 +118,12 @@ const ManageVendors = () => {
                 >
                     <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.2)', justifyContent: 'center' }}>
                         {selectedItem && (
-                            <View style={{ marginHorizontal: 15, gap: 15, backgroundColor: '#fff', justifyContent: "center", alignSelf: "center", width: "90%", padding: 15, borderRadius: 10, elevation: 10, shadowColor: '#000',
-                                shadowOffset: {width:0,height:2},
-                                shadowOpacity:0.2,
-                                shadowRadius:5, }}>
+                            <View style={{
+                                marginHorizontal: 15, gap: 15, backgroundColor: '#fff', justifyContent: "center", alignSelf: "center", width: "90%", padding: 15, borderRadius: 10, elevation: 10, shadowColor: '#000',
+                                shadowOffset: { width: 0, height: 2 },
+                                shadowOpacity: 0.2,
+                                shadowRadius: 5,
+                            }}>
                                 {/* Vendor Details */}
                                 <Text style={{ textAlign: 'center', fontSize: 17, fontWeight: 'bold' }}>Vendor Details</Text>
                                 <View style={{ flexDirection: 'row', gap: 10 }}>
@@ -216,98 +218,98 @@ const ManageVendors = () => {
                             </View>
                         )}
                     </View>
-                </Modal>
 
-                <Modal
-                    visible={modalVisibleForEdit}
-                    animationType='fade'
-                    onRequestClose={() => setModalVisibleForEdit(false)}
-                    style={{ backgroundColor: '#EEF5FF' }}
-                >
-                    <ScrollView style={{ flex: 1, backgroundColor: '#EEF5FF' }}>
-                        <View style={{ backgroundColor: 'white' }}>
-                            <View style={{ flexDirection: 'row', gap: 15, marginBottom: 10,marginHorizontal:13 }}>
-                                <Pressable style={{ justifyContent: 'center' }} onPress={() => {
-                                    setModalVisibleForEdit(false)
-                                }}>
-                                    <Ionicons name="arrow-back" size={25} color="black" />
-                                </Pressable>
-                                <Text style={{ fontSize: 20, fontWeight: 'bold', }}>Edit Vendor Details</Text>
+                    <Modal
+                        visible={modalVisibleForEdit}
+                        animationType='fade'
+                        onRequestClose={() => setModalVisibleForEdit(false)}
+                        style={{ backgroundColor: '#EEF5FF' }}
+                    >
+                        <ScrollView style={{ flex: 1, backgroundColor: '#EEF5FF' }}>
+                            <View style={{ backgroundColor: 'white' }}>
+                                <View style={{ flexDirection: 'row', gap: 15, marginBottom: 10, marginHorizontal: 13 }}>
+                                    <Pressable style={{ justifyContent: 'center' }} onPress={() => {
+                                        setModalVisibleForEdit(false)
+                                    }}>
+                                        <Ionicons name="arrow-back" size={25} color="black" />
+                                    </Pressable>
+                                    <Text style={{ fontSize: 20, fontWeight: 'bold', }}>Edit Vendor Details</Text>
+                                </View>
                             </View>
-                        </View>
-                        <View style={{ marginTop: 10, backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 25 }}>
-                            <View style={{ marginVertical: 10 }}>
-                                <Text style={{ fontSize: 17, fontWeight: '500' }}>
-                                    Contact Info
-                                </Text>
+                            <View style={{ marginTop: 10, backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 25 }}>
+                                <View style={{ marginVertical: 10 }}>
+                                    <Text style={{ fontSize: 17, fontWeight: '500' }}>
+                                        Contact Info
+                                    </Text>
+                                </View>
+                                <View style={{ gap: 1 }}>
+                                    <Text style={{ fontSize: 15, color: 'grey', marginTop: 15 }}>Vendor Name</Text>
+                                    <TextInput
+                                        // placeholder="Vendor Name"
+                                        value={selectedItemForEdit.Vendor_Name}
+                                        onChangeText={(value) => handleEditChange('Vendor_Name', value)}
+                                        style={{ borderBottomWidth: 0.9, borderColor: 'grey', fontSize: 15 }}
+                                    />
+                                    <Text style={{ fontSize: 15, color: 'grey', marginTop: 20 }}>Vendor Email</Text>
+                                    <TextInput
+                                        value={selectedItemForEdit.Vendor_Email}
+                                        onChangeText={(value) => handleEditChange('Vendor_Email', value)}
+                                        style={{ borderBottomWidth: 0.9, borderColor: 'grey', fontSize: 15 }}
+                                    />
+                                    <Text style={{ fontSize: 15, color: 'grey', marginTop: 20 }}>Vendor Contact Number (+91)</Text>
+                                    <TextInput
+                                        value={selectedItemForEdit.Vendor_Contact}
+                                        onChangeText={(value) => handleEditChange('Vendor_Contact', value)}
+                                        style={{ borderBottomWidth: 0.9, borderColor: 'grey', fontSize: 15, }}
+                                    />
+                                </View>
                             </View>
-                            <View style={{ gap: 1 }}>
-                                <Text style={{ fontSize: 15, color: 'grey', marginTop: 15 }}>Vendor Name</Text>
-                                <TextInput
-                                    // placeholder="Vendor Name"
-                                    value={selectedItemForEdit.Vendor_Name}
-                                    onChangeText={(value) => handleEditChange('Vendor_Name', value)}
-                                    style={{ borderBottomWidth: 0.9, borderColor: 'grey', fontSize: 15 }}
-                                />
-                                <Text style={{ fontSize: 15, color: 'grey', marginTop: 20 }}>Vendor Email</Text>
-                                <TextInput
-                                    value={selectedItemForEdit.Vendor_Email}
-                                    onChangeText={(value) => handleEditChange('Vendor_Email', value)}
-                                    style={{ borderBottomWidth: 0.9, borderColor: 'grey', fontSize: 15 }}
-                                />
-                                <Text style={{ fontSize: 15, color: 'grey', marginTop: 20 }}>Vendor Contact Number (+91)</Text>
-                                <TextInput
-                                    value={selectedItemForEdit.Vendor_Contact}
-                                    onChangeText={(value) => handleEditChange('Vendor_Contact', value)}
-                                    style={{ borderBottomWidth: 0.9, borderColor: 'grey', fontSize: 15, }}
-                                />
-                            </View>
-                        </View>
 
-                        <View style={{ marginTop: 10, backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 25 }}>
-                            <View style={{ marginVertical: 10 }}>
-                                <Text style={{ fontSize: 17, fontWeight: '500' }}>
-                                    Counter Info
-                                </Text>
-                            </View>
-                            {/* <View>
+                            <View style={{ marginTop: 10, backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 25 }}>
+                                <View style={{ marginVertical: 10 }}>
+                                    <Text style={{ fontSize: 17, fontWeight: '500' }}>
+                                        Counter Info
+                                    </Text>
+                                </View>
+                                {/* <View>
                                 <Text style={{ fontSize: 15, color: 'grey', marginTop: 20 }}>Counter ID</Text>
                                 <TextInput
                                 keyboardType="numeric"
                                 value={selectedItemForEdit.Counter_ID}
-                                    onChangeText={(value) => handleEditChange('Counter_ID', value)}
-                                    style={{ borderBottomWidth: 0.9, borderColor: 'grey', fontSize: 15 }}
+                                onChangeText={(value) => handleEditChange('Counter_ID', value)}
+                                style={{ borderBottomWidth: 0.9, borderColor: 'grey', fontSize: 15 }}
                                 />
                             </View> */}
-                            <View>
-                                <Text style={{ fontSize: 15, color: 'grey', marginTop: 20 }}>Counter Name</Text>
-                                <TextInput
-                                    value={selectedItemForEdit.Vendor_Counter}
-                                    onChangeText={(value) => handleEditChange('Vendor_Counter', value)}
-                                    style={{ borderBottomWidth: 0.9, borderColor: 'grey', fontSize: 15 }}
-                                />
+                                <View>
+                                    <Text style={{ fontSize: 15, color: 'grey', marginTop: 20 }}>Counter Name</Text>
+                                    <TextInput
+                                        value={selectedItemForEdit.Vendor_Counter}
+                                        onChangeText={(value) => handleEditChange('Vendor_Counter', value)}
+                                        style={{ borderBottomWidth: 0.9, borderColor: 'grey', fontSize: 15 }}
+                                    />
+                                </View>
+                                <View>
+                                    <Text style={{ fontSize: 15, color: 'grey', marginTop: 20 }}>Categories (comma-separated)</Text>
+                                    <TextInput
+                                        multiline
+                                        numberOfLines={3}
+                                        value={selectedItemForEdit.Categories}
+                                        onChangeText={(value) => handleEditChange('Categories', value)}
+                                        style={{ borderBottomWidth: 0.9, borderColor: 'grey', fontSize: 15, textAlignVertical: 'center', }}
+                                    />
+                                    <Text style={{ marginTop: 7 }}><Text style={{ color: 'red' }}>* </Text>Please fill Categories with comma seperation</Text>
+
+                                </View>
                             </View>
-                            <View>
-                                <Text style={{ fontSize: 15, color: 'grey', marginTop: 20 }}>Categories (comma-separated)</Text>
-                                <TextInput
-                                    multiline
-                                    numberOfLines={3}
-                                    value={selectedItemForEdit.Categories}
-                                    onChangeText={(value) => handleEditChange('Categories', value)}
-                                    style={{ borderBottomWidth: 0.9, borderColor: 'grey', fontSize: 15, textAlignVertical: 'center', }}
-                                />
-                                <Text style={{marginTop:7}}><Text style={{color:'red'}}>* </Text>Please fill Categories with comma seperation</Text>
+                            <View style={{ alignSelf: 'center', width: '90%', marginVertical: 30, borderRadius: 8, borderWidth: 1, backgroundColor: 'black' }}>
+                                <Pressable style={{}}
+                                    onPress={() => { setModalVisibleForEdit(false); }}>
+                                    <Text style={{ color: 'white', padding: 10, textAlign: 'center', fontSize: 15, fontWeight: '500' }}>Save Details</Text>
+                                </Pressable>
 
                             </View>
-                        </View>
-                        <View style={{ alignSelf: 'center', width: '90%', marginVertical: 30, borderRadius: 8, borderWidth: 1, backgroundColor: 'black' }}>
-                            <Pressable style={{}}
-                                onPress={() => { setModalVisibleForEdit(false); }}>
-                                <Text style={{ color: 'white', padding: 10, textAlign: 'center', fontSize: 15, fontWeight: '500' }}>Save Details</Text>
-                            </Pressable>
-
-                        </View>
-                    </ScrollView>
+                        </ScrollView>
+                    </Modal>
                 </Modal>
             </View>
         </View>
