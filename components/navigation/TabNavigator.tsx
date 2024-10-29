@@ -34,8 +34,8 @@ const TabNavigator = () => {
           // tabBarLabel: "My Profile",
           tabBarLabel: ({ focused }) => (
             <View style={{ alignItems: 'center' }}>
-              <Text style={{ color: focused ? 'black' : 'gray' }}>Home</Text>
-              {focused && <View style={{ height: 1, width: 40, backgroundColor: 'blue',borderWidth:1.5,borderRadius:20,marginBottom:1  }} />}
+              <Text style={{ color: focused ? '#55679C' : 'gray' }}>Home</Text>
+              {focused && <View style={{ height: 1, width: 40, backgroundColor: '#55679C',borderWidth:1.5,borderRadius:20,marginBottom:1  }} />}
             </View>
           ),
         }} />
@@ -48,12 +48,13 @@ const TabNavigator = () => {
         },
         tabBarLabel: ({ focused }) => (
           <View style={{ alignItems: 'center' }}>
-            <Text style={{ color: focused ? 'black' : 'gray' }}>My Orders</Text>
+            <Text style={{ color: focused ? '#55679C' : 'gray' }}>My Orders</Text>
             {focused && <View style={{ height: 1, width: 60, backgroundColor: 'blue',borderWidth:1.5,borderRadius:30,marginBottom:1  }} />}
           </View>
         ),
       }} />
       <Tab.Screen name="More" component={StackNavigator} options={{
+        // tabBarStyle:{display:'none'},
         headerShown: false, tabBarIcon: () => (
           // <Ionicons name="ellipsis-horizontal" size={26} color="black" />
           // <Ionicons name="menu" size={25} color="black" />
@@ -64,7 +65,7 @@ const TabNavigator = () => {
         },
         tabBarLabel: ({ focused }) => (
           <View style={{ alignItems: 'center' }}>
-            <Text style={{ color: focused ? 'black' : 'gray' }}>More</Text>
+            <Text style={{ color: focused ? '#55679C' : 'gray' }}>More</Text>
             {focused && <View style={{ height: 1, width: 40, backgroundColor: 'blue', borderWidth: 1.5,borderRadius:20,marginBottom:1 }} />}
           </View>
         ),
