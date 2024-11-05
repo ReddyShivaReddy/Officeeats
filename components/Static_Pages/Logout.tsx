@@ -1,8 +1,8 @@
 import React from 'react'
-import LoginPage from './LoginPage'
+import LoginPage from '../LoginPage'
 
-function Logout() {
-    
+function Logout({onPress}: any) {
+    // onPress();
   return (
       <LoginPage />
   )

@@ -1,5 +1,5 @@
-import { Image, StyleSheet, Platform, View, StatusBar } from 'react-native';
-
+import { Image, StyleSheet, Platform, View, StatusBar, SafeAreaView } from 'react-native';
+import { useState } from 'react'
 import LoginPage from '@/components/LoginPage';
 import Profile from '@/components/Profile';
 import FoodCounters from '@/components/FoodCounters'
@@ -19,58 +19,60 @@ import { NavigationContainer } from '@react-navigation/native';
 import TabNavigator from '../../components/navigation/TabNavigator';
 import TabNavigatorVendor from '@/components/navigation/TabNavigatorVendor';
 import Test from '@/components/Test';
+import Logout from '@/components/Static_Pages/Logout';
+import { UserProvider, useUser } from '../../components/UserContext';
 
-
-function index() {
-  return (
-    <View style={{ flex: 1 }}>
-      {/* <LoginPage /> */}
-      {/* <Profile /> */}
-      {/* <FoodCounters /> */}
-      {/* <FAQ /> */}
-      {/* <AboutUs /> */}
-      {/* <ReachOut /> */}
-      {/* <ManualBook /> */}
-      {/* <ViewCounter /> */}
-      {/* <MyOrders /> */}
-      {/* <AddVendor /> */}
-      {/* <ManageVendors /> */}
-      {/* <Orders /> */}
-      {/* <ManageItemsVendor /> */}
-      {/* <ManageItemsAdmin /> */}
-<Test />
-
-
-
-       {/* <StatusBar />
+const index=()=> {
+    {/* 
+      <StatusBar />
+      <SafeAreaView />
       <NavigationContainer independent={true}>
         <TabNavigator />
-   <TabNavigatorVendor />
-      </NavigationContainer> */}
-
-
-
-      {/* const [isLoggedIn, setIsLoggedIn] = useState(false);
-      const [isVendor, setIsVendor] = useState(false); // Assuming you have a way to determine if the user is a vendor
-      const handleLogin = (userType) => {
-            setIsLoggedIn(true);
-          setIsVendor(userType === 'vendor'); 
-      };
-      return (
-      <View style={{ flex: 1 }}>
-        {!isLoggedIn ? (
-          <LoginPage onLogin={handleLogin} /> 
-        ) : (
-          <NavigationContainer independent={true}>
-            {isVendor ? <TabNavigatorVendor /> : <TabNavigator />}
-          </NavigationContainer>
-        )}
-        <StatusBar />
-      </View>
-      ); */}
-
+        <TabNavigatorVendor />
+      </NavigationContainer> 
     </View>
-  )
-}
+  )  */}
 
+  return (
+    <UserProvider>
+    <Main />
+    </UserProvider>
+  );
+}
+const Main=()=>{
+  const { userType, setUserType } = useUser();
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isVendor, setIsVendor] = useState<boolean>(false);
+  const [isUser, setIsUser] = useState<boolean>(false);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  
+  const handleLogin = async(userType: any) => {
+    setIsLoggedIn(true);
+    setIsAdmin(userType === 'admin');
+    setIsVendor(userType === 'vendor');
+    setIsUser(userType === 'user');
+    setUserType(userType)
+  };
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  }
+
+  const LogoutFunction = () => (<Logout onPress={handleLogout} />)
+  return(
+
+    <View style={{ flex: 1 }}>
+    {!isLoggedIn ? (
+      <LoginPage onLogin={handleLogin} />
+    ) : (
+      <NavigationContainer independent={true}>
+        { isVendor ? <TabNavigatorVendor /> : 
+        isAdmin || isUser ?
+        <TabNavigator />: <LoginPage/> }
+      </NavigationContainer>
+
+)}
+    <StatusBar />
+  </View>
+)
+}
 export default index

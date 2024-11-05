@@ -24,3 +24,10 @@ export const Colors = {
     tabIconSelected: tintColorDark,
   },
 };
+
+
+//backgroundColor:'#E4DCE4'
+//#CAD0C5
+//#F8F5E6
+//#DDE8E7
+//#F7F3F7

@@ -100,7 +100,7 @@ const MyOrders = () => {
     };
 
     const RenderItem = ({ item }: any) => (
-        <View style={{ flexDirection: 'column', marginVertical: 10, marginHorizontal: 10, borderWidth: 0.1, elevation: 1, borderColor: '#ccc' }}>
+        <View style={{ flexDirection: 'column', marginVertical: 10, marginHorizontal: 10, borderWidth: 0.1, elevation: 1, borderColor: '#ccc',backgroundColor:'#F5F5F5',borderRadius:10 }}>
             <View style={styles.Card}>
                 <View>
                     <Text style={{ fontSize: 18, fontWeight: 'semibold' }}>{item.Counter}</Text>
@@ -157,7 +157,7 @@ const MyOrders = () => {
     );
 
     return (
-        <View style={{ flex: 1, backgroundColor: 'white' }}>
+        <View style={{ flex: 1,  backgroundColor: '#FBFBFB' }}>
             <Text style={{ fontSize: 30, fontWeight: "medium", marginHorizontal: 10 }}>My Orders</Text>
             <View style={{ marginTop: 10 }}>
                 <FlatList
@@ -180,6 +180,7 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         borderRadius: 8,
         padding: 15,
+        
     },
 });
 

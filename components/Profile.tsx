@@ -1,8 +1,8 @@
 import { View, Text, StatusBar, Image, Pressable, ScrollView,SafeAreaView } from 'react-native'
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
-
-const Profile = () => {
+import {LinearGradient} from 'expo-linear-gradient'
+const Profile = ({status}: any) => {
     const User='Reddy Shiva Reddy'
     var Initials = User
             .split(' ')
@@ -13,6 +13,14 @@ const Profile = () => {
         <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
            <SafeAreaView />
             <StatusBar />
+            <View style={{ flexDirection: 'row', gap: 15, marginBottom: 10, marginHorizontal: 17 }}>
+                        <Pressable style={{ justifyContent: 'center' }} onPress={() => {
+                            status();
+                        }}>
+                            <Ionicons name="arrow-back" size={25} color="black" />
+                        </Pressable>
+                        <Text style={{ fontSize: 20, fontWeight: '500', }}>Profile</Text>
+                    </View>
             <View style={{ borderBottomWidth: 0, borderColor: 'grey', }}>
                 <View style={{ alignSelf: 'center', marginBottom: 7,width: 150, height: 150, borderRadius: 100, borderWidth: 0,justifyContent:'center',backgroundColor:'#EEF5FF' }}>
                     <Text style={{textAlign:'center',fontSize:50,fontWeight:'600'}}>

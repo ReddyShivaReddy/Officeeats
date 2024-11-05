@@ -22,24 +22,39 @@ interface ErrorsType {
   }
 
 const logoURL = require('../assets/images/RealpageLogo.png');
-const LoginPage = () => {
+const LoginPage = ({onLogin}: any) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState<ErrorsType>({});
-
+    const [isUser,setIsUser]=useState<boolean>(false)
+    const [isAdmin,setIsAdmin]=useState<boolean>(false)
+    const [isVendor,setIsVendor]=useState<boolean>(false)
     const validateForm = () => {
         let errors = {}
         setErrors(errors);
         return Object.keys(errors).length === 0;
     };
-
+    // if (username === "Admin" && password === "Password") {
+    //     setIsAdmin(true)
+    // } 
+    // else if (username === "User" && password === "Password") {
+    //     setIsUser(true)
+    // } 
+    // else {
+    //     setIsVendor(true)
+    // } 
     const handleSubmit = async() => {
 
         if (validateForm()) {
 
             if (username === "Admin" && password === "Password") {
-                //onLoginSuccess();
-            } else {
+                onLogin('admin');
+            } else if (username === "User" && password === "Password") {
+                onLogin('user'); 
+            } else if (username === "Vendor" && password === "Password"){
+                onLogin('vendor'); 
+            }
+            else {
                 setErrors({ general: "Invalid username or password" });
             }
 

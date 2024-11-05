@@ -10,8 +10,7 @@ import AddVendor from '../AddVendor';
 import ManageItemsAdmin from '../ManageItemsAdmin';
 import ManageVendors from '../ManageVendors';
 import Profile from '../Profile';
-import Logout from '../Logout';
-
+import Logout from '../Static_Pages/Logout';
 import OrdersSummary from '../OrdersSummary';
 
 
@@ -19,11 +18,12 @@ const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator >
       <Stack.Screen 
         name="MoreDetails" 
         component={More} 
         options={{ headerShown: false , }} 
+        
       />
       <Stack.Screen 
         name="AboutUs" 
@@ -43,6 +43,7 @@ const StackNavigator = () => {
         name="ManualBook" 
         component={ManualBook} 
         options={{ 
+          
           header: () => <CustomHeader title="How Office Eats works?" />,
            
 
@@ -59,7 +60,7 @@ const StackNavigator = () => {
         name="AddVendor" 
         component={AddVendor} 
         options={{
-          header: () => <CustomHeader title="Add Vendor" /> 
+          header: () => <CustomHeader title="Add Counter" /> 
         }}
       />
       <Stack.Screen 
@@ -73,7 +74,7 @@ const StackNavigator = () => {
         name="ManageVendors" 
         component={ManageVendors} 
         options={{
-          header: () => <CustomHeader title="Manage Vendors" /> 
+          header: () => <CustomHeader title="Manage Counters" /> 
         }}
       />
       <Stack.Screen 
@@ -97,6 +98,7 @@ const StackNavigator = () => {
           header: () => <CustomHeader title="Orders Summary" /> 
         }}
       />
+      
     </Stack.Navigator>
   );
 };
