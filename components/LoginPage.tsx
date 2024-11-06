@@ -10,7 +10,8 @@ import {
     Platform,
     TouchableOpacity,
     StatusBar,
-    ScrollView
+    ScrollView,
+    Pressable
 } from "react-native";
 import LottieView from 'lottie-react-native';
 
@@ -100,13 +101,13 @@ const LoginPage = ({onLogin}: any) => {
                             marginBottom: 10,
                         }}
                     />
-                <View style={{height:300,width:300,alignSelf:'center' }}>
+                <View style={{height:250,width:250,alignSelf:'center' }}>
                 
                     <LottieView style={{flex:1}} source={require('../assets/loginpageAnimation.json')} autoPlay loop />
 
                 </View>
+                    <Text style={{alignSelf:'center',fontSize:20,marginBottom:10,fontWeight:"400"}}>Login to order your food</Text>
                 <View style={styles.form}>
-                    <Text style={{alignSelf:'center',fontSize:30,paddingBottom:20,fontWeight:"bold"}}>Login</Text>
                     
                     <Text style={styles.label}>Username</Text>
                     <TextInput
@@ -130,7 +131,9 @@ const LoginPage = ({onLogin}: any) => {
                         <Text style={styles.errorText}>{errors.general}</Text>
                     ) : null}
                     <View style={styles.loginButton}>
-                        <Button title="Login" color='#ff4f00' onPress={handleSubmit} />
+                        <Pressable  onPress={handleSubmit} >
+                            <Text style={{textAlign:'center',padding:2,color:'white',fontSize:16,fontWeight:'500'}}>Login</Text>
+                        </Pressable>
                     </View>
                 </View>           
             </ScrollView>
@@ -178,7 +181,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginBottom: 15,
         padding: 10,
-        borderRadius: 5,
+        borderRadius: 10,
     },
 
     errorText: {
@@ -186,9 +189,12 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     loginButton: {
-        width: '45%',
+        width: '90%',
         alignSelf: 'center',
-        padding: 7
+        padding: 7,
+        // borderWidth:1,
+        borderRadius:15,
+        backgroundColor:'#ff4f00'
     }
 });
 

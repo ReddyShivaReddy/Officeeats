@@ -2,9 +2,10 @@ import React from 'react'
 import LoginPage from '../LoginPage'
 
 function Logout({onPress}: any) {
-    // onPress();
+    onPress();
   return (
-      <LoginPage />
+      // <LoginPage />
+      <></>
   )
 }
 

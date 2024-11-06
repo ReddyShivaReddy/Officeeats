@@ -357,7 +357,7 @@ setViewProfile(false)
                 <View style={{ marginHorizontal: 10, alignSelf: 'center', }}>
                     <View style=
                         {{ alignSelf: 'center', }}>
-                        <Image source={require('../assets/images/Headline.png')} style={{ width: '98%', height: undefined, aspectRatio: 2, }} resizeMode="contain" />
+                        <Image source={require('../assets/images/RoundedHeadline.png')} style={{ width: '98%', height: undefined, aspectRatio: 2,borderRadius: 0,borderWidth:1  }} resizeMode="contain"  />
                     </View>
                     <View style={{ marginHorizontal: 10, gap: 10, marginVertical: 5, marginBottom: 10 }}>
                         <View style={{ flexDirection: 'row', gap: 10 }}>

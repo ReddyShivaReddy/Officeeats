@@ -5,7 +5,7 @@ import Logout from './Static_Pages/Logout';
 import LoginPage from './LoginPage';
 import { useUser } from './UserContext';
 
-const HomeScreen = ({ navigation }: any) => {
+const HomeScreen = ({ navigation,logout }: any) => {
   const { userType } = useUser();
   const User = 'Reddy Shiva Reddy'
   var Initials = User
@@ -110,7 +110,7 @@ const HomeScreen = ({ navigation }: any) => {
         }
       </View>
       <View style={{ marginHorizontal: 15, padding: 7, marginTop: 10 }}>
-        <Pressable style={{ borderWidth: 1, width: '80%', borderRadius: 7, borderColor: 'red', alignSelf: 'center' }} onPress={() => <LoginPage />}>
+        <Pressable style={{ borderWidth: 1, width: '80%', borderRadius: 7, borderColor: 'red', alignSelf: 'center' }} onPress={logout}>
           <Text style={{ color: 'red', textAlign: 'center', padding: 10, fontSize: 15 }}>Log Out</Text>
         </Pressable>
       </View>

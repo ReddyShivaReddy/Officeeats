@@ -21,6 +21,7 @@ import TabNavigatorVendor from '@/components/navigation/TabNavigatorVendor';
 import Test from '@/components/Test';
 import Logout from '@/components/Static_Pages/Logout';
 import { UserProvider, useUser } from '../../components/UserContext';
+import HomeScreen from '@/components/More';
 
 const index=()=> {
     {/* 
@@ -57,7 +58,7 @@ const Main=()=>{
     setIsLoggedIn(false);
   }
 
-  const LogoutFunction = () => (<Logout onPress={handleLogout} />)
+  const LogoutFunction = () => (<HomeScreen logout={handleLogout} />)
   return(
 
     <View style={{ flex: 1 }}>
