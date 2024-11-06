@@ -8,6 +8,7 @@ import { useUser } from './UserContext';
 const HomeScreen = ({ navigation,logout }: any) => {
   const { userType } = useUser();
   const User = 'Reddy Shiva Reddy'
+  const UserEmail='Reddyshiva.reddy@Realpage.com'
   var Initials = User
     .split(' ')
     .slice(0, 2)
@@ -30,9 +31,10 @@ const HomeScreen = ({ navigation,logout }: any) => {
 
         <View style={{ justifyContent: 'center', marginRight: 10, width: '85%', }}>
           <Text style={{ flexShrink: 1, fontSize: 18, fontWeight: '500', lineHeight: 20, maxWidth: '90%', }}>{User}</Text>
-          <Pressable onPress={() => navigation.navigate('Profile')}>
+          {/* <Pressable onPress={() => navigation.navigate('Profile')}>
             <Text style={{ fontSize: 15, color: 'darkblue', textDecorationLine: 'underline' }}>View complete profile</Text>
-          </Pressable>
+          </Pressable> */}
+          <Text style={{ fontSize: 15,  }}>{UserEmail}</Text>
         </View>
       </View>
       <View style={{ gap: 15 }}>

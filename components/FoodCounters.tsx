@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, ScrollView, StatusBar, Image, FlatList, Modal, Button, TouchableOpacity, Pressable, TextInput, SafeAreaView } from 'react-native';
+import { View, Text, ScrollView, StatusBar, Image, FlatList, Modal, Button, TouchableOpacity, Pressable, TextInput, SafeAreaView, RefreshControl } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { JumpingTransition } from "react-native-reanimated";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
@@ -29,9 +29,22 @@ function FoodCounters() {
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [filteredCategories, setFilteredCategories] = useState<any>([]);
     const [viewProfile, setViewProfile] = useState<boolean>(false)
+    const [refreshing, setRefreshing] = useState(false);
+    const [RecommendedModal, setRecommendedModal] = useState<boolean>(false)
+    const [recommendedSelect, setRecommendedSelect] = useState<any>([])
+    const [Recommendedconfirmed, setRecommendedConfirmed] = useState<boolean>(false)
     const [fontsLoaded] = useFonts({
         'font': require('../assets/fonts/Dancing Script Regular.ttf'),
     });
+
+    const onRefresh = () => {
+        setRefreshing(true);
+
+        setTimeout(() => {
+
+            setRefreshing(false);
+        }, 1000);
+    };
     type counter = {
         'CounterID': number,
         'CounterName': string,
@@ -230,14 +243,18 @@ function FoodCounters() {
         }
         return CounterItems;
     }
-    const profileState=()=>{
-setViewProfile(false)
+    const profileState = () => {
+        setViewProfile(false)
     }
 
     const shuffledItems = shuffleArray([...CounterItems]);
 
-    const uniqueCategories = shuffledItems.slice(0, 5).map((item) => item.Category);
-
+    const uniqueCategories = shuffledItems.slice(0, 5).map((item) => ({
+        Category: item.Category,
+        CounterName: item.Counter_Name,
+        CounterID: item.Counter_ID
+    }));
+    // console.log(uniqueCategories)
     var ordered: boolean = false
     const submitOrder = () => {
         ordered = true
@@ -249,11 +266,27 @@ setViewProfile(false)
                 setOrderConfirmed(true)
         }
     }
+    const submitRecommendedOrder = () => {
+        ordered = true
+        setOrderDetails({
+            'orderTime': new Date().toLocaleString()
+        })
+        {
+            ordered &&
+                setRecommendedConfirmed(true)
+        }
+    }
     const GoBackHome = () => {
         setModalVisible(false);
         setOrderConfirmed(false);
         setOrderConfirmationPopup(false);
     }
+    const GoBackHomeRecommended = () => {
+        setRecommendedModal(false)
+        setRecommendedConfirmed(false)
+        
+    }
+
     type RenderItemPropsView = {
         item: counterItemTypes;
     };
@@ -341,7 +374,12 @@ setViewProfile(false)
 
 
     return (
-        <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1, backgroundColor: '#FBFBFB' }}>
+        <ScrollView refreshControl={
+            <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+            />
+        } showsVerticalScrollIndicator={false} style={{ flex: 1, backgroundColor: '#FBFBFB' }}>
             <StatusBar />
             <SafeAreaView />
             <View>
@@ -357,7 +395,7 @@ setViewProfile(false)
                 <View style={{ marginHorizontal: 10, alignSelf: 'center', }}>
                     <View style=
                         {{ alignSelf: 'center', }}>
-                        <Image source={require('../assets/images/RoundedHeadline.png')} style={{ width: '98%', height: undefined, aspectRatio: 2,borderRadius: 0,borderWidth:1  }} resizeMode="contain"  />
+                        <Image source={require('../assets/images/RoundedHeadline.png')} style={{ width: '98%', height: undefined, aspectRatio: 2, borderRadius: 0, borderWidth: 1 }} resizeMode="contain" />
                     </View>
                     <View style={{ marginHorizontal: 10, gap: 10, marginVertical: 5, marginBottom: 10 }}>
                         <View style={{ flexDirection: 'row', gap: 10 }}>
@@ -372,22 +410,127 @@ setViewProfile(false)
                                 <Pressable style={{
                                     flexDirection: 'row', gap: 10
                                 }}
-                                // onPress={()=>{
-                                //     setModalVisible(true)
-                                //     setOrderConfirmationPopup(true)
-                                // }}
+                                    onPress={() => {
+
+                                        // setModalVisible(true)
+                                        // setOrderConfirmationPopup(true)
+                                        // setRecommendedModal(true)
+                                    }}
 
                                 >
-                                    {uniqueCategories.map((category, index) => (
-                                        <View key={category} style={{ borderWidth: 1, padding: 5, borderRadius: 8, gap: 2, flexDirection: 'row', backgroundColor: getRandomColor() }}>
-                                            <Text key={index} style={{ padding: 2, textAlign: 'left', fontSize: 13 }}>{category}</Text>
-                                            <View style={{ alignSelf: 'center' }}>
-                                                <Ionicons name="add-outline" size={18} color="#B87333" />
+                                    {uniqueCategories.map((item, index) => {
+                                        console.log(item)
+                                        return (
+                                            <View key={item.Category} style={{ borderWidth: 1, padding: 5, borderRadius: 8, backgroundColor: getRandomColor() }}>
+                                                <Pressable style={{ gap: 2, flexDirection: 'row', }} onPress={() => {
+                                                    setRecommendedSelect(item)
+                                                    setRecommendedModal(true)
+                                                }}>
+
+                                                    <Text key={index} style={{ padding: 2, textAlign: 'left', fontSize: 13 }}>{item.Category}</Text>
+                                                    <View style={{ alignSelf: 'center' }}>
+                                                        <Ionicons name="add-outline" size={18} color="#B87333" />
+                                                    </View>
+                                                </Pressable>
                                             </View>
-                                        </View>
-                                    ))}
+                                        )
+                                    })}
                                 </Pressable>
                             </ScrollView>
+                            <Modal
+                                visible={RecommendedModal}
+                                animationType='fade'
+                                onRequestClose={() => setRecommendedModal(false)}
+                                transparent
+                            >
+                                <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.6)', justifyContent: 'center' }}>
+                                    <View style={{
+                                        marginHorizontal: 15, gap: 15, backgroundColor: '#F1F1F1',
+                                        justifyContent: "center", alignSelf: "center",
+                                        width: "80%", padding: 15, borderRadius: 20,
+                                        elevation: 10, shadowColor: '#000',
+                                        shadowOffset: { width: 0, height: 2 },
+                                        shadowOpacity: 0.2,
+                                        shadowRadius: 5,
+                                    }} >
+                                        <View>
+                                            <Text style={{ fontSize: 23, fontWeight: '500', textAlign: 'center' }}>Order Confirmation</Text>
+                                            <View style={{ borderBottomWidth: 1, borderColor: 'black', borderStyle: 'dashed' }} />
+                                        </View>
+                                        <View style={{ marginVertical: 10, gap: 10 }}>
+                                            <Text style={{ fontSize: 17, color: 'grey' }}>Counter:
+                                                <Text style={{ fontSize: 20, fontWeight: '500', color: 'black' }}> {recommendedSelect.CounterName}</Text>
+                                            </Text>
+                                            <Text style={{ fontSize: 17, color: 'grey' }}>
+                                                Item: <Text style={{ fontSize: 18, fontWeight: '500', color: 'black' }}> {recommendedSelect.Category}</Text><Text style={{ fontSize: 17, color: 'black' }}> x 1</Text>
+                                            </Text>
+                                        </View>
+                                        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+                                            <Pressable style={{ borderWidth: 1, borderColor: '#43B3AE', backgroundColor: '#43B3AE', width: '30%', borderRadius: 8 }} onPress={submitRecommendedOrder}>
+                                                <Text style={{ color: 'white', textAlign: 'center', padding: 7 }}>Order</Text>
+                                            </Pressable>
+                                            <Pressable style={{ borderWidth: 1, borderColor: 'black', backgroundColor: 'black', width: '30%', borderRadius: 8 }} onPress={() => { setRecommendedModal(false) }}>
+                                                <Text style={{ color: 'white', textAlign: 'center', padding: 7 }}>Back</Text>
+                                            </Pressable>
+                                        </View>
+                                    </View>
+                                </View>
+                                <Modal
+                                    visible={Recommendedconfirmed}
+                                >
+                                    <View style={{ flex: 1, }}>
+                                        <ScrollView contentContainerStyle={{ flexGrow: 1, }} style={{ marginTop: 40 }}>
+                                            <View style={{ height: 200, width: 200, alignSelf: 'center' }}>
+                                                <LottieView style={{ flex: 1 }} source={require('../assets/Animation - 1728289183998.json')} autoPlay loop />
+                                            </View>
+                                            <Text style={{ fontSize: 25, fontWeight: '600', textAlign: 'center' }}>
+                                                Your order is made!
+                                            </Text>
+                                            <View style={{ marginHorizontal: 20, marginVertical: 10 }}>
+                                                <Text style={{ textAlign: 'center', fontSize: 15 }}>
+                                                    Congratulations! Your order has been successfully processed, pick your order as soon as possible!
+                                                </Text>
+                                            </View>
+                                            <View style={{ marginHorizontal: 30 }}>
+                                                <Text style={{ fontSize: 20, fontWeight: '500', marginTop: 10 }}>
+                                                    Order Details:
+                                                </Text>
+                                                <View style={{
+                                                    flexDirection: 'column',
+                                                    gap: 15,
+                                                    marginVertical: 10,
+                                                    borderWidth: 0,
+                                                    borderRadius: 15,
+                                                    elevation: 10,
+                                                    backgroundColor: 'white',
+                                                    padding: 10
+                                                }}>
+                                                    <Text style={{ color: 'grey', fontSize: 15 }}>Order ID: <Text style={{ color: 'black', fontSize: 16 }}>#ORD12345</Text></Text>
+                                                    <Text style={{ color: 'grey', fontSize: 15 }}>Item: <Text style={{ color: 'black', fontSize: 16 }}>{recommendedSelect.Category}</Text></Text>
+                                                    <Text style={{ color: 'grey', fontSize: 15 }}>Counter: <Text style={{ color: 'black', fontSize: 16 }}>{recommendedSelect.CounterName}</Text></Text>
+                                                    <Text style={{ color: 'grey', fontSize: 15 }}>OTP: <Text style={{ color: 'black', fontSize: 18, fontWeight: '600' }}>12345</Text></Text>
+                                                    <Text style={{ color: 'grey', fontSize: 15 }}>Ordered Time: <Text style={{ color: 'black', fontSize: 16 }}>{orderDetails.orderTime}</Text></Text>
+                                                </View>
+                                            </View>
+                                        </ScrollView>
+                                        <View style={{
+                                            marginHorizontal: 30,
+                                            backgroundColor: 'black',
+                                            borderRadius: 7,
+                                            paddingVertical: 10,
+                                            position: 'absolute',
+                                            bottom: 20,
+                                            left: 0,
+                                            right: 0,
+                                            alignItems: 'center',
+                                        }}>
+                                            <Pressable onPress={GoBackHomeRecommended}>
+                                                <Text style={{ fontSize: 15, textAlign: 'center', color: 'white' }}>Back to home</Text>
+                                            </Pressable>
+                                        </View>
+                                    </View>
+                                </Modal>
+                            </Modal>
                         </View>
                     </View>
                 </View>
